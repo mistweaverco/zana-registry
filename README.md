@@ -5,7 +5,6 @@
 # zana-registry
 
 [![Made with love](assets/badge-made-with-love.svg)](https://github.com/mistweaverco/zana-registry/graphs/contributors)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/mistweaverco/zana-registry?style=for-the-badge)](https://github.com/mistweaverco/zana-registry/releases/latest)
 [![Discord](assets/badge-discord.svg)](https://getzana.net/discord)
 
 [Requirements](#requirements) • [Install](#install) • [Documentation](https://neovim.getzana.net/)
