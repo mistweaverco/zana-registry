@@ -5,8 +5,7 @@ RELEASE_ACTION="create"
 GH_TAG=$(date +%Y-%m)
 
 create_registry() {
-  bun .
-  zip -r registry.json.zip registry.json
+  (bun . && zip -r registry.json.zip registry.json) || exit 1
 }
 
 set_release_action() {
