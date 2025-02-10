@@ -116,7 +116,6 @@ for (const dirent of dirents) {
     if (fs.existsSync(packageYamlPath)) {
       const fileContents = fs.readFileSync(packageYamlPath, 'utf8');
       const packageData = yaml.load(fileContents) as PackageInfo;
-      if (packageData.source.id.startsWith(SourceType.GITHUB)) continue;
       const version = await getLatestVersion(packageData.source.id);
       if (version) {
         packageData.version = version;
