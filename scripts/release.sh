@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+
+RELEASE_ACTION="create"
+GH_TAG=$(date +%Y-%m-%d)
+
+create_registry() {
+  bun .
+  zip -r registry.json.zip registry.json
+}
+
+set_release_action() {
+  if gh release view "$GH_TAG" --json id --jq .id > /dev/null 2>&1; then
+    echo "Release $GH_TAG already exists, updating it"
+    RELEASE_ACTION="edit"
+  else
+    echo "Release $GH_TAG does not exist, creating it"
+    RELEASE_ACTION="create"
+  fi
+}
+
+do_gh_release() {
+  if [ "$RELEASE_ACTION" == "edit" ]; then
+    if [ -z "$REPLACE" ]; then
+      echo "Trying to upload files to existing release $GH_TAG"
+      print_files
+      gh release upload "$GH_TAG" "${FILES[@]}"
+    else
+      echo "Overwriting existing release $GH_TAG"
+      print_files
+      gh release upload --clobber "$GH_TAG" registry.json.zip
+    fi
+  else
+    echo "Creating new release $GH_TAG"
+    print_files
+    gh release create --generate-notes "$GH_TAG" registry.json.zip
+  fi
+}
+
+release() {
+  set_release_action
+  do_gh_release
+}
