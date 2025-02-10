@@ -20,7 +20,7 @@ const registry: PackageInfo[] = [];
 
 fs.readdirSync(packagesDir, { withFileTypes: true }).forEach(dirent => {
   if (dirent.isDirectory()) {
-    const packageYamlPath = path.join(packagesDir, dirent.name, 'package.yaml');
+    const packageYamlPath = path.join(packagesDir, dirent.name, 'zana.yaml');
 
     if (fs.existsSync(packageYamlPath)) {
       const fileContents = fs.readFileSync(packageYamlPath, 'utf8');
