@@ -75,7 +75,7 @@ const getLatestVersion = async (sourceId: string): Promise<string|null> => {
   switch (true) {
     case sourceId.startsWith(SourceType.GITHUB):
       data = await getDataFromApi(sourceId) as GithubDataResponse;
-      version = stripVersionPrefix(data.tag_name);
+      version = data.tag_name;
     break;
     case sourceId.startsWith(SourceType.NPM):
       data = await getDataFromApi(sourceId) as NpmDataResponse
@@ -118,7 +118,7 @@ for (const dirent of dirents) {
       const packageData = yaml.load(fileContents) as PackageInfo;
       const version = await getLatestVersion(packageData.source.id);
       if (version) {
-        packageData.version = version;
+        packageData.version = stripVersionPrefix(version);
         registry.push(packageData);
         counter.success++;
       } else {
