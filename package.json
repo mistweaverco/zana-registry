@@ -1,6 +1,6 @@
 {
   "name": "zana-registry",
-  "module": "index.ts",
+  "module": "scripts/updater/index.ts",
   "type": "module",
   "devDependencies": {
     "@eslint/js": "^9.20.0",

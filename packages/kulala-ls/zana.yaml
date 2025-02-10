@@ -7,7 +7,7 @@ languages: [http]
 categories: [LSP]
 
 source:
-  id: pkg:pypi/@mistweaverco/kulala-ls
+  id: pkg:npm/@mistweaverco/kulala-ls
 
 bin:
   kulala-ls: npm:kulala-ls
