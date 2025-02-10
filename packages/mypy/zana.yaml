@@ -1,0 +1,13 @@
+name: mypy
+description: Mypy is a static type checker for Python.
+homepage: https://github.com/python/mypy
+licenses:
+  - MIT
+languages:
+  - Python
+categories:
+  - Linter
+source:
+  id: pkg:pypi/mypy
+bin:
+  mypy: pypi:mypy

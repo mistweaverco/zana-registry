@@ -1,0 +1,15 @@
+name: doctoc
+description: >-
+  API and CLI for generating a markdown TOC (table of contents) for a README or
+  any markdown files.
+homepage: https://github.com/thlorenz/doctoc
+licenses:
+  - MIT
+languages:
+  - Markdown
+categories:
+  - Formatter
+source:
+  id: pkg:npm/doctoc
+bin:
+  doctoc: npm:doctoc

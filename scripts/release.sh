@@ -2,7 +2,7 @@
 
 
 RELEASE_ACTION="create"
-GH_TAG=$(date +%Y-%m-%d)
+GH_TAG=$(date +%Y-%m)
 
 create_registry() {
   bun .

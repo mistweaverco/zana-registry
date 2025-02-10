@@ -1,0 +1,26 @@
+name: prettier
+description: Prettier is an opinionated code formatter.
+homepage: https://prettier.io
+licenses:
+  - MIT
+languages:
+  - Angular
+  - CSS
+  - Flow
+  - GraphQL
+  - HTML
+  - JSON
+  - JSX
+  - JavaScript
+  - LESS
+  - Markdown
+  - SCSS
+  - TypeScript
+  - Vue
+  - YAML
+categories:
+  - Formatter
+source:
+  id: pkg:npm/prettier
+bin:
+  prettier: npm:prettier

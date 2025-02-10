@@ -1,0 +1,12 @@
+name: impl
+description: impl generates method stubs for implementing an interface.
+homepage: https://github.com/josharian/impl
+licenses:
+  - MIT
+languages:
+  - Go
+categories: []
+source:
+  id: pkg:golang/github.com/josharian/impl
+bin:
+  impl: golang:impl

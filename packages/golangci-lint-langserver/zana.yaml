@@ -1,0 +1,13 @@
+name: golangci-lint-langserver
+description: golangci-lint language server.
+homepage: https://github.com/nametake/golangci-lint-langserver
+licenses:
+  - MIT
+languages:
+  - Go
+categories:
+  - LSP
+source:
+  id: pkg:golang/github.com/nametake/golangci-lint-langserver
+bin:
+  golangci-lint-langserver: golang:golangci-lint-langserver

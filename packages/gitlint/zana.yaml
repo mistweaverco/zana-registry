@@ -1,0 +1,14 @@
+name: gitlint
+description: >-
+  Gitlint is a git commit message linter written in Python: it checks your
+  commit messages for style.
+homepage: https://jorisroovers.com/gitlint/
+licenses:
+  - MIT
+languages: []
+categories:
+  - Linter
+source:
+  id: pkg:pypi/gitlint
+bin:
+  gitlint: pypi:gitlint

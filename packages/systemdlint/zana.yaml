@@ -1,0 +1,13 @@
+name: systemdlint
+description: Systemd Unitfile Linter
+homepage: https://github.com/priv-kweihmann/systemdlint
+licenses:
+  - BSD-2-Clause
+languages:
+  - systemd
+categories:
+  - Linter
+source:
+  id: pkg:pypi/systemdlint
+bin:
+  systemdlint: pypi:systemdlint

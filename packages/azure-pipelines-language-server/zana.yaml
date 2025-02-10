@@ -1,0 +1,13 @@
+name: azure-pipelines-language-server
+description: A language server for Azure Pipelines YAML.
+homepage: https://github.com/microsoft/azure-pipelines-language-server
+licenses:
+  - MIT
+languages:
+  - Azure Pipelines
+categories:
+  - LSP
+source:
+  id: pkg:npm/azure-pipelines-language-server
+bin:
+  azure-pipelines-language-server: node:node_modules/azure-pipelines-language-server/out/server.js

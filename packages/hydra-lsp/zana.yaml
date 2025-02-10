@@ -1,0 +1,13 @@
+name: hydra-lsp
+description: LSP for Hydra config files
+homepage: https://github.com/Retsediv/hydra-lsp
+licenses:
+  - MIT
+languages:
+  - YAML
+categories:
+  - LSP
+source:
+  id: pkg:pypi/hydra-lsp
+bin:
+  hydra-lsp: pypi:hydra-lsp

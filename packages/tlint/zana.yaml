@@ -1,0 +1,17 @@
+name: tlint
+description: Tighten linter for Laravel conventions with support for formatting.
+homepage: https://github.com/tighten/tlint
+licenses:
+  - MIT
+languages:
+  - PHP
+  - Blade
+categories:
+  - Formatter
+  - Linter
+source:
+  id: pkg:composer/tightenco/tlint
+bin:
+  tlint: composer:tlint
+ci_skip:
+  - win_x64

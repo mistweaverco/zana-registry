@@ -1,0 +1,15 @@
+name: flakeheaven
+description: >
+  flakeheaven is a python linter built around flake8 to enable inheritable and
+  complex toml configuration.
+homepage: https://github.com/flakeheaven/flakeheaven
+licenses:
+  - MIT
+languages:
+  - Python
+categories:
+  - Linter
+source:
+  id: pkg:pypi/flakeheaven
+bin:
+  flakeheaven: pypi:flakeheaven

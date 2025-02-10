@@ -1,0 +1,13 @@
+name: circom-lsp
+description: A Language Server Protocol Implementation for Circom
+homepage: https://github.com/rubydusa/circom-lsp
+licenses:
+  - GPL-3.0
+languages:
+  - Circom
+categories:
+  - LSP
+source:
+  id: pkg:cargo/circom-lsp
+bin:
+  circom-lsp: cargo:circom-lsp

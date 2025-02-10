@@ -1,0 +1,15 @@
+name: pydocstyle
+description: >-
+  pydocstyle is a static analysis tool for checking compliance with Python
+  docstring conventions.
+homepage: https://www.pydocstyle.org/
+licenses:
+  - MIT
+languages:
+  - Python
+categories:
+  - Linter
+source:
+  id: pkg:pypi/pydocstyle
+bin:
+  pydocstyle: pypi:pydocstyle

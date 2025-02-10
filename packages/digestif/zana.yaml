@@ -1,0 +1,15 @@
+name: digestif
+description: A language server for TeX and friends
+homepage: https://github.com/astoff/digestif
+licenses:
+  - GPL-3.0+
+languages:
+  - LaTeX
+categories:
+  - LSP
+source:
+  id: pkg:luarocks/digestif
+bin:
+  digestif: luarocks:digestif
+ci_skip:
+  - win_x64

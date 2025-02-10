@@ -1,0 +1,13 @@
+name: solhint
+description: Solhint is a linting utility for Solidity code.
+homepage: https://protofire.github.io/solhint/
+licenses:
+  - MIT
+languages:
+  - Solidity
+categories:
+  - Linter
+source:
+  id: pkg:npm/solhint
+bin:
+  solhint: npm:solhint

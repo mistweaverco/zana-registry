@@ -1,0 +1,13 @@
+name: ansible-language-server
+description: Ansible Language Server.
+homepage: https://github.com/ansible/vscode-ansible
+licenses:
+  - MIT
+languages:
+  - Ansible
+categories:
+  - LSP
+source:
+  id: pkg:npm/@ansible/ansible-language-server
+bin:
+  ansible-language-server: npm:ansible-language-server

@@ -1,0 +1,14 @@
+name: nil
+description: Language Server for Nix.
+homepage: https://github.com/oxalica/nil
+licenses:
+  - MIT
+  - Apache-2.0
+languages:
+  - Nix
+categories:
+  - LSP
+source:
+  id: pkg:cargo/nil
+bin:
+  nil: cargo:nil

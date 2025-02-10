@@ -1,0 +1,15 @@
+name: rubocop
+description: The Ruby Linter/Formatter that Serves and Protects.
+homepage: https://rubocop.org
+licenses:
+  - MIT
+languages:
+  - Ruby
+categories:
+  - Formatter
+  - Linter
+  - LSP
+source:
+  id: pkg:gem/rubocop
+bin:
+  rubocop: gem:rubocop

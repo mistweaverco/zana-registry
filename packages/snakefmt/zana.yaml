@@ -1,0 +1,13 @@
+name: snakefmt
+description: The uncompromising Snakemake code formatter.
+homepage: https://github.com/snakemake/snakefmt
+licenses:
+  - MIT
+languages:
+  - Snakemake
+categories:
+  - Formatter
+source:
+  id: pkg:pypi/snakefmt
+bin:
+  snakefmt: pypi:snakefmt

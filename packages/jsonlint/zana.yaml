@@ -1,0 +1,13 @@
+name: jsonlint
+description: A pure JavaScript version of the service provided at jsonlint.com.
+homepage: https://github.com/zaach/jsonlint
+licenses:
+  - MIT
+languages:
+  - JSON
+categories:
+  - Linter
+source:
+  id: pkg:npm/jsonlint
+bin:
+  jsonlint: npm:jsonlint

@@ -1,0 +1,13 @@
+name: beancount-language-server
+description: A Language Server Protocol (LSP) for beancount files.
+homepage: https://github.com/polarmutex/beancount-language-server
+licenses:
+  - MIT
+languages:
+  - Beancount
+categories:
+  - LSP
+source:
+  id: pkg:cargo/beancount-language-server
+bin:
+  beancount-language-server: cargo:beancount-language-server

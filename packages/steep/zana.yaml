@@ -1,0 +1,14 @@
+name: steep
+description: |
+  Static type checker for Ruby
+homepage: https://github.com/soutaro/steep
+licenses:
+  - MIT
+languages:
+  - Ruby
+categories:
+  - LSP
+source:
+  id: pkg:gem/steep
+bin:
+  steep: gem:steep

@@ -1,0 +1,13 @@
+name: remark-cli
+description: Command line interface to inspect and change markdown files with remark.
+homepage: https://remark.js.org/
+licenses:
+  - MIT
+languages:
+  - Markdown
+categories:
+  - Formatter
+source:
+  id: pkg:npm/remark-cli
+bin:
+  remark: npm:remark

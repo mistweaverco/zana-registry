@@ -1,0 +1,13 @@
+name: gomodifytags
+description: Go tool to modify/update field tags in structs.
+homepage: https://github.com/fatih/gomodifytags
+licenses:
+  - MIT
+languages:
+  - Go
+categories:
+  - Formatter
+source:
+  id: pkg:golang/github.com/fatih/gomodifytags
+bin:
+  gomodifytags: golang:gomodifytags

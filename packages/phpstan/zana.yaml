@@ -1,0 +1,15 @@
+name: phpstan
+description: PHP Static Analysis Tool - discover bugs in your code without running it!
+homepage: https://github.com/phpstan/phpstan
+licenses:
+  - MIT
+languages:
+  - PHP
+categories:
+  - Linter
+source:
+  id: pkg:github/phpstan/phpstan
+  asset:
+    file: phpstan.phar
+bin:
+  phpstan: php:phpstan.phar

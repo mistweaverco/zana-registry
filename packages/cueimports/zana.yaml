@@ -1,0 +1,15 @@
+name: cueimports
+description: >-
+  CUE tool that updates your import lines, adding missing ones and removing
+  unused ones.
+homepage: https://github.com/asdine/cueimports
+licenses:
+  - MIT
+languages:
+  - Cue
+categories:
+  - Formatter
+source:
+  id: pkg:golang/github.com/asdine/cueimports
+bin:
+  cueimports: golang:cueimports

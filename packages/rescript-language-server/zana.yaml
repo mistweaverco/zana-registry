@@ -1,0 +1,13 @@
+name: rescript-language-server
+description: Language Server for ReScript.
+homepage: https://github.com/rescript-lang/rescript-vscode/tree/master/server
+licenses:
+  - MIT
+languages:
+  - ReScript
+categories:
+  - LSP
+source:
+  id: pkg:npm/@rescript/language-server
+bin:
+  rescript-language-server: npm:rescript-language-server

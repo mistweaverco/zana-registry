@@ -1,0 +1,15 @@
+name: ruby-lsp
+description: >
+  This gem is an implementation of the language server protocol specification
+  for Ruby, used to improve editor features.
+homepage: https://github.com/Shopify/ruby-lsp
+licenses:
+  - MIT
+languages:
+  - Ruby
+categories:
+  - LSP
+source:
+  id: pkg:gem/ruby-lsp
+bin:
+  ruby-lsp: gem:ruby-lsp

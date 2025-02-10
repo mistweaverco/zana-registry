@@ -1,0 +1,18 @@
+name: svls
+description: SystemVerilog language server
+homepage: https://github.com/dalance/svls
+licenses:
+  - MIT
+languages:
+  - SystemVerilog
+categories:
+  - LSP
+source:
+  id: pkg:cargo/svls
+bin:
+  svls: cargo:svls
+ci_skip:
+  - win_arm
+  - win_arm64
+  - win_x64
+  - win_x86

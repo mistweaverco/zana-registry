@@ -1,0 +1,13 @@
+name: usort
+description: Safe, minimal import sorting for Python projects.
+homepage: https://usort.readthedocs.io/
+licenses:
+  - MIT
+languages:
+  - Python
+categories:
+  - Formatter
+source:
+  id: pkg:pypi/usort
+bin:
+  usort: pypi:usort
