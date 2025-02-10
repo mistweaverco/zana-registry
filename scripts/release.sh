@@ -23,21 +23,21 @@ do_gh_release() {
   if [ "$RELEASE_ACTION" == "edit" ]; then
     if [ -z "$REPLACE" ]; then
       echo "Trying to upload files to existing release $GH_TAG"
-      print_files
-      gh release upload "$GH_TAG" "${FILES[@]}"
+      gh release upload "$GH_TAG" registry.json.zip
     else
       echo "Overwriting existing release $GH_TAG"
-      print_files
       gh release upload --clobber "$GH_TAG" registry.json.zip
     fi
   else
     echo "Creating new release $GH_TAG"
-    print_files
     gh release create --generate-notes "$GH_TAG" registry.json.zip
   fi
 }
 
 release() {
+  create_registry
   set_release_action
   do_gh_release
 }
+
+release
