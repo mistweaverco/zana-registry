@@ -6,6 +6,7 @@ enum SourceType {
   GITHUB = "pkg:github",
   NPM = "pkg:npm",
   PYPI = "pkg:pypi",
+  GOLANG = "pkg:golang",
 }
 
 const getApiURL = (sourceId: string): string | null => {
@@ -20,6 +21,9 @@ const getApiURL = (sourceId: string): string | null => {
       break;
     case sourceId.startsWith(SourceType.PYPI):
       apiURL = `https://pypi.org/pypi/${repo}/json`;
+      break;
+    case sourceId.startsWith(SourceType.GOLANG):
+      apiURL = `https://proxy.golang.org/${repo}/@latest`;
       break;
     default:
       break;
@@ -41,6 +45,10 @@ type PyPiResponse = {
   };
 };
 
+type GolangResponse = {
+  Version: string;
+};
+
 const getConfig = (sourceId: string): RequestInit | null => {
   let config = null;
   switch (true) {
@@ -58,6 +66,9 @@ const getConfig = (sourceId: string): RequestInit | null => {
     case sourceId.startsWith(SourceType.PYPI):
       config = {};
       break;
+    case sourceId.startsWith(SourceType.GOLANG):
+      config = {};
+      break;
     default:
       break;
   }
@@ -66,7 +77,9 @@ const getConfig = (sourceId: string): RequestInit | null => {
 
 const getDataFromApi = async (
   sourceId: string,
-): Promise<GithubDataResponse | NpmDataResponse | PyPiResponse | null> => {
+): Promise<
+  GithubDataResponse | NpmDataResponse | PyPiResponse | GolangResponse | null
+> => {
   const apiURL = getApiURL(sourceId);
   if (!apiURL) {
     return null;
@@ -95,15 +108,20 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   switch (true) {
     case sourceId.startsWith(SourceType.GITHUB):
       data = (await getDataFromApi(sourceId)) as GithubDataResponse | null;
-      if (data && data.tag_name) version = data.tag_name;
+      if (data && data.tag_name) version = stripVersionPrefix(data.tag_name);
       break;
     case sourceId.startsWith(SourceType.NPM):
       data = (await getDataFromApi(sourceId)) as NpmDataResponse | null;
-      if (data && data.version) version = data.version;
+      if (data && data.version) version = stripVersionPrefix(data.version);
       break;
     case sourceId.startsWith(SourceType.PYPI):
       data = (await getDataFromApi(sourceId)) as PyPiResponse | null;
-      if (data && data.info && data.info.version) version = data.info.version;
+      if (data && data.info && data.info.version)
+        version = stripVersionPrefix(data.info.version);
+      break;
+    case sourceId.startsWith(SourceType.GOLANG):
+      data = (await getDataFromApi(sourceId)) as GolangResponse | null;
+      if (data && data.Version) version = data.Version;
       break;
     default:
       break;
@@ -142,7 +160,7 @@ for (const dirent of dirents) {
       const packageData = yaml.load(fileContents) as PackageInfo;
       const version = await getLatestVersion(packageData.source.id);
       if (version) {
-        packageData.version = stripVersionPrefix(version);
+        packageData.version = version;
         registry.push(packageData);
         counter.success++;
       } else {
