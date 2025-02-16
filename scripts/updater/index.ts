@@ -75,9 +75,14 @@ const getDataFromApi = async (
   if (!config) {
     return null;
   }
-  const response = await fetch(apiURL, config);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(apiURL, config);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Failed to fetch data from ${apiURL}`, error);
+    return null;
+  }
 };
 
 const stripVersionPrefix = (version: string): string => {
@@ -85,20 +90,20 @@ const stripVersionPrefix = (version: string): string => {
 };
 
 const getLatestVersion = async (sourceId: string): Promise<string | null> => {
-  let data;
+  let data = null;
   let version = null;
   switch (true) {
     case sourceId.startsWith(SourceType.GITHUB):
-      data = (await getDataFromApi(sourceId)) as GithubDataResponse;
-      version = data.tag_name;
+      data = (await getDataFromApi(sourceId)) as GithubDataResponse | null;
+      if (data && data.tag_name) version = data.tag_name;
       break;
     case sourceId.startsWith(SourceType.NPM):
-      data = (await getDataFromApi(sourceId)) as NpmDataResponse;
-      version = data.version;
+      data = (await getDataFromApi(sourceId)) as NpmDataResponse | null;
+      if (data && data.version) version = data.version;
       break;
     case sourceId.startsWith(SourceType.PYPI):
-      data = (await getDataFromApi(sourceId)) as PyPiResponse;
-      version = data.info.version;
+      data = (await getDataFromApi(sourceId)) as PyPiResponse | null;
+      if (data && data.info && data.info.version) version = data.info.version;
       break;
     default:
       break;
