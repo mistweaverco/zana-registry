@@ -55,6 +55,9 @@ const getConfig = (sourceId: string): RequestInit | null => {
     case sourceId.startsWith(SourceType.NPM):
       config = {};
       break;
+    case sourceId.startsWith(SourceType.PYPI):
+      config = {};
+      break;
     default:
       break;
   }
