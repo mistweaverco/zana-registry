@@ -3,3 +3,4 @@
 /registry.json
 node_modules
 *.zip
+/web/static/registry.json
