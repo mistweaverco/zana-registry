@@ -12,14 +12,14 @@ bun install --frozen-lockfile
 
 Then start the development server:
 
-```
+````
 
 ```bash
 bun run dev
 
 # or start the server and open the app in a new browser tab
 bun run dev -- --open
-```
+````
 
 ## Building
 
@@ -30,4 +30,3 @@ bun run build
 ```
 
 You can preview the production build with `bun run preview`.
-

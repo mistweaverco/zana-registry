@@ -2,9 +2,9 @@
 @plugin 'daisyui';
 
 body {
-  --max-width: 996px;
-  max-width: var(--max-width);
-  margin-left: auto;
-  margin-right: auto;
-  font-family: sans-serif;
+	--max-width: 996px;
+	max-width: var(--max-width);
+	margin-left: auto;
+	margin-right: auto;
+	font-family: sans-serif;
 }
