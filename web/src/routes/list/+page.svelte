@@ -4,6 +4,7 @@
   import { sharedStore } from '$lib/store';
 
   let modalInfo;
+  let alertCopySuccess;
   let activePackageIndex = 0;
   let packages = [];
 
@@ -18,6 +19,24 @@
     licenses: [],
     languages: [],
     categories: [],
+  };
+
+  const onHomepageIconClick = (e: Event) => {
+    const target = e.currentTarget as HTMLElement;
+    const span = target.closest('span') as HTMLSpanElement;
+    const homepage = span.dataset.homepage as string
+    window.open(homepage, '_blank');
+  };
+
+  const onNameIconClick = (e: Event) => {
+    const target = e.currentTarget as HTMLElement;
+    const span = target.closest('span') as HTMLSpanElement;
+    const name = span.dataset.name as string;
+    navigator.clipboard.writeText(name);
+    alertCopySuccess.classList.remove('hidden');
+    setTimeout(() => {
+      alertCopySuccess.classList.add('hidden');
+    }, 2000);
   };
 
   const onRemotePackageItemClick = (e: Event) => {
@@ -70,11 +89,17 @@
           <td>Name:</td>
           <td>
             <label class="input input-bordered flex items-center gap-2">
-              <span class="icon">
-                <i class="fa-solid fa-signature"></i>
-              </span>
               <input type="text" class="grow" readonly value={activePackageData.name} />
+              <span class="icon" aria-label="Click to copy the name to clipboard" on:click={onNameIconClick} data-name={activePackageData.name}>
+                <i class="fa-solid fa-copy"></i>
+              </span>
             </label>
+            <div role="alert" bind:this={alertCopySuccess} class="alert alert-success mt-3 hidden">
+              <span class="icon">
+                <i class="fa-solid fa-check"></i>
+              </span>
+              <span>Successfully copied to clipboard</span>
+            </div>
           </td>
         </tr>
         <tr>
@@ -93,10 +118,10 @@
           <td>Homepage:</td>
           <td>
             <label class="input input-bordered flex items-center gap-2">
-              <span class="icon">
+              <input type="text" class="grow" readonly value={activePackageData.homepage} />
+              <span class="icon" aria-label="Click to open the homepage in a new tab" on:click={onHomepageIconClick} data-homepage={activePackageData.homepage}>
                 <i class="fa-solid fa-external-link"></i>
               </span>
-              <input type="text" class="grow" readonly value={activePackageData.homepage} />
             </label>
           </td>
         </tr>
