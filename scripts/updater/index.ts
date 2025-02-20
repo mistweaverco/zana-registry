@@ -7,6 +7,7 @@ enum SourceType {
   NPM = "pkg:npm",
   PYPI = "pkg:pypi",
   GOLANG = "pkg:golang",
+  CARGO = "pkg:cargo",
 }
 
 const getApiURL = (sourceId: string): string | null => {
@@ -24,6 +25,9 @@ const getApiURL = (sourceId: string): string | null => {
       break;
     case sourceId.startsWith(SourceType.GOLANG):
       apiURL = `https://proxy.golang.org/${repo}/@latest`;
+      break;
+    case sourceId.startsWith(SourceType.CARGO):
+      apiURL = `https://crates.io/api/v1/crates/${repo}`;
       break;
     default:
       break;
@@ -49,6 +53,12 @@ type GolangResponse = {
   Version: string;
 };
 
+type CrateResponse = {
+  crate: {
+    max_stable_version: string;
+  };
+};
+
 const getConfig = (sourceId: string): RequestInit | null => {
   let config = null;
   switch (true) {
@@ -69,6 +79,9 @@ const getConfig = (sourceId: string): RequestInit | null => {
     case sourceId.startsWith(SourceType.GOLANG):
       config = {};
       break;
+    case sourceId.startsWith(SourceType.CARGO):
+      config = {};
+      break;
     default:
       break;
   }
@@ -78,7 +91,12 @@ const getConfig = (sourceId: string): RequestInit | null => {
 const getDataFromApi = async (
   sourceId: string,
 ): Promise<
-  GithubDataResponse | NpmDataResponse | PyPiResponse | GolangResponse | null
+  | GithubDataResponse
+  | NpmDataResponse
+  | PyPiResponse
+  | GolangResponse
+  | CrateResponse
+  | null
 > => {
   const apiURL = getApiURL(sourceId);
   if (!apiURL) {
@@ -122,6 +140,11 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
     case sourceId.startsWith(SourceType.GOLANG):
       data = (await getDataFromApi(sourceId)) as GolangResponse | null;
       if (data && data.Version) version = data.Version;
+      break;
+    case sourceId.startsWith(SourceType.CARGO):
+      data = (await getDataFromApi(sourceId)) as CrateResponse | null;
+      if (data && data.crate && data.crate.max_stable_version)
+        version = data.crate.max_stable_version;
       break;
     default:
       break;
