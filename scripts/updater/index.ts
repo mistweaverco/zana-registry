@@ -181,6 +181,10 @@ for (const dirent of dirents) {
     if (fs.existsSync(packageYamlPath)) {
       const fileContents = fs.readFileSync(packageYamlPath, "utf8");
       const packageData = yaml.load(fileContents) as PackageInfo;
+      if (getApiURL(packageData.source.id) === null) {
+        // not supported, but not an error
+        continue;
+      }
       const version = await getLatestVersion(packageData.source.id);
       if (version) {
         packageData.version = version;
