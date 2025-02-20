@@ -4,6 +4,7 @@
   import { sharedStore } from '$lib/store';
 
   let modalInfo;
+  let modalInfoCloseButton;
   let alertCopySuccess;
   let activePackageIndex = 0;
   let packages = [];
@@ -23,15 +24,15 @@
 
   const onHomepageIconClick = (e: Event) => {
     const target = e.currentTarget as HTMLElement;
-    const span = target.closest('span') as HTMLSpanElement;
-    const homepage = span.dataset.homepage as string
+    const btn = target.closest('button') as HTMLSpanElement;
+    const homepage = btn.dataset.homepage as string
     window.open(homepage, '_blank');
   };
 
   const onNameIconClick = (e: Event) => {
     const target = e.currentTarget as HTMLElement;
-    const span = target.closest('span') as HTMLSpanElement;
-    const name = span.dataset.name as string;
+    const btn = target.closest('button') as HTMLSpanElement;
+    const name = btn.dataset.name as string;
     navigator.clipboard.writeText(name);
     alertCopySuccess.classList.remove('hidden');
     setTimeout(() => {
@@ -45,6 +46,7 @@
     activePackageIndex = parseInt(tr.dataset.index as string);
     activePackageData = $sharedStore.filteredPackages[activePackageIndex];
     modalInfo.showModal();
+    modalInfoCloseButton.focus();
   };
 
   const filterPackages = () => {
@@ -88,12 +90,16 @@
         <tr>
           <td>Name:</td>
           <td>
-            <label class="input input-bordered flex items-center gap-2">
-              <input type="text" class="grow" readonly value={activePackageData.name} />
-              <span class="icon" aria-label="Click to copy the name to clipboard" on:click={onNameIconClick} data-name={activePackageData.name}>
-                <i class="fa-solid fa-copy"></i>
-              </span>
-            </label>
+            <div class="flex items-center gap-2">
+              <label class="input input-bordered">
+                <input type="text" class="grow" readonly value={activePackageData.name} />
+              </label>
+              <button class="btn btn-primary" aria-label="Click to copy the name to clipboard" on:click={onNameIconClick} data-name={activePackageData.name}>
+                <span class="icon">
+                  <i class="fa-solid fa-copy"></i>
+                </span>
+              </button>
+            </div>
             <div role="alert" bind:this={alertCopySuccess} class="alert alert-success mt-3 hidden">
               <span class="icon">
                 <i class="fa-solid fa-check"></i>
@@ -117,12 +123,16 @@
         <tr>
           <td>Homepage:</td>
           <td>
-            <label class="input input-bordered flex items-center gap-2">
-              <input type="text" class="grow" readonly value={activePackageData.homepage} />
-              <span class="icon" aria-label="Click to open the homepage in a new tab" on:click={onHomepageIconClick} data-homepage={activePackageData.homepage}>
-                <i class="fa-solid fa-external-link"></i>
-              </span>
-            </label>
+            <div class="flex items-center gap-2">
+              <label class="input input-bordered">
+                <input type="text" class="grow" readonly value={activePackageData.homepage} />
+              </label>
+              <button class="btn btn-primary" aria-label="Click to open the homepage in a new tab" on:click={onHomepageIconClick} data-homepage={activePackageData.homepage}>
+                <span class="icon">
+                  <i class="fa-solid fa-external-link"></i>
+                </span>
+              </button>
+            </div>
           </td>
         </tr>
         <tr>
@@ -141,7 +151,7 @@
     </table>
     <div class="modal-action">
       <form method="dialog">
-        <button class="btn">Close</button>
+        <button bind:this={modalInfoCloseButton} class="btn">Close</button>
       </form>
     </div>
   </div>
