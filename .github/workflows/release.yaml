@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Website
         run: |
-          cp registry.json web/static/ && \
+          cp zana-registry.json web/static/ && \
           cd web && \
           bun install --frozen-lockfile && \
           bun run build

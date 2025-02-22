@@ -63,7 +63,7 @@
 	$: $sharedStore.searchValue, filterPackages();
 
 	onMount(async () => {
-		const res = await fetch('/registry.json');
+		const res = await fetch('/zana-registry.json');
 		const data = await res.json();
 		const sortedData = data.sort((a, b) => {
 			if (a.name < b.name) {
