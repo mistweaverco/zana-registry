@@ -131,7 +131,7 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
     case sourceId.startsWith(SourceType.PYPI):
       data = (await getDataFromApi(sourceId)) as PyPiResponse | null;
       if (data && data.info && data.info.version)
-        version = stripVersionPrefix(data.info.version);
+        version = data.info.version;
       break;
     case sourceId.startsWith(SourceType.GOLANG):
       data = (await getDataFromApi(sourceId)) as GolangResponse | null;
