@@ -195,7 +195,7 @@ for (const dirent of dirents) {
     if (fs.existsSync(packageYamlPath)) {
       const fileContents = fs.readFileSync(packageYamlPath, "utf8");
       const packageData = yaml.load(fileContents) as PackageInfo;
-      const masonPackageData = packageData as MasonPackageInfo;
+      const masonPackageData = structuredClone(packageData) as MasonPackageInfo;
       masonPackageData.source.id = masonPackageData.source.id.replace(
         "@",
         "%40",
