@@ -152,6 +152,19 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   return version;
 };
 
+interface MasonPackageInfo {
+  name: string;
+  description: string;
+  homepage: string;
+  licenses: string[];
+  languages: string[];
+  categories: string[];
+  source: {
+    id: string;
+  };
+  bin: Record<string, string>;
+}
+
 interface PackageInfo {
   name: string;
   version: string;
@@ -167,6 +180,7 @@ interface PackageInfo {
 }
 
 const packagesDir = path.join(__dirname, "..", "..", "packages");
+const masonRegistry: MasonPackageInfo[] = [];
 const registry: PackageInfo[] = [];
 
 const dirents = fs.readdirSync(packagesDir, { withFileTypes: true });
@@ -181,6 +195,11 @@ for (const dirent of dirents) {
     if (fs.existsSync(packageYamlPath)) {
       const fileContents = fs.readFileSync(packageYamlPath, "utf8");
       const packageData = yaml.load(fileContents) as PackageInfo;
+      const masonPackageData = packageData as MasonPackageInfo;
+      masonPackageData.source.id = masonPackageData.source.id.replace(
+        "@",
+        "%40",
+      );
       if (getApiURL(packageData.source.id) === null) {
         // not supported, but not an error
         continue;
@@ -188,7 +207,9 @@ for (const dirent of dirents) {
       const version = await getLatestVersion(packageData.source.id);
       if (version) {
         packageData.version = version;
+        masonPackageData.source.id += `@${version}`;
         registry.push(packageData);
+        masonRegistry.push(masonPackageData);
         counter.success++;
       } else {
         console.error(`Failed to get latest version for ${packageData.name}`);
@@ -198,10 +219,14 @@ for (const dirent of dirents) {
   }
 }
 
-const registryJsonPath = path.join(__dirname, "..", "..", "registry.json");
+const registryJsonPath = path.join(__dirname, "..", "..", "zana-registry.json");
+const masonRegistryJsonPath = path.join(__dirname, "..", "..", "registry.json");
 fs.writeFileSync(registryJsonPath, JSON.stringify(registry, null, 2));
+fs.writeFileSync(masonRegistryJsonPath, JSON.stringify(masonRegistry, null, 2));
 
-console.log(`Registry file created at ${registryJsonPath}`);
+console.log(
+  `Registry files created at ${registryJsonPath} and ${masonRegistryJsonPath}`,
+);
 console.log(`Success: ${counter.success}`);
 console.log(`Failure: ${counter.failure}`);
 console.log(`Total: ${counter.success + counter.failure}`);
