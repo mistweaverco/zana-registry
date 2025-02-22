@@ -116,21 +116,17 @@ const getDataFromApi = async (
   }
 };
 
-const stripVersionPrefix = (version: string): string => {
-  return version.replace(/^v/, "");
-};
-
 const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   let data = null;
   let version = null;
   switch (true) {
     case sourceId.startsWith(SourceType.GITHUB):
       data = (await getDataFromApi(sourceId)) as GithubDataResponse | null;
-      if (data && data.tag_name) version = stripVersionPrefix(data.tag_name);
+      if (data && data.tag_name) version = data.tag_name;
       break;
     case sourceId.startsWith(SourceType.NPM):
       data = (await getDataFromApi(sourceId)) as NpmDataResponse | null;
-      if (data && data.version) version = stripVersionPrefix(data.version);
+      if (data && data.version) version = data.version;
       break;
     case sourceId.startsWith(SourceType.PYPI):
       data = (await getDataFromApi(sourceId)) as PyPiResponse | null;
