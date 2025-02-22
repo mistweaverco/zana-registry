@@ -6,6 +6,7 @@ GH_TAG=$(date +%Y-%m)
 
 create_registry() {
   (bun . && zip -r registry.json.zip registry.json) || exit 1
+  sha256sum registry.json registry.json.zip > checksums.txt || exit 1
 }
 
 set_release_action() {
@@ -21,10 +22,10 @@ set_release_action() {
 do_gh_release() {
   if [ "$RELEASE_ACTION" == "edit" ]; then
     echo "Overwriting existing release $GH_TAG"
-    gh release upload --clobber "$GH_TAG" registry.json.zip
+    gh release upload --clobber "$GH_TAG" registry.json.zip checksums.txt
   else
     echo "Creating new release $GH_TAG"
-    gh release create --generate-notes "$GH_TAG" registry.json.zip
+    gh release create --generate-notes "$GH_TAG" registry.json.zip checksums.txt
   fi
 }
 
