@@ -1,0 +1,13 @@
+name: gh-actions-language-server
+description: GitHub Actions Language Server
+homepage: https://github.com/lttb/gh-actions-language-server
+licenses:
+  - MIT
+languages:
+  - YAML
+categories:
+  - LSP
+source:
+  id: pkg:npm/gh-actions-language-server
+bin:
+  gh-actions-language-server: npm:gh-actions-language-server
