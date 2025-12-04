@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: cuepls
 description: The Official Language Server implementation for CUE.
 homepage: https://github.com/cue-lang/cue

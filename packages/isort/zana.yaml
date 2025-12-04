@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: isort
 description: isort is a Python utility / library to sort imports alphabetically.
 homepage: https://pypi.org/project/isort/

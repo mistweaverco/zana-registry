@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: autotools-language-server
 description: Autotools language server, support configure.ac, Makefile.am, Makefile.
 homepage: https://github.com/Freed-Wu/autotools-language-server

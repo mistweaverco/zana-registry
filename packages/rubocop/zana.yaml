@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: rubocop
 description: The Ruby Linter/Formatter that Serves and Protects.
 homepage: https://rubocop.org

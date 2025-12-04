@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: slang
 description: >
   Slang is a shading language that makes it easier to build and maintain large

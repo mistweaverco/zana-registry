@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: reorder-python-imports
 description: >-
   Tool for automatically reordering python imports. Similar to isort but uses

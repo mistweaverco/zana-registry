@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: js-debug-adapter
 description: The VS Code JavaScript debugger.
 homepage: https://github.com/microsoft/vscode-js-debug

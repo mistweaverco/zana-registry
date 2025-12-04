@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: sqlls
 description: SQL Language Server.
 homepage: https://github.com/joe-re/sql-language-server

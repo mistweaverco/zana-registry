@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: staticcheck
 description: The advanced Go linter.
 homepage: https://staticcheck.io/

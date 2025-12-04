@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: vscode-java-decompiler
 description: >
   Decompiler jars from the Decompiler extension for Java in Visual Studio Code.

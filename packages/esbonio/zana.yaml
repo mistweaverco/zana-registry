@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: esbonio
 description: A Language Server for Sphinx projects.
 homepage: https://pypi.org/project/esbonio/

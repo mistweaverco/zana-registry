@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ginko_ls
 description: >
   ginko_ls is meant to be a feature-complete language server for device-trees.

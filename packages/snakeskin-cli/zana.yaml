@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: snakeskin-cli
 description: >-
   Snakeskin is an awesome JavaScript template engine with the best support for

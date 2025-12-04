@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: solargraph
 description: >-
   Solargraph is a Ruby gem that provides intellisense features through the

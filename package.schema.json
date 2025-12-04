@@ -39,6 +39,10 @@
         "$ref": "#/definitions/enums:category"
       }
     },
+    "experimental": {
+      "type": "boolean",
+      "description": "If true, this package is considered experimental and may not be stable."
+    },
     "deprecation": {
       "$ref": "#/definitions/components:deprecation"
     },

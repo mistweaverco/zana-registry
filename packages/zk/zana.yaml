@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: zk
 description: A plain text note-taking assistant.
 homepage: https://github.com/zk-org/zk

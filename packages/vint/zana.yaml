@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: vint
 description: Fast and Highly Extensible Vim script Language Lint implemented in Python.
 homepage: https://github.com/Vimjas/vint

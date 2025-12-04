@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: stylua
 description: An opinionated Lua code formatter.
 homepage: https://github.com/JohnnyMorganz/StyLua

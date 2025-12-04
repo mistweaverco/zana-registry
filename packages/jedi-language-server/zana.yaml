@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: jedi-language-server
 description: >-
   A Python language server exclusively for Jedi. If Jedi supports it well, this

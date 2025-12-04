@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: cmakelint
 description: cmakelint parses CMake files and reports style issues.
 homepage: https://github.com/cmake-lint/cmake-lint

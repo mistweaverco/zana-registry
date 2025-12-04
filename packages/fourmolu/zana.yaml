@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: fourmolu
 description: >-
   A fork of Ormolu that uses four space indentation and allows arbitrary

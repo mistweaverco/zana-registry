@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: pydocstyle
 description: >-
   pydocstyle is a static analysis tool for checking compliance with Python

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 ---
 name: eslint
 description: A fully pluggable tool for identifying and reporting on patterns in JavaScript.

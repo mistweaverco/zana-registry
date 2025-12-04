@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: autoflake
 description: autoflake removes unused imports and unused variables from Python code.
 homepage: https://pypi.org/project/autoflake/

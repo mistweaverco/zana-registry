@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ocamlearlybird
 description: OCaml debug adapter.
 homepage: https://github.com/hackwaly/ocamlearlybird

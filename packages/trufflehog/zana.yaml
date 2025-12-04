@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: trufflehog
 description: Find and verify credentials.
 homepage: https://github.com/trufflesecurity/trufflehog

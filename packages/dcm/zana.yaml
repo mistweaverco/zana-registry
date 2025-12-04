@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: dcm
 description: Language server for DCM analyzer
 homepage: https://dcm.dev/

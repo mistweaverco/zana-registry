@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: go-debug-adapter
 description: Go debug adapter sourced from the VSCode Go extension.
 homepage: https://github.com/golang/vscode-go

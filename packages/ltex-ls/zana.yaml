@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ltex-ls
 description: >
   LTeX Language Server: LSP language server for LanguageTool 🔍✔️ with support

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: usort
 description: Safe, minimal import sorting for Python projects.
 homepage: https://usort.readthedocs.io/

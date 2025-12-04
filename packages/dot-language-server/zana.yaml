@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: dot-language-server
 description: A language server for the DOT language.
 homepage: https://github.com/nikeee/dot-language-server

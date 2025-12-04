@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: remark-language-server
 description: A language server to lint and format markdown files with remark.
 homepage: https://github.com/remarkjs/remark-language-server

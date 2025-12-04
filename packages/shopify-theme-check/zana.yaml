@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: shopify-theme-check
 description: The Ultimate Shopify Theme Linter.
 homepage: https://github.com/Shopify/theme-check

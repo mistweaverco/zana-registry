@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: starlark-rust
 description: A Rust implementation of the Starlark language
 homepage: https://github.com/facebook/starlark-rust/

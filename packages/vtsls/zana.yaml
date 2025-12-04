@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: vtsls
 description: LSP wrapper around the TypeScript extension bundled with VSCode.
 homepage: https://github.com/yioneko/vtsls

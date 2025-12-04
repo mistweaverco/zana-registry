@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: dart-debug-adapter
 description: Dart debug adapter sourced from the Dart VSCode extension.
 homepage: https://github.com/Dart-Code/Dart-Code

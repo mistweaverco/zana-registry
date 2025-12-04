@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: fantomas
 description: Fantomas is an opinionated code formatter for F#.
 homepage: https://fsprojects.github.io/fantomas

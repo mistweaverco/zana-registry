@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: cfn-lint
 description: >
   CloudFormation Linter. Validate AWS CloudFormation YAML/JSON templates against

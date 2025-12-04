@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: lemmy-help
 description: >-
   Every one needs help, so lemmy-help you! A CLI to generate vim/nvim help doc

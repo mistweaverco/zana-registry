@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: erlang-ls
 description: >
   Erlang LS is a language server providing language features for the Erlang

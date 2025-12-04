@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: buf-language-server
 description: >
   buf-language-server is a prototype for the beginnings of a Protobuf language

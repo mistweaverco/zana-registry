@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: protolint
 description: >-
   protolint is the pluggable linting/fixing utility for Protocol Buffer files

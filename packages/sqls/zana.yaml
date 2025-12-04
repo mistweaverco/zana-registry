@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: sqls
 description: SQL language server written in Go.
 homepage: https://github.com/sqls-server/sqls

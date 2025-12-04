@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: awk-language-server
 description: Language Server for AWK.
 homepage: https://github.com/Beaglefoot/awk-language-server

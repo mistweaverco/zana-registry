@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: semgrep
 description: >
   Semgrep is a fast, open-source, static analysis engine for finding bugs,

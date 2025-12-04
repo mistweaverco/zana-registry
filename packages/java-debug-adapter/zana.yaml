@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: java-debug-adapter
 description: >-
   The debug server implementation for Java. It conforms to the debugger adapter

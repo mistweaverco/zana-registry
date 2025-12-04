@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: lelwel
 description: LL(1) parser generator for Rust.
 homepage: https://github.com/0x2a-42/lelwel

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: mdsf
 description: Format markdown code blocks using your favorite code formatters.
 homepage: https://github.com/hougesen/mdsf

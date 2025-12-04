@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ast-grep
 description: A CLI tool for code structural search, lint and rewriting. Written in Rust.
 homepage: https://github.com/ast-grep/ast-grep

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: gh-actions-language-server
 description: GitHub Actions Language Server
 homepage: https://github.com/lttb/gh-actions-language-server

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: gitlint
 description: >-
   Gitlint is a git commit message linter written in Python: it checks your

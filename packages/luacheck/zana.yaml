@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: luacheck
 description: A tool for linting and static analysis of Lua code.
 homepage: https://github.com/lunarmodules/luacheck

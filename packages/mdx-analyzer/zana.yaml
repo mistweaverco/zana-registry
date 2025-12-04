@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: mdx-analyzer
 description: >
   This package provides a language server for MDX. The language server provides

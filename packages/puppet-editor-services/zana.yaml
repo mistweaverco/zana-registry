@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: puppet-editor-services
 description: Puppet Language Server for editors.
 homepage: https://github.com/puppetlabs/puppet-editor-services

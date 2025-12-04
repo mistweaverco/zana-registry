@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: m68k-lsp-server
 description: Language Server Protocol implementation for Motorola 68000 assembly
 homepage: https://github.com/grahambates/m68k-lsp

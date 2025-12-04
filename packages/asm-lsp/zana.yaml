@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: asm-lsp
 description: Language server for NASM/GAS/GO Assembly.
 homepage: https://github.com/bergercookie/asm-lsp

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: stylelint-lsp
 description: A stylelint Language Server.
 homepage: https://github.com/bmatcuk/stylelint-lsp

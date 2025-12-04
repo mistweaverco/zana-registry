@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: fortls
 description: fortls - Fortran Language Server.
 homepage: https://github.com/gnikit/fortls

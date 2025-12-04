@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: erlang-debugger
 description: >
   Step by step debugger for Erlang, powered by the Erlang/OTP interpreter and

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: cypher-language-server
 description: Language Server for Cypher query language.
 homepage: https://github.com/neo4j/cypher-language-support

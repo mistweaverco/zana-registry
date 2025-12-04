@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: eslint_d
 description: Makes eslint the fastest linter on the planet.
 homepage: https://github.com/mantoni/eslint_d.js/

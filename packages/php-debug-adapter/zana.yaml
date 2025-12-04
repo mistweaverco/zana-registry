@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: php-debug-adapter
 description: PHP Debug Adapter 🐞⛔.
 homepage: https://github.com/xdebug/vscode-php-debug

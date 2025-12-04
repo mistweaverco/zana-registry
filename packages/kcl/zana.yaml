@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: kcl
 description: >
   KCL is an open-source, constraint-based record and functional language that

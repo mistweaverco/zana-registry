@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: yamlfix
 description: A simple and configurable YAML formatter that keeps comments.
 homepage: https://github.com/lyz-code/yamlfix

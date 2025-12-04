@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: yq
 description: >-
   yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties

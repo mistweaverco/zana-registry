@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: buf
 description: >
   The Buf CLI is a one stop shop for your local Protocol Buffers needs. It comes

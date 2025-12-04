@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: crystalline
 description: A Language Server Protocol implementation for Crystal.
 homepage: https://github.com/elbywan/crystalline

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: cql-language-server
 description: A language server for Clinical Quality Language (CQL).
 homepage: https://github.com/cqframework/cql-language-server

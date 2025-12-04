@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: openscad-lsp
 description: Language Server Protocol implementation for OpenSCAD, written in Rust.
 homepage: https://github.com/Leathong/openscad-LSP

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: sqlfluff
 description: SQLFluff is a dialect-flexible and configurable SQL linter.
 homepage: https://github.com/sqlfluff/sqlfluff

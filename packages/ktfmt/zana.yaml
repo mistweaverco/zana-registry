@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ktfmt
 description: >-
   A program that reformats Kotlin source code to comply with the common

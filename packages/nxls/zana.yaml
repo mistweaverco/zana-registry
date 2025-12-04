@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: nxls
 description: A language server that provides code completion and more for Nx workspaces.
 homepage: https://github.com/nrwl/nx-console/tree/master/apps/nxls
