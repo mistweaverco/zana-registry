@@ -35,26 +35,28 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.3.3
-      - name: Cache Bun
+      - name: Cache Bun updater dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.bun/install/cache
-          key: linux-bun-${{ hashFiles('**/bun.lockb') }}
+          path: ~/.bun/install/cache-updater
+          key: linux-bun-updater-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            linux-bun-${{ hashFiles('**/bun.lockb') }}
+            linux-bun-updater-${{ hashFiles('bun.lock') }}
       - name: Install dependencies
         run: bun install --frozen-lockfile
-      - name: Create release
+      - name: Create or update release
         run: ./scripts/release.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create Website
-        run: |
-          cp package.schema.json web/static/ && \
-          cp zana-registry.json web/static/ && \
-          cd web && \
-          bun install --frozen-lockfile && \
-          bun run build
+      - name: Cache Bun web dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache-web
+          key: linux-bun-web-${{ hashFiles('web/bun.lock') }}
+          restore-keys: |
+            linux-bun-web-${{ hashFiles('web/bun.lock') }}
+      - name: Build Website
+        run: ./scripts/build-web.sh
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
