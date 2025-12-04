@@ -1,14 +1,18 @@
+import type {
+  APIResponse,
+  CrateResponse,
+  GithubDataResponse,
+  GolangResponse,
+  MasonPackageInfo,
+  NpmDataResponse,
+  PackageInfo,
+  PyPiResponse,
+} from "./../types";
+import { SourceType } from "./../types";
+
 import * as fs from "fs";
 import * as path from "path";
 import * as yaml from "js-yaml";
-
-enum SourceType {
-  GITHUB = "pkg:github",
-  NPM = "pkg:npm",
-  PYPI = "pkg:pypi",
-  GOLANG = "pkg:golang",
-  CARGO = "pkg:cargo",
-}
 
 const getApiURL = (sourceId: string): string | null => {
   let apiURL: string | null = null;
@@ -33,30 +37,6 @@ const getApiURL = (sourceId: string): string | null => {
       break;
   }
   return apiURL;
-};
-
-type GithubDataResponse = {
-  tag_name: string;
-};
-
-type NpmDataResponse = {
-  version: string;
-};
-
-type PyPiResponse = {
-  info: {
-    version: string;
-  };
-};
-
-type GolangResponse = {
-  Version: string;
-};
-
-type CrateResponse = {
-  crate: {
-    max_stable_version: string;
-  };
 };
 
 const getConfig = (sourceId: string): RequestInit | null => {
@@ -90,14 +70,7 @@ const getConfig = (sourceId: string): RequestInit | null => {
 
 const getDataFromApi = async (
   sourceId: string,
-): Promise<
-  | GithubDataResponse
-  | NpmDataResponse
-  | PyPiResponse
-  | GolangResponse
-  | CrateResponse
-  | null
-> => {
+): APIResponse => {
   const apiURL = getApiURL(sourceId);
   if (!apiURL) {
     return null;
@@ -149,34 +122,6 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   }
   return version;
 };
-
-interface MasonPackageInfo {
-  name: string;
-  description: string;
-  homepage: string;
-  licenses: string[];
-  languages: string[];
-  categories: string[];
-  source: {
-    id: string;
-  };
-  bin: Record<string, string>;
-}
-
-interface PackageInfo {
-  name: string;
-  version: string;
-  description: string;
-  homepage: string;
-  licenses: string[];
-  languages: string[];
-  categories: string[];
-  experimental?: boolean;
-  source: {
-    id: string;
-  };
-  bin: Record<string, string>;
-}
 
 const packagesDir = path.join(__dirname, "..", "..", "packages");
 const masonRegistry: MasonPackageInfo[] = [];
@@ -241,6 +186,7 @@ fs.writeFileSync(masonRegistryJsonPath, JSON.stringify(masonRegistry, null, 2));
 console.log(
   `Registry files created at ${registryJsonPath} and ${masonRegistryJsonPath}`,
 );
+
 console.log(`Success: ${counter.success}`);
 console.log(`Failure: ${counter.failure}`);
 console.log(`Total: ${counter.success + counter.failure}`);
