@@ -3,6 +3,9 @@
 
 RELEASE_ACTION="create"
 GH_TAG=$(date +%Y-%m)
+PREVIOUS_GH_TAG=$(date -d "-1 month" +%Y-%m)
+NOTES_TITLE=""
+NOTES_BODY=""
 
 create_registry() {
   (bun . && zip -r registry.json.zip registry.json && zip -r zana-registry.json.zip zana-registry.json) || exit 1
@@ -20,13 +23,31 @@ set_release_action() {
   fi
 }
 
+get_release_notes() {
+  local repo
+  local notes_json=""
+  repo=$(gh repo view --json owner,name -q '.owner.login + "/" + .name')
+  notes_json=$(gh api \
+    -X POST \
+    "repos/$repo/releases/generate-notes" \
+    -f tag_name="$GH_TAG" \
+    -f previous_tag_name="$PREVIOUS_GH_TAG"
+  )
+  NOTES_TITLE=$(echo "$notes_json" | jq -r '.name')
+  NOTES_BODY=$(echo "$notes_json" | jq -r '.body')
+}
+
 do_gh_release() {
+  git tag --force "$GH_TAG"
+  git push --force origin "$GH_TAG"
+  get_release_notes
   if [ "$RELEASE_ACTION" == "edit" ]; then
     echo "Overwriting existing release $GH_TAG"
     gh release upload --clobber "$GH_TAG" zana-registry.json.zip zana-checksums.txt registry.json.zip checksums.txt
+    gh release edit "$GH_TAG" --title "$NOTES_TITLE" --notes-file <(echo "$NOTES_BODY")
   else
     echo "Creating new release $GH_TAG"
-    gh release create --generate-notes "$GH_TAG" zana-registry.json.zip zana-checksums.txt registry.json.zip checksums.txt
+    gh release create "$GH_TAG" zana-registry.json.zip zana-checksums.txt registry.json.zip checksums.txt --title "$NOTES_TITLE" --notes-file <(echo "$NOTES_BODY")
   fi
 }
 
