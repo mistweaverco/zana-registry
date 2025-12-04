@@ -1,6 +1,5 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
----
 name: pyproject-fmt
 description: Format your pyproject.toml file
 homepage: https://pypi.org/project/pyproject-fmt/
