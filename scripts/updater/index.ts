@@ -190,7 +190,22 @@ for (const dirent of dirents) {
     const packageYamlPath = path.join(packagesDir, dirent.name, "zana.yaml");
     if (fs.existsSync(packageYamlPath)) {
       const fileContents = fs.readFileSync(packageYamlPath, "utf8");
-      const packageData = yaml.load(fileContents) as PackageInfo;
+      let packageData: PackageInfo;
+      try {
+        // INFO:
+        // load all documents in the YAML file,
+        // because js-yaml requires it even for single-document files
+        // when it sees the document separator '---'
+        const yamlDocuments = yaml.loadAll(fileContents) as PackageInfo[];
+        // we expect only one document per file, so take the first one
+        // if there are multiple documents, ignore the rest
+        packageData = yamlDocuments[0];
+      } catch (e) {
+        console.error(`Failed to parse YAML for ${dirent.name}:`, e);
+        counter.failure++;
+        continue;
+      }
+      console.log({ packageData });
       const masonPackageData = structuredClone(packageData) as MasonPackageInfo;
       masonPackageData.source.id = masonPackageData.source.id.replace(
         "@",
