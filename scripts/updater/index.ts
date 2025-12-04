@@ -130,8 +130,9 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
       break;
     case sourceId.startsWith(SourceType.PYPI):
       data = (await getDataFromApi(sourceId)) as PyPiResponse | null;
-      if (data && data.info && data.info.version)
+      if (data && data.info && data.info.version) {
         version = data.info.version;
+      }
       break;
     case sourceId.startsWith(SourceType.GOLANG):
       data = (await getDataFromApi(sourceId)) as GolangResponse | null;
@@ -139,8 +140,9 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
       break;
     case sourceId.startsWith(SourceType.CARGO):
       data = (await getDataFromApi(sourceId)) as CrateResponse | null;
-      if (data && data.crate && data.crate.max_stable_version)
+      if (data && data.crate && data.crate.max_stable_version) {
         version = data.crate.max_stable_version;
+      }
       break;
     default:
       break;
@@ -169,6 +171,7 @@ interface PackageInfo {
   licenses: string[];
   languages: string[];
   categories: string[];
+  experimental?: boolean;
   source: {
     id: string;
   };
