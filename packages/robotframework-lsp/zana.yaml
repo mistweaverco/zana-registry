@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: robotframework-lsp
 description: Language Server Protocol implementation for Robot Framework.
 homepage: https://github.com/robocorp/robotframework-lsp

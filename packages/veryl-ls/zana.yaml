@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: veryl-ls
 description: Veryl language server.
 homepage: https://github.com/veryl-lang/veryl

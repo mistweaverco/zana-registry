@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: gitlab-ci-ls
 description: An experimental language server for Gitlab CI.
 homepage: https://github.com/alesbrelih/gitlab-ci-ls

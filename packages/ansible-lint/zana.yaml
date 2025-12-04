@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ansible-lint
 description: >-
   Ansible Lint is a command-line tool for linting playbooks, roles and

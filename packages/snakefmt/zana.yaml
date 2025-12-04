@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: snakefmt
 description: The uncompromising Snakemake code formatter.
 homepage: https://github.com/snakemake/snakefmt

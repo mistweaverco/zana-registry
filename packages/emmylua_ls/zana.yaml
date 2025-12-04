@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 ---
 name: emmylua_ls
 description: The language server for Lua, offering extensive features for different Lua versions.

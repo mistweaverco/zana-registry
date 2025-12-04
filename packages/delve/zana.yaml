@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: delve
 description: Delve is a debugger for the Go programming language.
 homepage: https://github.com/go-delve/delve

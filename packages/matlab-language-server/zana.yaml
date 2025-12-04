@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: matlab-language-server
 description: Language Server Protocol implementation for the MATLAB language.
 homepage: https://github.com/mathworks/MATLAB-language-server

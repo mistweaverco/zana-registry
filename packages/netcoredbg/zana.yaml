@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: netcoredbg
 description: NetCoreDbg is a managed code debugger with MI interface for CoreCLR.
 homepage: https://github.com/Samsung/netcoredbg

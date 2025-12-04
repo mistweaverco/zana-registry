@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: prisma-language-server
 description: >
   Any editor that is compatible with the Language Server Protocol can create

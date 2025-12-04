@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: standardjs
 description: JavaScript Style Guide, with linter & automatic code fixer.
 homepage: https://standardjs.com

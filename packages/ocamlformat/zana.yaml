@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ocamlformat
 description: >
   ocamlformat is a tool for formatting OCaml code. It automatically adjusts the

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: opencl-language-server
 description: Provides an OpenCL kernel diagnostics.
 homepage: https://github.com/Galarius/opencl-language-server

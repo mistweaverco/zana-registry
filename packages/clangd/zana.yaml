@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: clangd
 description: >
   clangd understands your C++ code and adds smart features to your editor: code

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: deno
 description: >
   Deno (/ˈdiːnoʊ/, pronounced dee-no) is a JavaScript, TypeScript, and

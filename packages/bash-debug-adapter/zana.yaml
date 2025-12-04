@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: bash-debug-adapter
 description: Bash shell debugger, based on bashdb.
 homepage: https://github.com/rogalmic/vscode-bash-debug

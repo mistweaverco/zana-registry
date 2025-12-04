@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: templ
 description: >
   templ is the official language server for the templ HTML templating language.

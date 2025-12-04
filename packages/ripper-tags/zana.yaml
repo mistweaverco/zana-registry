@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ripper-tags
 description: fast, accurate ctags generator for ruby source code using Ripper.
 homepage: https://github.com/tmm1/ripper-tags

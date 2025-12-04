@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: findent
 description: >-
   findent indents/beautifies/converts and can optionally generate the

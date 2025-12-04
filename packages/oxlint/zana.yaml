@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: oxlint
 description: High-performance linter for JavaScript and TypeScript written in Rust.
 homepage: https://github.com/web-infra-dev/oxc

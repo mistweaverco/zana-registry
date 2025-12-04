@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: clarity-lsp
 description: Language Server Protocol implementation for Clarity.
 homepage: https://github.com/hirosystems/clarity-lsp

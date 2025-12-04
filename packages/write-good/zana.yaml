@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: write-good
 description: >
   Naive linter for English prose for developers who can't write good and wanna

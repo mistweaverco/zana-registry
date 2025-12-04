@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: prettier
 description: Prettier is an opinionated code formatter.
 homepage: https://prettier.io

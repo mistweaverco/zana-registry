@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: teal-language-server
 description: A language server for Teal, a typed dialect of Lua.
 homepage: https://github.com/teal-language/teal-language-server

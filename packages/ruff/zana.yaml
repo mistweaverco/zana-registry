@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: ruff
 description: An extremely fast Python linter and code formatter, written in Rust.
 homepage: https://github.com/astral-sh/ruff/

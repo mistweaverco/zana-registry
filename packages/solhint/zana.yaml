@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: solhint
 description: Solhint is a linting utility for Solidity code.
 homepage: https://protofire.github.io/solhint/

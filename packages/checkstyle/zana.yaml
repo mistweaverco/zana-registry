@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: checkstyle
 description: >-
   A tool for checking Java source code for adherence to a Code Standard or set

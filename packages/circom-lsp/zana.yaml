@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: circom-lsp
 description: A Language Server Protocol Implementation for Circom
 homepage: https://github.com/rubydusa/circom-lsp

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: bslint
 description: A BrighterScript CLI tool to lint your code without compiling your project.
 homepage: https://github.com/rokucommunity/bslint

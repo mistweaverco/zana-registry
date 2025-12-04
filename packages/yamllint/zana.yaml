@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: yamllint
 description: >
   Linter for YAML files. yamllint does not only check for syntax validity, but

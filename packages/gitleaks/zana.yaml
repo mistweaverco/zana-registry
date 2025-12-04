@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: gitleaks
 description: Gitleaks helps you protect and discover secrets in git repositories.
 homepage: https://github.com/gitleaks/gitleaks

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: gdtoolkit
 description: A set of tools for daily work with GDScript.
 homepage: https://github.com/Scony/godot-gdscript-toolkit

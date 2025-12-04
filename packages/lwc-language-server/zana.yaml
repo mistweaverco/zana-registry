@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: lwc-language-server
 description: Language Server for Lightning Web Components.
 homepage: https://github.com/forcedotcom/lightning-language-server/

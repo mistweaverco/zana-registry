@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: python-lsp-server
 description: >-
   Fork of the python-language-server project, maintained by the Spyder IDE team

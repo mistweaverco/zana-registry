@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: darker
 description: >-
   Apply black reformatting to Python files only in regions changed since a given

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: pint
 description: Laravel Pint is an opinionated PHP code style fixer for minimalists.
 homepage: https://laravel.com/docs/pint

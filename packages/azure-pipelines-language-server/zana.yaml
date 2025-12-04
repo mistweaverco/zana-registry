@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: azure-pipelines-language-server
 description: A language server for Azure Pipelines YAML.
 homepage: https://github.com/microsoft/azure-pipelines-language-server

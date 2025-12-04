@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: foam-language-server
 description: A language server for OpenFOAM case files.
 homepage: https://github.com/FoamScience/foam-language-server

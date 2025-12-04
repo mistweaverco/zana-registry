@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: llm-ls
 description: LSP server leveraging AI/LLMs based for code completion.
 homepage: https://github.com/huggingface/llm-ls

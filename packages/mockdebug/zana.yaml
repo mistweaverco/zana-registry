@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: mockdebug
 description: >
   Mock Debug simulates a debug adapter. It supports step, continue, breakpoints,

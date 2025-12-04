@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: twig-cs-fixer
 description: A tool to automatically fix Twig Coding Standards issues
 homepage: https://github.com/VincentLanglet/Twig-CS-Fixer

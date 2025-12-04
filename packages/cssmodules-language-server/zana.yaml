@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: cssmodules-language-server
 description: Autocompletion and go-to-definition for cssmodules.
 homepage: https://github.com/antonk52/cssmodules-language-server

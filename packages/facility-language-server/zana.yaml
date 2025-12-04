@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: facility-language-server
 description: >
   Facility Service Definition language. This version of Facility Service

@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: vetur-vls
 description: >-
   VLS (Vue Language Server) is a language server implementation compatible with

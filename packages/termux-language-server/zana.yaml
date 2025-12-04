@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: termux-language-server
 description: A language server for some specific bash scripts.
 homepage: https://termux-language-server.readthedocs.io/en/latest/

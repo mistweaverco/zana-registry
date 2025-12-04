@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: bicep-lsp
 description: Bicep is a declarative language for describing and deploying Azure resources
 homepage: https://github.com/Azure/bicep

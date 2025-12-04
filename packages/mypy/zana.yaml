@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: mypy
 description: Mypy is a static type checker for Python.
 homepage: https://github.com/python/mypy

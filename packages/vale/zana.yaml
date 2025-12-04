@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: vale
 description: A syntax-aware linter for prose built with speed and extensibility in mind.
 homepage: https://vale.sh/

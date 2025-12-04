@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: v-analyzer
 description: V language server.
 homepage: https://github.com/v-analyzer/v-analyzer

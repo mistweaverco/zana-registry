@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: hydra-lsp
 description: LSP for Hydra config files
 homepage: https://github.com/Retsediv/hydra-lsp

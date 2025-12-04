@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
 name: textlint
 description: The pluggable natural language linter for text and markdown.
 homepage: https://textlint.github.io
