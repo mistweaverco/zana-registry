@@ -148,12 +148,21 @@ for (const dirent of dirents) {
         // we expect only one document per file, so take the first one
         // if there are multiple documents, ignore the rest
         packageData = yamlDocuments[0];
+        // validate that packageData is not null or undefined
+        if (!packageData) {
+          counter.failure++;
+          console.error(
+            "No valid YAML document found for package: ",
+            dirent.name,
+            { yamlDocuments },
+          );
+          continue;
+        }
       } catch (e) {
         console.error(`Failed to parse YAML for ${dirent.name}:`, e);
         counter.failure++;
         continue;
       }
-      console.log({ packageData });
       const masonPackageData = structuredClone(packageData) as MasonPackageInfo;
       masonPackageData.source.id = masonPackageData.source.id.replace(
         "@",
