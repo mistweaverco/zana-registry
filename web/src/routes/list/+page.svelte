@@ -54,9 +54,18 @@
 			$sharedStore.filteredPackages = packages;
 			return;
 		}
+		const searchLower = $sharedStore.searchValue.toLowerCase();
 		$sharedStore.filteredPackages = packages;
 		$sharedStore.filteredPackages = $sharedStore.filteredPackages.filter((pkg) => {
-			return pkg.name.toLowerCase().includes($sharedStore.searchValue.toLowerCase());
+			// Search by name
+			if (pkg.name.toLowerCase().includes(searchLower)) {
+				return true;
+			}
+			// Search by aliases
+			if (pkg.aliases && Array.isArray(pkg.aliases)) {
+				return pkg.aliases.some((alias: string) => alias.toLowerCase().includes(searchLower));
+			}
+			return false;
 		});
 	};
 

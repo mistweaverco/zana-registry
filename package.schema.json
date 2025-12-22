@@ -43,6 +43,13 @@
       "type": "boolean",
       "description": "If true, this package is considered experimental and may not be stable."
     },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Alternative names for this package. Useful when multiple packages share the same source but have different names. Users can search for packages by any alias."
+    },
     "deprecation": {
       "$ref": "#/definitions/components:deprecation"
     },
@@ -661,13 +668,34 @@
         "Source": {
           "oneOf": [
             {
+              "$ref": "#/definitions/components:sources:cargo"
+            },
+            {
+              "$ref": "#/definitions/components:sources:codeberg"
+            },
+            {
+              "$ref": "#/definitions/components:sources:gem"
+            },
+            {
+              "$ref": "#/definitions/components:sources:generic"
+            },
+            {
               "$ref": "#/definitions/components:sources:github"
+            },
+            {
+              "$ref": "#/definitions/components:sources:gitlab"
             },
             {
               "$ref": "#/definitions/components:sources:golang"
             },
             {
               "$ref": "#/definitions/components:sources:npm"
+            },
+            {
+              "$ref": "#/definitions/components:sources:openvsx"
+            },
+            {
+              "$ref": "#/definitions/components:sources:pypi"
             }
           ]
         }
@@ -708,6 +736,54 @@
         "win_x86"
       ]
     },
+    "components:sources:cargo": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^cargo:.+"
+        }
+      }
+    },
+    "components:sources:codeberg": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^codeberg:.+"
+        }
+      }
+    },
+    "components:sources:gem": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^gem:.+"
+        }
+      }
+    },
+    "components:sources:generic": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^generic:.+"
+        }
+      }
+    },
     "components:sources:github": {
       "oneOf": [
         {
@@ -724,7 +800,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^pkg:github/.+/.+"
+          "pattern": "^github:.+/.+"
         },
         "asset": {
           "oneOf": [
@@ -793,6 +869,18 @@
         }
       }
     },
+    "components:sources:gitlab": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^gitlab:.+"
+        }
+      }
+    },
     "components:sources:golang": {
       "type": "object",
       "required": [
@@ -801,7 +889,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^pkg:golang/.+/.+"
+          "pattern": "^golang:.+/.+"
         },
         "extra_packages": {
           "type": "array",
@@ -820,7 +908,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^pkg:npm/.+"
+          "pattern": "^npm:.+"
         },
         "extra_packages": {
           "type": "array",
@@ -828,6 +916,30 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "components:sources:openvsx": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^openvsx:.+"
+        }
+      }
+    },
+    "components:sources:pypi": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^pypi:.+"
         }
       }
     },

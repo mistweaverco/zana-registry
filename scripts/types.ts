@@ -55,6 +55,7 @@ export interface PackageInfo {
   languages: string[];
   categories: string[];
   experimental?: boolean;
+  aliases?: string[];
   source: {
     id: string;
   };
@@ -71,9 +72,9 @@ export type SchemaErrors = {
 };
 
 export enum SourceType {
-  GITHUB = "pkg:github",
-  NPM = "pkg:npm",
-  PYPI = "pkg:pypi",
-  GOLANG = "pkg:golang",
-  CARGO = "pkg:cargo",
+  GITHUB = "github",
+  NPM = "npm",
+  PYPI = "pypi",
+  GOLANG = "golang",
+  CARGO = "cargo",
 }

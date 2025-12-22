@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: perlnavigator
+description: Perl Language Server that includes perl critic and code navigation.
+homepage: https://github.com/bscan/PerlNavigator
+licenses:
+  - MIT
+languages:
+  - Perl
+categories:
+  - LSP
+source:
+  id: npm:perlnavigator-server
+schemas:
+  lsp: vscode:https://raw.githubusercontent.com/bscan/PerlNavigator/v{{version}}/package.json
+bin:
+  perlnavigator: node:node_modules/perlnavigator-server/out/server.js

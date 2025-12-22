@@ -16,22 +16,29 @@ import * as yaml from "js-yaml";
 
 const getApiURL = (sourceId: string): string | null => {
   let apiURL: string | null = null;
-  const repo = sourceId.split("/").slice(1).join("/");
-  switch (true) {
-    case sourceId.startsWith(SourceType.GITHUB):
-      apiURL = `https://api.github.com/repos/${repo}/releases/latest`;
+  // New format: provider:package-id (e.g., "github:owner/repo", "npm:package-name")
+  const parts = sourceId.split(":");
+  if (parts.length < 2) {
+    return null;
+  }
+  const provider = parts[0];
+  const packageId = parts.slice(1).join(":"); // In case there are colons in the package ID
+
+  switch (provider) {
+    case SourceType.GITHUB:
+      apiURL = `https://api.github.com/repos/${packageId}/releases/latest`;
       break;
-    case sourceId.startsWith(SourceType.NPM):
-      apiURL = `https://registry.npmjs.org/${repo}/latest`;
+    case SourceType.NPM:
+      apiURL = `https://registry.npmjs.org/${packageId}/latest`;
       break;
-    case sourceId.startsWith(SourceType.PYPI):
-      apiURL = `https://pypi.org/pypi/${repo}/json`;
+    case SourceType.PYPI:
+      apiURL = `https://pypi.org/pypi/${packageId}/json`;
       break;
-    case sourceId.startsWith(SourceType.GOLANG):
-      apiURL = `https://proxy.golang.org/${repo}/@latest`;
+    case SourceType.GOLANG:
+      apiURL = `https://proxy.golang.org/${packageId}/@latest`;
       break;
-    case sourceId.startsWith(SourceType.CARGO):
-      apiURL = `https://crates.io/api/v1/crates/${repo}`;
+    case SourceType.CARGO:
+      apiURL = `https://crates.io/api/v1/crates/${packageId}`;
       break;
     default:
       break;
@@ -41,8 +48,14 @@ const getApiURL = (sourceId: string): string | null => {
 
 const getConfig = (sourceId: string): RequestInit | null => {
   let config = null;
-  switch (true) {
-    case sourceId.startsWith(SourceType.GITHUB):
+  const parts = sourceId.split(":");
+  if (parts.length < 2) {
+    return null;
+  }
+  const provider = parts[0];
+
+  switch (provider) {
+    case SourceType.GITHUB:
       config = {
         headers: {
           Accept: "application/vnd.github.v3+json",
@@ -50,16 +63,16 @@ const getConfig = (sourceId: string): RequestInit | null => {
         },
       };
       break;
-    case sourceId.startsWith(SourceType.NPM):
+    case SourceType.NPM:
       config = {};
       break;
-    case sourceId.startsWith(SourceType.PYPI):
+    case SourceType.PYPI:
       config = {};
       break;
-    case sourceId.startsWith(SourceType.GOLANG):
+    case SourceType.GOLANG:
       config = {};
       break;
-    case sourceId.startsWith(SourceType.CARGO):
+    case SourceType.CARGO:
       config = {};
       break;
     default:
@@ -92,26 +105,32 @@ const getDataFromApi = async (
 const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   let data = null;
   let version = null;
-  switch (true) {
-    case sourceId.startsWith(SourceType.GITHUB):
+  const parts = sourceId.split(":");
+  if (parts.length < 2) {
+    return null;
+  }
+  const provider = parts[0];
+
+  switch (provider) {
+    case SourceType.GITHUB:
       data = (await getDataFromApi(sourceId)) as GithubDataResponse | null;
       if (data && data.tag_name) version = data.tag_name;
       break;
-    case sourceId.startsWith(SourceType.NPM):
+    case SourceType.NPM:
       data = (await getDataFromApi(sourceId)) as NpmDataResponse | null;
       if (data && data.version) version = data.version;
       break;
-    case sourceId.startsWith(SourceType.PYPI):
+    case SourceType.PYPI:
       data = (await getDataFromApi(sourceId)) as PyPiResponse | null;
       if (data && data.info && data.info.version) {
         version = data.info.version;
       }
       break;
-    case sourceId.startsWith(SourceType.GOLANG):
+    case SourceType.GOLANG:
       data = (await getDataFromApi(sourceId)) as GolangResponse | null;
       if (data && data.Version) version = data.Version;
       break;
-    case sourceId.startsWith(SourceType.CARGO):
+    case SourceType.CARGO:
       data = (await getDataFromApi(sourceId)) as CrateResponse | null;
       if (data && data.crate && data.crate.max_stable_version) {
         version = data.crate.max_stable_version;
@@ -123,67 +142,98 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   return version;
 };
 
+// Convert package ID from new format to old Mason format
+// "provider:package-id" -> "pkg:provider/package-id"
+// Also handles URL encoding of @ symbols for npm scoped packages
+const convertToMasonFormat = (newFormatId: string): string => {
+  const parts = newFormatId.split(":");
+  if (parts.length < 2) {
+    return newFormatId; // Invalid format, return as-is
+  }
+  const provider = parts[0];
+  const packageId = parts.slice(1).join(":"); // In case there are colons in the package ID
+
+  // URL encode @ symbols for npm scoped packages (Mason compatibility)
+  const encodedPackageId = packageId.replace("@", "%40");
+
+  return `pkg:${provider}/${encodedPackageId}`;
+};
+
+// Recursively find all zana.yaml files in the packages directory
+const findPackageFiles = (dir: string): string[] => {
+  const packageFiles: string[] = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      // Recursively search subdirectories
+      packageFiles.push(...findPackageFiles(fullPath));
+    } else if (entry.isFile() && entry.name === "zana.yaml") {
+      packageFiles.push(fullPath);
+    }
+  }
+
+  return packageFiles;
+};
+
 const packagesDir = path.join(__dirname, "..", "..", "packages");
 const masonRegistry: MasonPackageInfo[] = [];
 const registry: PackageInfo[] = [];
 
-const dirents = fs.readdirSync(packagesDir, { withFileTypes: true });
+const packageFiles = findPackageFiles(packagesDir);
 const counter = {
   success: 0,
   failure: 0,
 };
 
-for (const dirent of dirents) {
-  if (dirent.isDirectory()) {
-    const packageYamlPath = path.join(packagesDir, dirent.name, "zana.yaml");
-    if (fs.existsSync(packageYamlPath)) {
-      const fileContents = fs.readFileSync(packageYamlPath, "utf8");
-      let packageData: PackageInfo;
-      try {
-        // INFO:
-        // load all documents in the YAML file,
-        // because js-yaml requires it even for single-document files
-        // when it sees the document separator '---'
-        const yamlDocuments = yaml.loadAll(fileContents) as PackageInfo[];
-        // we expect only one document per file, so take the first one
-        // if there are multiple documents, ignore the rest
-        packageData = yamlDocuments[0];
-        // validate that packageData is not null or undefined
-        if (!packageData) {
-          counter.failure++;
-          console.error(
-            "No valid YAML document found for package: ",
-            dirent.name,
-            { yamlDocuments },
-          );
-          continue;
-        }
-      } catch (e) {
-        console.error(`Failed to parse YAML for ${dirent.name}:`, e);
-        counter.failure++;
-        continue;
-      }
-      const masonPackageData = structuredClone(packageData) as MasonPackageInfo;
-      masonPackageData.source.id = masonPackageData.source.id.replace(
-        "@",
-        "%40",
+for (const packageYamlPath of packageFiles) {
+  const fileContents = fs.readFileSync(packageYamlPath, "utf8");
+  let packageData: PackageInfo;
+  try {
+    // INFO:
+    // load all documents in the YAML file,
+    // because js-yaml requires it even for single-document files
+    // when it sees the document separator '---'
+    const yamlDocuments = yaml.loadAll(fileContents) as PackageInfo[];
+    // we expect only one document per file, so take the first one
+    // if there are multiple documents, ignore the rest
+    packageData = yamlDocuments[0];
+    // validate that packageData is not null or undefined
+    if (!packageData) {
+      counter.failure++;
+      console.error(
+        "No valid YAML document found for package: ",
+        packageYamlPath,
+        { yamlDocuments },
       );
-      if (getApiURL(packageData.source.id) === null) {
-        // not supported, but not an error
-        continue;
-      }
-      const version = await getLatestVersion(packageData.source.id);
-      if (version) {
-        packageData.version = version;
-        masonPackageData.source.id += `@${version}`;
-        registry.push(packageData);
-        masonRegistry.push(masonPackageData);
-        counter.success++;
-      } else {
-        console.error(`Failed to get latest version for ${packageData.name}`);
-        counter.failure++;
-      }
+      continue;
     }
+  } catch (e) {
+    console.error(`Failed to parse YAML for ${packageYamlPath}:`, e);
+    counter.failure++;
+    continue;
+  }
+  // Convert to Mason format for compatibility
+  // New format: provider:package-id -> Old format: pkg:provider/package-id
+  const masonPackageData = structuredClone(packageData) as MasonPackageInfo;
+  const masonSourceId = convertToMasonFormat(packageData.source.id);
+
+  if (getApiURL(packageData.source.id) === null) {
+    // not supported, but not an error
+    continue;
+  }
+  const version = await getLatestVersion(packageData.source.id);
+  if (version) {
+    packageData.version = version;
+    // Add version to Mason format: pkg:provider/package-id@version
+    masonPackageData.source.id = `${masonSourceId}@${version}`;
+    registry.push(packageData);
+    masonRegistry.push(masonPackageData);
+    counter.success++;
+  } else {
+    console.error(`Failed to get latest version for ${packageData.name}`);
+    counter.failure++;
   }
 }
 
