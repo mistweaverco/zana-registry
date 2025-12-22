@@ -18,6 +18,7 @@ languages:
   - C#
   - TOML
   - Lua
+  - Java
 categories:
   - LSP
 source:
@@ -26,8 +27,14 @@ source:
     - target: linux_x64_gnu
       file: harper-ls-x86_64-unknown-linux-gnu.tar.gz
       bin: harper-ls
+    - target: linux_x64_musl
+      file: harper-ls-x86_64-unknown-linux-musl.tar.gz
+      bin: harper-ls
     - target: linux_arm64_gnu
       file: harper-ls-aarch64-unknown-linux-gnu.tar.gz
+      bin: harper-ls
+    - target: linux_arm64_musl
+      file: harper-ls-aarch64-unknown-linux-musl.tar.gz
       bin: harper-ls
     - target: darwin_x64
       file: harper-ls-x86_64-apple-darwin.tar.gz
@@ -36,7 +43,7 @@ source:
       file: harper-ls-aarch64-apple-darwin.tar.gz
       bin: harper-ls
     - target: win_x64
-      file: harper-ls-x86_64-pc-windows-gnu.zip
+      file: harper-ls-x86_64-pc-windows-msvc.zip
       bin: harper-ls.exe
 bin:
   harper-ls: '{{source.asset.bin}}'
