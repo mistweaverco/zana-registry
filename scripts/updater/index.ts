@@ -1,10 +1,18 @@
 import type {
   APIResponse,
+  CodebergDataResponse,
+  ComposerDataResponse,
   CrateResponse,
+  GemDataResponse,
   GithubDataResponse,
+  GitLabDataResponse,
   GolangResponse,
+  LuaRocksManifestResponse,
   MasonPackageInfo,
   NpmDataResponse,
+  NuGetDataResponse,
+  OpamDataResponse,
+  OpenVSXDataResponse,
   PackageInfo,
   PyPiResponse,
 } from "./../types";
@@ -40,6 +48,50 @@ const getApiURL = (sourceId: string): string | null => {
     case SourceType.CARGO:
       apiURL = `https://crates.io/api/v1/crates/${packageId}`;
       break;
+    case SourceType.GITLAB:
+      // GitLab API requires URL-encoded project path
+      // Format: gitlab:group/subgroup/project -> /projects/group%2Fsubgroup%2Fproject/releases
+      apiURL = `https://gitlab.com/api/v4/projects/${
+        encodeURIComponent(packageId)
+      }/releases`;
+      break;
+    case SourceType.CODEBERG:
+      // Codeberg uses Gitea API v1
+      apiURL = `https://codeberg.org/api/v1/repos/${packageId}/releases/latest`;
+      break;
+    case SourceType.GEM:
+      // RubyGems API v1
+      apiURL = `https://rubygems.org/api/v1/gems/${packageId}.json`;
+      break;
+    case SourceType.COMPOSER:
+      // Packagist API - format: composer:vendor/package
+      apiURL = `https://packagist.org/packages/${packageId}.json`;
+      break;
+    case SourceType.LUAROCKS:
+      // LuaRocks manifest.json contains all packages and versions
+      // We'll fetch the full manifest and parse it
+      apiURL = `https://luarocks.org/manifest.json`;
+      break;
+    case SourceType.NUGET:
+      // NuGet API v3 - format: nuget:package-name
+      // Use the flat container API
+      apiURL =
+        `https://api.nuget.org/v3-flatcontainer/${packageId.toLowerCase()}/index.json`;
+      break;
+    case SourceType.OPAM:
+      // OPAM packages are stored in GitHub opam-repository
+      // Format: opam:package-name
+      apiURL =
+        `https://api.github.com/repos/ocaml/opam-repository/contents/packages/${packageId}`;
+      break;
+    case SourceType.OPENVSX:
+      // Open VSX API - format: openvsx:publisher/extension
+      apiURL = `https://open-vsx.org/api/${packageId}`;
+      break;
+    case SourceType.GENERIC:
+      // Generic provider doesn't fetch versions from an API
+      // It uses custom download URLs, so we return null
+      return null;
     default:
       break;
   }
@@ -75,6 +127,47 @@ const getConfig = (sourceId: string): RequestInit | null => {
     case SourceType.CARGO:
       config = {};
       break;
+    case SourceType.GITLAB:
+      // GitLab API can use token for rate limiting, but works without it
+      config = process.env.GITLAB_TOKEN
+        ? {
+          headers: {
+            Authorization: `Bearer ${process.env.GITLAB_TOKEN}`,
+          },
+        }
+        : {};
+      break;
+    case SourceType.CODEBERG:
+      config = {};
+      break;
+    case SourceType.GEM:
+      config = {};
+      break;
+    case SourceType.COMPOSER:
+      config = {};
+      break;
+    case SourceType.LUAROCKS:
+      config = {};
+      break;
+    case SourceType.NUGET:
+      config = {};
+      break;
+    case SourceType.OPAM:
+      // OPAM uses GitHub API, so we might need a token for rate limits
+      config = process.env.GITHUB_TOKEN
+        ? {
+          headers: {
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          },
+        }
+        : {};
+      break;
+    case SourceType.OPENVSX:
+      config = {};
+      break;
+    case SourceType.GENERIC:
+      // Generic doesn't use API
+      return null;
     default:
       break;
   }
@@ -105,7 +198,9 @@ const getDataFromApi = async (
 const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   let data = null;
   let version = null;
-  const parts = sourceId.split(":");
+  let parts: string[];
+  let pkgName: string;
+  parts = sourceId.split(":");
   if (parts.length < 2) {
     return null;
   }
@@ -136,6 +231,115 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
         version = data.crate.max_stable_version;
       }
       break;
+    case SourceType.GITLAB:
+      // GitLab releases API returns an array, get the first (latest) release
+      data = (await getDataFromApi(sourceId)) as GitLabDataResponse | null;
+      if (data && Array.isArray(data) && data.length > 0) {
+        const release = data[0] as { tag_name?: string };
+        if (release.tag_name) {
+          version = release.tag_name;
+        }
+      }
+      break;
+    case SourceType.CODEBERG:
+      data = (await getDataFromApi(sourceId)) as CodebergDataResponse | null;
+      if (data && data.tag_name) {
+        version = data.tag_name;
+      }
+      break;
+    case SourceType.GEM:
+      data = (await getDataFromApi(sourceId)) as GemDataResponse | null;
+      if (data && data.version) {
+        version = data.version;
+      }
+      break;
+    case SourceType.COMPOSER:
+      data = (await getDataFromApi(sourceId)) as ComposerDataResponse | null;
+      if (data && data.package && data.package.versions) {
+        // Get the latest version from the versions object
+        const versions = Object.keys(data.package.versions);
+        if (versions.length > 0) {
+          // Sort versions and get the latest (excluding dev versions)
+          const stableVersions = versions.filter((v) => !v.includes("dev"));
+          if (stableVersions.length > 0) {
+            // Simple version comparison - get the last one after sorting
+            version = stableVersions.sort().reverse()[0];
+          } else {
+            // Fallback to latest version including dev
+            version = versions.sort().reverse()[0];
+          }
+        }
+      }
+      break;
+    case SourceType.LUAROCKS:
+      // LuaRocks manifest.json contains all packages
+      // Format: luarocks:package-name
+      parts = sourceId.split(":");
+      pkgName = parts.length > 1 ? parts[1] : "";
+      data = (await getDataFromApi(sourceId)) as
+        | LuaRocksManifestResponse
+        | null;
+      if (
+        data &&
+        pkgName &&
+        data.repository &&
+        data.repository[pkgName]
+      ) {
+        // Get all versions for this package
+        const versions = Object.keys(data.repository[pkgName]);
+        if (versions.length > 0) {
+          // Sort versions and get the latest
+          // Remove revision suffix (e.g., "1.2.3-1" -> "1.2.3")
+          const cleanVersions = versions.map((v) => v.split("-")[0]);
+          // Simple sort - get the last one (assuming versions are in order)
+          version = cleanVersions.sort().reverse()[0];
+        }
+      }
+      break;
+    case SourceType.NUGET:
+      data = (await getDataFromApi(sourceId)) as NuGetDataResponse | null;
+      if (
+        data && data.versions && Array.isArray(data.versions) &&
+        data.versions.length > 0
+      ) {
+        // Get the latest version from the versions array
+        version = data.versions[data.versions.length - 1];
+      }
+      break;
+    case SourceType.OPAM:
+      // OPAM packages are stored in GitHub opam-repository
+      // Format: opam:package-name
+      parts = sourceId.split(":");
+      pkgName = parts.length > 1 ? parts[1] : "";
+      data = (await getDataFromApi(sourceId)) as OpamDataResponse | null;
+      if (data && Array.isArray(data)) {
+        // Filter for directories and extract versions
+        const versions = data
+          .filter((item) => item.type === "dir")
+          .map((item) => item.name.replace(`${pkgName}.`, ""));
+        if (versions.length > 0) {
+          // Sort versions and get the latest
+          // Simple string sort - might need more sophisticated version comparison
+          version = versions.sort().reverse()[0];
+        }
+      }
+      break;
+    case SourceType.OPENVSX:
+      data = (await getDataFromApi(sourceId)) as OpenVSXDataResponse | null;
+      if (data && data.version) {
+        version = data.version;
+      } else if (
+        data && data.allVersions && Array.isArray(data.allVersions) &&
+        data.allVersions.length > 0
+      ) {
+        // Fallback to allVersions array if version field doesn't exist
+        version = data.allVersions[data.allVersions.length - 1];
+      }
+      break;
+    case SourceType.GENERIC:
+      // Generic provider doesn't fetch versions from API
+      // Version is typically specified in the zana.yaml file
+      return null;
     default:
       break;
   }
