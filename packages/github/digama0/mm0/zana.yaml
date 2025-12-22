@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: metamath-zero-lsp
+description: An MM0/MM1 server written in Rust.
+homepage: https://github.com/digama0/mm0
+licenses:
+  - CC0-1.0
+languages:
+  - Metamath Zero
+categories:
+  - LSP
+source:
+  id: github:digama0/mm0
+  build:
+    - target: unix
+      run: |
+        cd mm0-rs
+        cargo build --release
+      bin: mm0-rs/target/release/mm0-rs
+    - target: win
+      run: |
+        Set-Location -Path .\mm0-rs
+        cargo build --release
+      bin: mm0-rs/target/release/mm0-rs.exe
+bin:
+  mm0-rs: '{{source.build.bin}}'
+ci_skip: true

@@ -18,41 +18,55 @@ const schema = JSON.parse(
   fs.readFileSync(path.join(__dirname, "..", "package.schema.json"), "utf8"),
 );
 
+// Recursively find all zana.yaml files in the packages directory
+const findPackageFiles = (dir: string): string[] => {
+  const packageFiles: string[] = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      // Recursively search subdirectories
+      packageFiles.push(...findPackageFiles(fullPath));
+    } else if (entry.isFile() && entry.name === "zana.yaml") {
+      packageFiles.push(fullPath);
+    }
+  }
+
+  return packageFiles;
+};
+
 const schemaErrors: SchemaErrors[] = [];
 
 const packagesDir = path.join(__dirname, "..", "packages");
-fs.readdirSync(packagesDir, { withFileTypes: true }).forEach((dirent) => {
-  if (dirent.isDirectory()) {
-    const packageYamlPath = path.join(packagesDir, dirent.name, "zana.yaml");
+const packageFiles = findPackageFiles(packagesDir);
 
-    if (fs.existsSync(packageYamlPath)) {
-      const fileContents = fs.readFileSync(packageYamlPath, "utf8");
-      const packageData = yaml.loadAll(
-        fileContents,
-      ) as PackageInfoWithValidationErrorsSupport[];
-      const validSchema = ajv.validate(schema, packageData[0]);
-      if (!validSchema) {
-        schemaErrors.push({
-          name: packageData[0].name,
-          errors: ajv.errors || [],
-        });
-      }
-      if (!fileContents.startsWith(getZanaYAMLHeader())) {
-        schemaErrors.push({
-          name: packageData[0].name,
-          errors: [
-            {
-              instancePath: "",
-              schemaPath: "",
-              keyword: "header",
-              params: {},
-              message: "Missing or incorrect YAML header",
-              data: "YAML Header",
-            },
-          ],
-        });
-      }
-    }
+packageFiles.forEach((packageYamlPath) => {
+  const fileContents = fs.readFileSync(packageYamlPath, "utf8");
+  const packageData = yaml.loadAll(
+    fileContents,
+  ) as PackageInfoWithValidationErrorsSupport[];
+  const validSchema = ajv.validate(schema, packageData[0]);
+  if (!validSchema) {
+    schemaErrors.push({
+      name: packageData[0].name,
+      errors: ajv.errors || [],
+    });
+  }
+  if (!fileContents.startsWith(getZanaYAMLHeader())) {
+    schemaErrors.push({
+      name: packageData[0].name,
+      errors: [
+        {
+          instancePath: "",
+          schemaPath: "",
+          keyword: "header",
+          params: {},
+          message: "Missing or incorrect YAML header",
+          data: "YAML Header",
+        },
+      ],
+    });
   }
 });
 

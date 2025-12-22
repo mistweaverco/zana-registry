@@ -26,8 +26,15 @@ but differs quite heavily in its implementation.
 Key differences include:
 
 - Packages do not have a version included.
-- Packages are located in `packages/[package-name]/zana.yaml` instead of `packages/[package-name]/package.yaml`.
-  - This is to avoid conflicts with the original Mason registry yaml definitions.
+- Packages are located in `packages/<provider>/<package-id>/zana.yaml` where:
+  - `<provider>` is the package provider (e.g., `npm`, `github`, `gitlab`, `golang`, `pypi`, `cargo`)
+  - `<package-id>` is the package identifier as defined by the provider
+  - Examples:
+    - `packages/npm/@mistweaverco/kulala-ls/zana.yaml` for npm scoped packages
+    - `packages/npm/bash-language-server/zana.yaml` for npm top-level packages
+    - `packages/github/dprint/dprint/zana.yaml` for GitHub repositories
+    - `packages/gitlab/mistweaverco/tool-category-a/some-other-b/repo-name/zana.yaml` for GitLab (supports unlimited sub-folders)
+- Package IDs use the format `<provider>:<package-id>` (e.g., `npm:@mistweaverco/kulala-ls`, `github:dprint/dprint`)
 - Releases are done every two hours, but do only **update** the monthly release.
   - This is to avoid spamming the registry with releases that are not necessary.
   - Releases can be done manually, if necessary.
