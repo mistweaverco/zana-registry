@@ -19,7 +19,7 @@ This is the [registry][registry-website] for [Zana][website],
 
 </div>
 
-> [!INFO]
+> [!IMPORTANT]
 > Package versions are updated every two hours.
 > The updater only **updates** the monthly release.
 > It does also update the release notes if there are any changes.
