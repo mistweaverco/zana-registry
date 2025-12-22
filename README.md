@@ -44,20 +44,20 @@ This is the registry that Zana uses to fetch package information.
 
 The registry currently supports the following package providers:
 
-  - [x] `cargo`
-  - [x] `codeberg`
-  - [x] `composer`
-  - [x] `gem`
-  - [x] `generic` (shell commands)
-  - [x] `github`
-  - [x] `gitlab`
-  - [x] `golang`
-  - [x] `luarocks`
-  - [x] `npm`
-  - [x] `nuget`
-  - [x] `opam`
-  - [x] `openvsx`
-  - [x] `pypi`
+  - `cargo`
+  - `codeberg`
+  - `composer`
+  - `gem`
+  - `generic` (shell commands)
+  - `github`
+  - `gitlab`
+  - `golang`
+  - `luarocks`
+  - `npm`
+  - `nuget`
+  - `opam`
+  - `openvsx`
+  - `pypi`
 
 ## Honorable mentions
 
