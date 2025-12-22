@@ -9,63 +9,52 @@ const MASON_REGISTRY_URL =
   "https://raw.githubusercontent.com/mason-org/mason-registry/main/packages";
 const packagesDir = path.join(__dirname, "..", "packages");
 
-// Parse package ID to extract provider and package path
+// Parse package ID to extract provider and package id
 const parsePackageId = (
   packageId: string,
-): { provider: string; packagePath: string } | null => {
-  // Handle old format: pkg:provider/package-path@version
-  // Remove version suffix if present
-  // but handle package paths that may contain @ (e.g., scoped npm packages)
-  const withoutVersion = packageId.replace(/@[^/@]+$/, "");
+): { provider: string; packageId: string } | null => {
+  // Mason format: pkg:provider/package-path
+  packageId = packageId.replace(/^pkg:/, "");
 
-  if (withoutVersion.startsWith("pkg:")) {
-    // Old format: pkg:provider/package-path
-    const withoutPrefix = withoutVersion.substring(4); // Remove "pkg:"
-    const firstSlash = withoutPrefix.indexOf("/");
-    if (firstSlash === -1) {
-      return null;
-    }
-    const provider = withoutPrefix.substring(0, firstSlash);
-    let packagePath = withoutPrefix.substring(firstSlash + 1);
-    // Decode URL encoding (e.g., %40 -> @)
-    try {
-      packagePath = decodeURIComponent(packagePath);
-    } catch (e) {
-      console.warn(
-        `⚠ Warning: Failed to decode package path: ${packagePath}. Using as-is.`,
-        e,
-      );
-    }
-    return { provider, packagePath };
+  const firstSlash = packageId.indexOf("/");
+  if (firstSlash === -1) {
+    return null;
   }
-  return null;
+  const provider = packageId.substring(0, firstSlash);
+  packageId = packageId.substring(firstSlash + 1);
+
+  const atIndex = packageId.indexOf("@");
+  if (atIndex !== -1) {
+    packageId = packageId.substring(0, atIndex);
+    if (provider === "generic") {
+      const lastSlash = packageId.lastIndexOf("/");
+      if (lastSlash !== -1) {
+        packageId = packageId.substring(lastSlash + 1);
+      }
+    }
+  }
+
+  // Decode URL encoding (e.g., %40 -> @)
+  try {
+    packageId = decodeURIComponent(packageId);
+  } catch (e) {
+    console.warn(
+      `⚠ Warning: Failed to decode package id: ${packageId}. Using as-is.`,
+      e,
+    );
+  }
+  return { provider, packageId };
 };
 
 // Convert package ID from Mason format to Zana format
 // "pkg:provider/package-id@version" -> "provider:package-id"
 const convertPackageId = (masonId: string): string => {
-  // Remove version suffix if present (e.g., @5.6.0)
-  const withoutVersion = masonId.replace(/@[^/@]+$/, "");
-
-  if (withoutVersion.startsWith("pkg:")) {
-    // Remove "pkg:" prefix and replace first "/" with ":"
-    const withoutPrefix = withoutVersion.substring(4);
-    const firstSlash = withoutPrefix.indexOf("/");
-    if (firstSlash === -1) {
-      return masonId; // Invalid format, return as-is
-    }
-    const provider = withoutPrefix.substring(0, firstSlash);
-    let packagePath = withoutPrefix.substring(firstSlash + 1);
-    // Decode URL encoding (e.g., %40 -> @)
-    try {
-      packagePath = decodeURIComponent(packagePath);
-    } catch (e) {
-      // If decoding fails, use as-is
-    }
-    return `${provider}:${packagePath}`;
+  const parsed = parsePackageId(masonId);
+  if (!parsed) {
+    throw new Error(`Invalid package ID format: ${masonId}`);
   }
-  // Already in new format or invalid
-  return masonId;
+  const { provider, packageId } = parsed;
+  return `${provider}:${packageId}`;
 };
 
 // Convert version_overrides if they exist
@@ -108,161 +97,176 @@ const fetchMasonPackage = async (packageName: string): Promise<string> => {
 
 // Main function
 const main = async () => {
-  const packageName = process.argv[2];
-
-  if (!packageName) {
+  if (process.argv.length < 3) {
     console.error("Usage: tsx convert-from-mason-package.ts <package-name>");
     console.error(
       "Example: tsx convert-from-mason-package.ts bash-language-server",
     );
     process.exit(1);
   }
+  const packageNames = process.argv.slice(2);
 
-  try {
-    console.log(`Fetching ${packageName} from Mason registry...`);
-    const yamlContent = await fetchMasonPackage(packageName);
-
-    // Parse YAML
-    const masonPackageData = yaml.load(yamlContent) as any;
-
-    if (
-      !masonPackageData || !masonPackageData.source ||
-      !masonPackageData.source.id
-    ) {
-      throw new Error("Invalid Mason package: missing source.id");
-    }
-
-    // Parse package ID to get provider and package path
-    const parsed = parsePackageId(masonPackageData.source.id);
-    if (!parsed) {
-      throw new Error(
-        `Invalid package ID format: ${masonPackageData.source.id}`,
+  for (const packageName of packageNames) {
+    if (!packageName) {
+      console.error("Usage: tsx convert-from-mason-package.ts <package-name>");
+      console.error(
+        "Example: tsx convert-from-mason-package.ts bash-language-server",
       );
+      process.exit(1);
     }
 
-    const { provider, packagePath } = parsed;
+    try {
+      console.log(`Fetching ${packageName} from Mason registry...`);
+      const yamlContent = await fetchMasonPackage(packageName);
 
-    // Convert to Zana format
-    const zanaPackageData: PackageInfo = {
-      ...removeMasonFields(masonPackageData),
-      source: {
-        ...convertVersionOverrides(masonPackageData.source),
-        id: convertPackageId(masonPackageData.source.id),
-      },
-    };
+      // Parse YAML
+      const masonPackageData = yaml.load(yamlContent) as any;
 
-    // Remove version field if it exists (Zana doesn't use it)
-    delete (zanaPackageData as any).version;
+      if (
+        !masonPackageData || !masonPackageData.source ||
+        !masonPackageData.source.id
+      ) {
+        throw new Error("Invalid Mason package: missing source.id");
+      }
 
-    // Build new directory path
-    // packagePath might contain slashes for nested structures (like gitlab)
-    const pathParts = packagePath.split("/");
-    const newPackageDir = path.join(packagesDir, provider, ...pathParts);
-    const newYamlPath = path.join(newPackageDir, "zana.yaml");
+      // Parse package ID to get provider and package path
+      const parsed = parsePackageId(masonPackageData.source.id);
+      if (!parsed) {
+        throw new Error(
+          `Invalid package ID format: ${masonPackageData.source.id}`,
+        );
+      }
 
-    // Check if target already exists - if so, merge with existing package
-    if (fs.existsSync(newYamlPath)) {
-      try {
-        const existingContent = fs.readFileSync(newYamlPath, "utf8");
-        const existingYaml = yaml.loadAll(existingContent) as PackageInfo[];
-        const existingPackage = existingYaml[0];
+      const { provider, packageId } = parsed;
 
-        if (existingPackage) {
-          // If the existing package has a different name, add Mason package name as alias
-          if (existingPackage.name !== zanaPackageData.name) {
-            // Update the existing package with the new alias
-            if (!existingPackage.aliases) {
-              existingPackage.aliases = [];
-            }
-            // Add the Mason package name as an alias if it's different
-            if (!existingPackage.aliases.includes(zanaPackageData.name)) {
-              existingPackage.aliases.push(zanaPackageData.name);
-            }
-            // Also add the original Mason package directory name if different
-            if (
-              packageName !== zanaPackageData.name &&
-              !existingPackage.aliases.includes(packageName)
-            ) {
-              existingPackage.aliases.push(packageName);
-            }
+      // Convert to Zana format
+      const zanaPackageData: PackageInfo = {
+        ...removeMasonFields(masonPackageData),
+        source: {
+          ...convertVersionOverrides(masonPackageData.source),
+          id: convertPackageId(masonPackageData.source.id),
+        },
+      };
 
-            // Merge bins if they don't conflict (keep existing, add new)
-            if (zanaPackageData.bin) {
-              if (!existingPackage.bin) {
-                existingPackage.bin = {};
+      // Remove version field if it exists (Zana doesn't use it)
+      delete (zanaPackageData as any).version;
+
+      // Build new directory path
+      // packagePath might contain slashes for nested structures (like gitlab)
+      const pathParts = packageId.split("/");
+      const newPackageDir = path.join(packagesDir, provider, ...pathParts);
+      const newYamlPath = path.join(newPackageDir, "zana.yaml");
+
+      // Check if target already exists - if so, merge with existing package
+      if (fs.existsSync(newYamlPath)) {
+        try {
+          const existingContent = fs.readFileSync(newYamlPath, "utf8");
+          const existingYaml = yaml.loadAll(existingContent) as PackageInfo[];
+          const existingPackage = existingYaml[0];
+
+          if (existingPackage) {
+            // If the existing package has a different name, add Mason package name as alias
+            if (existingPackage.name !== zanaPackageData.name) {
+              // Update the existing package with the new alias
+              if (!existingPackage.aliases) {
+                existingPackage.aliases = [];
               }
-              Object.assign(existingPackage.bin, zanaPackageData.bin);
+              // Add the Mason package name as an alias if it's different
+              if (!existingPackage.aliases.includes(zanaPackageData.name)) {
+                existingPackage.aliases.push(zanaPackageData.name);
+              }
+              // Also add the original Mason package directory name if different
+              if (
+                packageName !== zanaPackageData.name &&
+                !existingPackage.aliases.includes(packageName)
+              ) {
+                existingPackage.aliases.push(packageName);
+              }
+
+              // Merge bins if they don't conflict (keep existing, add new)
+              if (zanaPackageData.bin) {
+                if (!existingPackage.bin) {
+                  existingPackage.bin = {};
+                }
+                Object.assign(existingPackage.bin, zanaPackageData.bin);
+              }
+
+              // Write updated existing package
+              const updatedYamlContent = getZanaYAMLHeader() + "\n" +
+                yaml.dump(existingPackage, {
+                  lineWidth: -1,
+                  noRefs: true,
+                });
+              fs.writeFileSync(newYamlPath, updatedYamlContent, "utf8");
+
+              console.log(
+                `✓ Added ${zanaPackageData.name} as alias to existing package ${existingPackage.name}`,
+              );
+              console.log(
+                `  Source: ${MASON_REGISTRY_URL}/${packageName}/package.yaml`,
+              );
+              console.log(`  Target: ${newYamlPath}`);
+              console.log(
+                `  Package ID: ${masonPackageData.source.id} -> ${existingPackage.source.id}`,
+              );
+              return;
+            } else {
+              // Same package name - warn but overwrite (might want to update from Mason)
+              console.warn(
+                `⚠ Warning: Package with same name already exists: ${newYamlPath}`,
+              );
+              console.warn(
+                "  The file will be overwritten with Mason version.",
+              );
             }
-
-            // Write updated existing package
-            const updatedYamlContent = getZanaYAMLHeader() + "\n" +
-              yaml.dump(existingPackage, {
-                lineWidth: -1,
-                noRefs: true,
-              });
-            fs.writeFileSync(newYamlPath, updatedYamlContent, "utf8");
-
-            console.log(
-              `✓ Added ${zanaPackageData.name} as alias to existing package ${existingPackage.name}`,
-            );
-            console.log(
-              `  Source: ${MASON_REGISTRY_URL}/${packageName}/package.yaml`,
-            );
-            console.log(`  Target: ${newYamlPath}`);
-            console.log(
-              `  Package ID: ${masonPackageData.source.id} -> ${existingPackage.source.id}`,
-            );
-            return;
-          } else {
-            // Same package name - warn but overwrite (might want to update from Mason)
-            console.warn(
-              `⚠ Warning: Package with same name already exists: ${newYamlPath}`,
-            );
-            console.warn("  The file will be overwritten with Mason version.");
+          }
+        } catch (e) {
+          const errorMessage = e instanceof Error ? e.message : String(e);
+          console.warn(
+            `⚠ Warning: Could not read existing file: ${errorMessage}`,
+          );
+          console.warn("  The file will be overwritten.");
+        }
+      } else {
+        // If Mason package name differs from the converted package name, add it as an alias
+        // This happens when Mason uses a different naming convention
+        if (packageName !== zanaPackageData.name) {
+          if (!zanaPackageData.aliases) {
+            zanaPackageData.aliases = [];
+          }
+          if (!zanaPackageData.aliases.includes(packageName)) {
+            zanaPackageData.aliases.push(packageName);
           }
         }
-      } catch (e) {
-        const errorMessage = e instanceof Error ? e.message : String(e);
-        console.warn(
-          `⚠ Warning: Could not read existing file: ${errorMessage}`,
-        );
-        console.warn("  The file will be overwritten.");
       }
-    } else {
-      // If Mason package name differs from the converted package name, add it as an alias
-      // This happens when Mason uses a different naming convention
-      if (packageName !== zanaPackageData.name) {
-        if (!zanaPackageData.aliases) {
-          zanaPackageData.aliases = [];
-        }
-        if (!zanaPackageData.aliases.includes(packageName)) {
-          zanaPackageData.aliases.push(packageName);
-        }
-      }
+
+      // Create new directory structure
+      fs.mkdirSync(newPackageDir, { recursive: true });
+
+      // Write updated YAML file
+      const newYamlContent = getZanaYAMLHeader() + "\n" +
+        yaml.dump(zanaPackageData, {
+          lineWidth: -1,
+          noRefs: true,
+        });
+
+      fs.writeFileSync(newYamlPath, newYamlContent, "utf8");
+
+      console.log(`✓ Successfully converted ${packageName}`);
+      console.log(
+        `  Source: ${MASON_REGISTRY_URL}/${packageName}/package.yaml`,
+      );
+      console.log(`  Target: ${newYamlPath}`);
+      console.log(
+        `  Package ID: ${masonPackageData.source.id} -> ${zanaPackageData.source.id}`,
+      );
+    } catch (error) {
+      const errorMessage = error instanceof Error
+        ? error.message
+        : String(error);
+      console.error(`✗ Error converting package: ${errorMessage}`);
+      process.exit(1);
     }
-
-    // Create new directory structure
-    fs.mkdirSync(newPackageDir, { recursive: true });
-
-    // Write updated YAML file
-    const newYamlContent = getZanaYAMLHeader() + "\n" +
-      yaml.dump(zanaPackageData, {
-        lineWidth: -1,
-        noRefs: true,
-      });
-
-    fs.writeFileSync(newYamlPath, newYamlContent, "utf8");
-
-    console.log(`✓ Successfully converted ${packageName}`);
-    console.log(`  Source: ${MASON_REGISTRY_URL}/${packageName}/package.yaml`);
-    console.log(`  Target: ${newYamlPath}`);
-    console.log(
-      `  Package ID: ${masonPackageData.source.id} -> ${zanaPackageData.source.id}`,
-    );
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    console.error(`✗ Error converting package: ${errorMessage}`);
-    process.exit(1);
   }
 };
 
