@@ -29,10 +29,10 @@
 		window.open(homepage, '_blank');
 	};
 
-	const onNameIconClick = (e: Event) => {
+	const onAttrCopyClick = (e: Event) => {
 		const target = e.currentTarget as HTMLElement;
 		const btn = target.closest('button') as HTMLSpanElement;
-		const name = btn.dataset.name as string;
+		const v = btn.dataset.value as string;
 		navigator.clipboard.writeText(name);
 		alertCopySuccess.classList.remove('hidden');
 		setTimeout(() => {
@@ -59,11 +59,18 @@
 		$sharedStore.filteredPackages = $sharedStore.filteredPackages.filter((pkg) => {
 			// Search by name
 			if (pkg.name.toLowerCase().includes(searchLower)) {
+				pkg.searchMatchInfo = 'Name matched';
 				return true;
 			}
 			// Search by aliases
 			if (pkg.aliases && Array.isArray(pkg.aliases)) {
-				return pkg.aliases.some((alias: string) => alias.toLowerCase().includes(searchLower));
+				return pkg.aliases.some((alias: string) => {
+					const match = alias.toLowerCase().includes(searchLower);
+					if (match) {
+						pkg.searchMatchInfo = `Alias ${alias} matched`;
+						return true;
+					}
+				});
 			}
 			return false;
 		});
@@ -111,8 +118,8 @@
 							<button
 								class="btn btn-primary"
 								aria-label="Click to copy the name to clipboard"
-								on:click={onNameIconClick}
-								data-name={activePackageData.name}
+								on:click={onAttrCopyClick}
+								data-copy-value={activePackageData.name}
 							>
 								<span class="icon">
 									<i class="fa-solid fa-copy"></i>
@@ -129,7 +136,60 @@
 				</tr>
 				<tr>
 					<td>Source ID:</td>
-					<td>{activePackageData.source.id}</td>
+					<td>
+						<div class="flex items-center gap-2">
+							<label class="input input-bordered">
+								<input type="text" class="grow" readonly value={activePackageData.source.id} />
+							</label>
+							<button
+								class="btn btn-primary"
+								aria-label="Click to copy the source id to clipboard"
+								on:click={onAttrCopyClick}
+								data-copy-value={activePackageData.source.id}
+							>
+								<span class="icon">
+									<i class="fa-solid fa-copy"></i>
+								</span>
+							</button>
+						</div>
+						<div role="alert" bind:this={alertCopySuccess} class="alert alert-success mt-3 hidden">
+							<span class="icon">
+								<i class="fa-solid fa-check"></i>
+							</span>
+							<span>Successfully copied to clipboard</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>Install:</td>
+					<td>
+						<div class="flex items-center gap-2">
+							<label class="input input-bordered">
+								<input
+									type="text"
+									class="grow"
+									readonly
+									value={`zana add ${activePackageData.source.id}`}
+								/>
+							</label>
+							<button
+								class="btn btn-primary"
+								aria-label="Click to copy the install command to clipboard"
+								on:click={onAttrCopyClick}
+								data-copy-value={`zana add ${activePackageData.source.id}`}
+							>
+								<span class="icon">
+									<i class="fa-solid fa-copy"></i>
+								</span>
+							</button>
+						</div>
+						<div role="alert" bind:this={alertCopySuccess} class="alert alert-success mt-3 hidden">
+							<span class="icon">
+								<i class="fa-solid fa-check"></i>
+							</span>
+							<span>Successfully copied to clipboard</span>
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<td>Description:</td>
@@ -187,6 +247,9 @@
 			<tr>
 				<th>Name</th>
 				<th>Version</th>
+				{#if $sharedStore.searchValue !== '' && $sharedStore.filteredPackages.length > 0}
+					<th>Search Info</th>
+				{/if}
 			</tr>
 		</thead>
 		<tbody>
@@ -202,6 +265,11 @@
 					<td>
 						<span>{pkg.version}</span>
 					</td>
+					{#if $sharedStore.searchValue !== '' && $sharedStore.filteredPackages.length > 0}
+						<td>
+							<span>{pkg.searchMatchInfo}</span>
+						</td>
+					{/if}
 				</tr>
 			{/each}
 		</tbody>

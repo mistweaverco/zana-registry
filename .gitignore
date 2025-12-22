@@ -7,3 +7,4 @@
 node_modules
 *.zip
 /web/static/registry.json
+/web/static/zana-registry.json

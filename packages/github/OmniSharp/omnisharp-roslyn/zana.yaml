@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
-name: omnisharp
+name: omnisharp-roslyn
 description: |
   OmniSharp language server based on Roslyn workspaces. This version of Omnisharp requires dotnet (.NET 6.0) to be
   installed.
