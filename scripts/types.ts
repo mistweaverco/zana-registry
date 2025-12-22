@@ -24,6 +24,52 @@ export type CrateResponse = {
   };
 };
 
+export type GitLabReleaseResponse = {
+  tag_name: string;
+};
+
+export type GitLabDataResponse = GitLabReleaseResponse[];
+
+export type CodebergDataResponse = {
+  tag_name: string;
+};
+
+export type GemDataResponse = {
+  version: string;
+};
+
+export type ComposerDataResponse = {
+  package: {
+    versions: Record<string, unknown>;
+  };
+};
+
+export type LuaRocksManifestResponse = {
+  modules: Record<string, unknown>;
+  repository: {
+    [packageName: string]: {
+      [version: string]: Array<{
+        arch: string;
+      }>;
+    };
+  };
+};
+
+export type NuGetDataResponse = {
+  versions: string[];
+};
+
+export type OpamDataResponse = Array<{
+  name: string;
+  type: string;
+  path: string;
+}>;
+
+export type OpenVSXDataResponse = {
+  version: string;
+  allVersions?: string[];
+};
+
 export interface MasonPackageInfo {
   name: string;
   description: string;
@@ -43,6 +89,14 @@ export type APIResponse = Promise<
   | PyPiResponse
   | GolangResponse
   | CrateResponse
+  | GitLabDataResponse
+  | CodebergDataResponse
+  | GemDataResponse
+  | ComposerDataResponse
+  | LuaRocksManifestResponse
+  | NuGetDataResponse
+  | OpamDataResponse
+  | OpenVSXDataResponse
   | null
 >;
 
@@ -77,4 +131,13 @@ export enum SourceType {
   PYPI = "pypi",
   GOLANG = "golang",
   CARGO = "cargo",
+  GITLAB = "gitlab",
+  CODEBERG = "codeberg",
+  GEM = "gem",
+  COMPOSER = "composer",
+  LUAROCKS = "luarocks",
+  NUGET = "nuget",
+  OPAM = "opam",
+  OPENVSX = "openvsx",
+  GENERIC = "generic",
 }
