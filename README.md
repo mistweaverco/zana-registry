@@ -20,12 +20,11 @@ This is the [registry][registry-website] for [Zana][website],
 </div>
 
 > [!IMPORTANT]
-> Package versions are updated every two hours.
+> Package versions are updated every twelve hours.
 > The updater only **updates** the monthly release.
 > It does also update the release notes if there are any changes.
 > This is to avoid spamming the registry with releases.
-> This means, there is one **release** per month,
-> but it's updated every two hours.
+> This means, there is one **release** per month.
 
 ## What?
 
@@ -82,7 +81,7 @@ Main differences between the Mason registry and the Zana registry:
       for GitLab (supports unlimited sub-folders)
 - Package IDs use the format `<provider>:<package-id>`
   (e.g., `npm:@mistweaverco/kulala-ls`, `github:dprint/dprint`)
-- Releases are done every two hours, but do only **update** the monthly release.
+- Releases are done every twelve hours, but do only **update** the monthly release.
   - This is to avoid spamming the registry.
 
 > [!NOTE]
