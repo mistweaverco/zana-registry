@@ -261,7 +261,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each $sharedStore.filteredPackages as pkg, i (pkg.name)}
+			{#each $sharedStore.filteredPackages as pkg, i (pkg.source.id)}
 				<tr
 					class="remote-package-item {i === activePackageIndex
 						? 'bg-primary text-primary-content'
