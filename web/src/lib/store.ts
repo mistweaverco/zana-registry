@@ -1,7 +1,8 @@
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
+import { type Package } from "$lib/types";
 
 export const sharedStore = writable({
-	searchValue: '',
-	filteredPackages: [],
-	packagesCount: 0
+  searchValue: "",
+  filteredPackages: [] as Package[],
+  packagesCount: 0,
 });

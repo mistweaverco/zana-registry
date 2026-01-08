@@ -1,15 +1,16 @@
 <script lang="ts">
 	import Head from '$lib/head.svelte';
 	import { onMount } from 'svelte';
+	import { type Package  } from '$lib/types';
 	import { sharedStore } from '$lib/store';
 
-	let modalInfo;
-	let modalInfoCloseButton;
-	let alertCopySuccess;
+	let modalInfo: HTMLDialogElement;
+	let modalInfoCloseButton: HTMLButtonElement;
+	let alertCopySuccess: HTMLDivElement;
 	let activePackageIndex = 0;
-	let packages = [];
+	let packages: Package[] = [];
 
-	let activePackageData = {
+	let activePackageData: Package = {
 		name: '',
 		source: {
 			id: ''
@@ -18,7 +19,6 @@
 		version: '',
 		homepage: '',
 		licenses: [],
-		languages: [],
 		categories: []
 	};
 
@@ -33,7 +33,7 @@
 		const target = e.currentTarget as HTMLElement;
 		const btn = target.closest('button') as HTMLSpanElement;
 		const v = btn.dataset.value as string;
-		navigator.clipboard.writeText(name);
+		navigator.clipboard.writeText(v);
 		alertCopySuccess.classList.remove('hidden');
 		setTimeout(() => {
 			alertCopySuccess.classList.add('hidden');
@@ -81,7 +81,7 @@
 	onMount(async () => {
 		const res = await fetch('/zana-registry.json');
 		const data = await res.json();
-		const sortedData = data.sort((a, b) => {
+		const sortedData = data.sort((a: Package, b: Package) => {
 			if (a.name < b.name) {
 				return -1;
 			}
@@ -223,10 +223,18 @@
 					<td>Licenses:</td>
 					<td>{activePackageData.licenses.join(', ')}</td>
 				</tr>
-				<tr>
-					<td>Languages:</td>
-					<td>{activePackageData.languages.join(', ')}</td>
-				</tr>
+        {#if activePackageData.languages}
+          <tr>
+            <td>Languages:</td>
+            <td>{activePackageData.languages.join(', ')}</td>
+          </tr>
+        {/if}
+        {#if activePackageData.tags}
+          <tr>
+            <td>Tags:</td>
+            <td>{activePackageData.tags.join(', ')}</td>
+          </tr>
+        {/if}
 				<tr>
 					<td>Categories:</td>
 					<td>{activePackageData.categories.join(', ')}</td>
