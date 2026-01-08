@@ -39,6 +39,12 @@
         "$ref": "#/definitions/enums:category"
       }
     },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "experimental": {
       "type": "boolean",
       "description": "If true, this package is considered experimental and may not be stable."
@@ -87,7 +93,6 @@
     "description",
     "homepage",
     "licenses",
-    "languages",
     "categories",
     "source"
   ],
@@ -604,12 +609,15 @@
     "enums:category": {
       "type": "string",
       "enum": [
+        "CLI",
         "Compiler",
         "DAP",
         "Formatter",
+        "GUI",
         "LSP",
         "Linter",
-        "Runtime"
+        "Runtime",
+        "TUI"
       ]
     },
     "components:deprecation": {
