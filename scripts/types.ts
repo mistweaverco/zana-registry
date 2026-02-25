@@ -4,6 +4,16 @@ export type GithubDataResponse = {
   tag_name: string;
 };
 
+export type GithubDataLatestVersionsResponse = {
+  stable: string | null;
+  prerelease: string | null;
+};
+
+export type GithubDataReleasesResponse = Array<{
+  tag_name?: string;
+  prerelease?: boolean;
+}>;
+
 export type NpmDataResponse = {
   version: string;
 };
@@ -103,6 +113,10 @@ export type APIResponse = Promise<
 export interface PackageInfo {
   name: string;
   version: string;
+  // Optional latest prerelease / dev / alpha / beta version.
+  // This is kept separate from the stable "version" field so that
+  // clients can decide whether to follow the stable or prerelease track.
+  prerelease_version?: string;
   description: string;
   homepage: string;
   licenses: string[];
