@@ -4,6 +4,8 @@ import type {
   ComposerDataResponse,
   CrateResponse,
   GemDataResponse,
+  GithubDataLatestVersionsResponse,
+  GithubDataReleasesResponse,
   GithubDataResponse,
   GitLabDataResponse,
   GolangResponse,
@@ -346,6 +348,82 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   return version;
 };
 
+// TODO:
+// For GitHub we additionally query the full
+// releases list to discover prerelease tags.
+// Implement gitlab, codeberg, etc..
+
+// getLatestVersions returns the latest stable and prerelease versions (when available)
+// for a given source ID. For most providers we only have a single "latest" concept
+// and expose it as the stable version.
+const getLatestVersions = async (
+  sourceId: string,
+): Promise<GithubDataLatestVersionsResponse> => {
+  let stable: string | null = null;
+  let prerelease: string | null = null;
+  let latest: string | null = null;
+  let config: RequestInit | null = null;
+  let url: string | null = null;
+  let resp: Response | null = null;
+  let releases: GithubDataReleasesResponse | null = null;
+  let prereleases: GithubDataReleasesResponse | null = null;
+
+  const parts = sourceId.split(":");
+  if (parts.length < 2) {
+    return { stable, prerelease };
+  }
+  const provider = parts[0];
+  const packageId = parts.slice(1).join(":");
+
+  switch (provider) {
+    case SourceType.GITHUB: {
+      // Stable
+      latest = await getLatestVersion(sourceId);
+      if (latest) {
+        stable = latest;
+      }
+
+      // Prereleases: query the full releases list and pick the first prerelease
+      config = getConfig(sourceId);
+      if (!config) {
+        break;
+      }
+      try {
+        url = `https://api.github.com/repos/${packageId}/releases`;
+        resp = await fetch(url, config);
+        if (!resp.ok) {
+          break;
+        }
+        releases = await resp.json() as Array<{
+          tag_name?: string;
+          prerelease?: boolean;
+        }>;
+        if (Array.isArray(releases) && releases.length > 0) {
+          prereleases = releases.filter((r) =>
+            r.prerelease && typeof r.tag_name === "string"
+          );
+          if (prereleases.length > 0) {
+            prerelease = prereleases[0].tag_name ?? null;
+          }
+        }
+      } catch {
+        // Ignore prerelease errors; we still have stable if available.
+      }
+      break;
+    }
+    default: {
+      // For all other providers we only expose a single "latest" version, for now
+      latest = await getLatestVersion(sourceId);
+      if (latest) {
+        stable = latest;
+      }
+      break;
+    }
+  }
+
+  return { stable, prerelease };
+};
+
 // Convert package ID from new format to old Mason format
 // "provider:package-id" -> "pkg:provider/package-id"
 // Also handles URL encoding of @ symbols for npm scoped packages
@@ -427,9 +505,16 @@ for (const packageYamlPath of packageFiles) {
     // not supported, but not an error
     continue;
   }
-  const version = await getLatestVersion(packageData.source.id);
+  const { stable, prerelease } = await getLatestVersions(
+    packageData.source.id,
+  );
+  // Prefer stable version when available; fall back to prerelease
+  const version = stable ?? prerelease;
   if (version) {
     packageData.version = version;
+    if (prerelease) {
+      packageData.prerelease_version = prerelease;
+    }
     // Add version to Mason format: pkg:provider/package-id@version
     masonPackageData.source.id = `${masonSourceId}@${version}`;
     registry.push(packageData);
