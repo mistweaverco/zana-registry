@@ -110,12 +110,20 @@ const getConfig = (sourceId: string): RequestInit | null => {
 
   switch (provider) {
     case SourceType.GITHUB:
-      config = {
-        headers: {
-          Accept: "application/vnd.github.v3+json",
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        },
-      };
+      // Only send Authorization when a token is present.
+      // Sending "Bearer undefined" breaks requests.
+      config = process.env.GITHUB_TOKEN
+        ? {
+          headers: {
+            Accept: "application/vnd.github.v3+json",
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          },
+        }
+        : {
+          headers: {
+            Accept: "application/vnd.github.v3+json",
+          },
+        };
       break;
     case SourceType.NPM:
       config = {};
@@ -159,10 +167,15 @@ const getConfig = (sourceId: string): RequestInit | null => {
       config = process.env.GITHUB_TOKEN
         ? {
           headers: {
+            Accept: "application/vnd.github.v3+json",
             Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
           },
         }
-        : {};
+        : {
+          headers: {
+            Accept: "application/vnd.github.v3+json",
+          },
+        };
       break;
     case SourceType.OPENVSX:
       config = {};
@@ -189,10 +202,78 @@ const getDataFromApi = async (
   }
   try {
     const response = await fetch(apiURL, config);
+    // Many APIs return non-2xx with a JSON body; treat non-OK as "no data"
+    // so callers can fall back to other mechanisms.
+    if (!response.ok) {
+      return null;
+    }
     const data = await response.json();
     return data;
   } catch (error) {
     console.error(`Failed to fetch data from ${apiURL}`, error);
+    return null;
+  }
+};
+
+const getGithubLatestTagFallback = async (sourceId: string): Promise<string | null> => {
+  const parts = sourceId.split(":");
+  if (parts.length < 2) {
+    return null;
+  }
+  const provider = parts[0];
+  const packageId = parts.slice(1).join(":");
+  if (provider !== SourceType.GITHUB) {
+    return null;
+  }
+  const config = getConfig(sourceId);
+  if (!config) {
+    return null;
+  }
+  try {
+    // If a repo doesn't publish GitHub Releases (common for tree-sitter grammars),
+    // fall back to the tags list. The API returns tags in reverse chronological
+    // order by default.
+    const url = `https://api.github.com/repos/${packageId}/tags?per_page=1`;
+    const resp = await fetch(url, config);
+    if (!resp.ok) {
+      return null;
+    }
+    const tags = await resp.json() as Array<{ name?: string }>;
+    const t = Array.isArray(tags) && tags.length > 0 ? tags[0] : null;
+    const name = t?.name ? String(t.name).trim() : "";
+    return name || null;
+  } catch {
+    return null;
+  }
+};
+
+const getGithubLatestCommitFallback = async (sourceId: string): Promise<string | null> => {
+  const parts = sourceId.split(":");
+  if (parts.length < 2) {
+    return null;
+  }
+  const provider = parts[0];
+  const packageId = parts.slice(1).join(":");
+  if (provider !== SourceType.GITHUB) {
+    return null;
+  }
+  const config = getConfig(sourceId);
+  if (!config) {
+    return null;
+  }
+  try {
+    // Latest commit on default branch.
+    // Using commits list avoids needing to know the default branch name.
+    const url = `https://api.github.com/repos/${packageId}/commits?per_page=1`;
+    const resp = await fetch(url, config);
+    if (!resp.ok) {
+      return null;
+    }
+    const commits = await resp.json() as Array<{ sha?: string }>;
+    const c = Array.isArray(commits) && commits.length > 0 ? commits[0] : null;
+    const sha = c?.sha ? String(c.sha).trim() : "";
+    return sha || null;
+  } catch {
     return null;
   }
 };
@@ -211,7 +292,16 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
   switch (provider) {
     case SourceType.GITHUB:
       data = (await getDataFromApi(sourceId)) as GithubDataResponse | null;
-      if (data && data.tag_name) version = data.tag_name;
+      if (data && data.tag_name) {
+        version = data.tag_name;
+      } else {
+        // Fallback for repos that don't publish GitHub Releases.
+        version = await getGithubLatestTagFallback(sourceId);
+        if (!version) {
+          // Final fallback: latest commit SHA on default branch.
+          version = await getGithubLatestCommitFallback(sourceId);
+        }
+      }
       break;
     case SourceType.NPM:
       data = (await getDataFromApi(sourceId)) as NpmDataResponse | null;
