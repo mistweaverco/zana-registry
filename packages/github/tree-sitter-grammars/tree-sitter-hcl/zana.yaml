@@ -1,11 +1,13 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tree-sitter-hcl
-description: Tree-sitter grammar for hcl.
+description: Tree-sitter grammar for hcl and terraform.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-hcl
 licenses:
   - MIT
-languages: []
+languages:
+  - terraform
+  - hcl
 categories:
   - Tree-sitter-parser
 source:
@@ -13,4 +15,6 @@ source:
 treesitter:
   build:
     - language: hcl
+      grammar_dir: .
+    - language: terraform
       grammar_dir: .
