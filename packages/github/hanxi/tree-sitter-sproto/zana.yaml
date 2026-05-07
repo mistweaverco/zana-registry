@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-sproto
+description: Tree-sitter grammar for sproto.
+homepage: https://github.com/hanxi/tree-sitter-sproto
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:hanxi/tree-sitter-sproto
+treesitter:
+  build:
+    - language: sproto
+      grammar_dir: .

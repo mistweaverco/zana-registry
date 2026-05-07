@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-awk
+description: Tree-sitter grammar for awk.
+homepage: https://github.com/Beaglefoot/tree-sitter-awk
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:Beaglefoot/tree-sitter-awk
+treesitter:
+  build:
+    - language: awk
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-javadoc
+description: Tree-sitter grammar for javadoc.
+homepage: https://github.com/rmuir/tree-sitter-javadoc
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:rmuir/tree-sitter-javadoc
+treesitter:
+  build:
+    - language: javadoc
+      grammar_dir: .

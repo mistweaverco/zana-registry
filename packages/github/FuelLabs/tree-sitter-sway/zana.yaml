@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-sway
+description: Tree-sitter grammar for sway.
+homepage: https://github.com/FuelLabs/tree-sitter-sway
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:FuelLabs/tree-sitter-sway
+treesitter:
+  build:
+    - language: sway
+      grammar_dir: .

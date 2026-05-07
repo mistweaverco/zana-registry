@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-dockerfile
+description: Tree-sitter grammar for dockerfile.
+homepage: https://github.com/camdencheek/tree-sitter-dockerfile
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:camdencheek/tree-sitter-dockerfile
+treesitter:
+  build:
+    - language: dockerfile
+      grammar_dir: .

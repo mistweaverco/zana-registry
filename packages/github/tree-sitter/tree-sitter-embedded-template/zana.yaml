@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-embedded-template
+description: Tree-sitter grammar for embedded_template.
+homepage: https://github.com/tree-sitter/tree-sitter-embedded-template
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter/tree-sitter-embedded-template
+treesitter:
+  build:
+    - language: embedded_template
+      grammar_dir: .

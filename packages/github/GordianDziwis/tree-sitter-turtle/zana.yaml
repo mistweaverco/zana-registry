@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-turtle
+description: Tree-sitter grammar for turtle.
+homepage: https://github.com/GordianDziwis/tree-sitter-turtle
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:GordianDziwis/tree-sitter-turtle
+treesitter:
+  build:
+    - language: turtle
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-yang
+description: Tree-sitter grammar for yang.
+homepage: https://github.com/Hubro/tree-sitter-yang
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:Hubro/tree-sitter-yang
+treesitter:
+  build:
+    - language: yang
+      grammar_dir: .

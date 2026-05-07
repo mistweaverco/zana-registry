@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-surface
+description: Tree-sitter grammar for surface.
+homepage: https://github.com/connorlay/tree-sitter-surface
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:connorlay/tree-sitter-surface
+treesitter:
+  build:
+    - language: surface
+      grammar_dir: .

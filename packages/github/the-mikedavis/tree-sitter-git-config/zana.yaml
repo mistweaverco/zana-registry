@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-git-config
+description: Tree-sitter grammar for git_config.
+homepage: https://github.com/the-mikedavis/tree-sitter-git-config
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:the-mikedavis/tree-sitter-git-config
+treesitter:
+  build:
+    - language: git_config
+      grammar_dir: .

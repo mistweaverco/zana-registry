@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-objdump
+description: Tree-sitter grammar for objdump.
+homepage: https://github.com/ColinKennedy/tree-sitter-objdump
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ColinKennedy/tree-sitter-objdump
+treesitter:
+  build:
+    - language: objdump
+      grammar_dir: .

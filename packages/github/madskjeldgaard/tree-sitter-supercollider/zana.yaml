@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-supercollider
+description: Tree-sitter grammar for supercollider.
+homepage: https://github.com/madskjeldgaard/tree-sitter-supercollider
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:madskjeldgaard/tree-sitter-supercollider
+treesitter:
+  build:
+    - language: supercollider
+      grammar_dir: .

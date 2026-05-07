@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-goctl
+description: Tree-sitter grammar for goctl.
+homepage: https://github.com/chaozwn/tree-sitter-goctl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:chaozwn/tree-sitter-goctl
+treesitter:
+  build:
+    - language: goctl
+      grammar_dir: .

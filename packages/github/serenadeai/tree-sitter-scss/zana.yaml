@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-scss
+description: Tree-sitter grammar for scss.
+homepage: https://github.com/serenadeai/tree-sitter-scss
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:serenadeai/tree-sitter-scss
+treesitter:
+  build:
+    - language: scss
+      grammar_dir: .

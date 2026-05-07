@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-cmake
+description: Tree-sitter grammar for cmake.
+homepage: https://github.com/uyha/tree-sitter-cmake
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:uyha/tree-sitter-cmake
+treesitter:
+  build:
+    - language: cmake
+      grammar_dir: .

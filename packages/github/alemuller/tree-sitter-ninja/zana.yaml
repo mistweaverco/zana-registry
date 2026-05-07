@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-ninja
+description: Tree-sitter grammar for ninja.
+homepage: https://github.com/alemuller/tree-sitter-ninja
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:alemuller/tree-sitter-ninja
+treesitter:
+  build:
+    - language: ninja
+      grammar_dir: .

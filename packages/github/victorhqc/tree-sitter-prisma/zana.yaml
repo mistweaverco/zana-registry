@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-prisma
+description: Tree-sitter grammar for prisma.
+homepage: https://github.com/victorhqc/tree-sitter-prisma
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:victorhqc/tree-sitter-prisma
+treesitter:
+  build:
+    - language: prisma
+      grammar_dir: .

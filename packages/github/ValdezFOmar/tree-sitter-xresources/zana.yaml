@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-xresources
+description: Tree-sitter grammar for xresources.
+homepage: https://github.com/ValdezFOmar/tree-sitter-xresources
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ValdezFOmar/tree-sitter-xresources
+treesitter:
+  build:
+    - language: xresources
+      grammar_dir: .

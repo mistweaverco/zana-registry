@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-vala
+description: Tree-sitter grammar for vala.
+homepage: https://github.com/vala-lang/tree-sitter-vala
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:vala-lang/tree-sitter-vala
+treesitter:
+  build:
+    - language: vala
+      grammar_dir: .

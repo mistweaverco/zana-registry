@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-forth
+description: Tree-sitter grammar for forth.
+homepage: https://github.com/AlexanderBrevig/tree-sitter-forth
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:AlexanderBrevig/tree-sitter-forth
+treesitter:
+  build:
+    - language: forth
+      grammar_dir: .

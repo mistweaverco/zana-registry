@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-vue
+description: Tree-sitter grammar for vue.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-vue
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-vue
+treesitter:
+  build:
+    - language: vue
+      grammar_dir: .

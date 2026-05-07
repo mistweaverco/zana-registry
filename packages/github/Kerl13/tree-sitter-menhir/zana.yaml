@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-menhir
+description: Tree-sitter grammar for menhir.
+homepage: https://github.com/Kerl13/tree-sitter-menhir
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:Kerl13/tree-sitter-menhir
+treesitter:
+  build:
+    - language: menhir
+      grammar_dir: .

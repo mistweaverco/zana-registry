@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-earthfile
+description: Tree-sitter grammar for earthfile.
+homepage: https://github.com/glehmann/tree-sitter-earthfile
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:glehmann/tree-sitter-earthfile
+treesitter:
+  build:
+    - language: earthfile
+      grammar_dir: .

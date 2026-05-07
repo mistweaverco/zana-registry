@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-just
+description: Tree-sitter grammar for just.
+homepage: https://github.com/IndianBoy42/tree-sitter-just
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:IndianBoy42/tree-sitter-just
+treesitter:
+  build:
+    - language: just
+      grammar_dir: .

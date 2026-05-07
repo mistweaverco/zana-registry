@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-robots-txt
+description: Tree-sitter grammar for robots_txt.
+homepage: https://github.com/opa-oz/tree-sitter-robots-txt
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:opa-oz/tree-sitter-robots-txt
+treesitter:
+  build:
+    - language: robots_txt
+      grammar_dir: .

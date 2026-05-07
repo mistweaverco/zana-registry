@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-re2c
+description: Tree-sitter grammar for re2c.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-re2c
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-re2c
+treesitter:
+  build:
+    - language: re2c
+      grammar_dir: .

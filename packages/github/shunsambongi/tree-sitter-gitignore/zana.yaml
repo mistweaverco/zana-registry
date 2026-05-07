@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-gitignore
+description: Tree-sitter grammar for gitignore.
+homepage: https://github.com/shunsambongi/tree-sitter-gitignore
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:shunsambongi/tree-sitter-gitignore
+treesitter:
+  build:
+    - language: gitignore
+      grammar_dir: .

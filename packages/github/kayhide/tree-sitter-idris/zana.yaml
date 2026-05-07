@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-idris
+description: Tree-sitter grammar for idris.
+homepage: https://github.com/kayhide/tree-sitter-idris
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:kayhide/tree-sitter-idris
+treesitter:
+  build:
+    - language: idris
+      grammar_dir: .

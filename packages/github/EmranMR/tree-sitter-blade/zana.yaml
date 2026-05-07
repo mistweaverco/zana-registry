@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-blade
+description: Tree-sitter grammar for blade.
+homepage: https://github.com/EmranMR/tree-sitter-blade
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:EmranMR/tree-sitter-blade
+treesitter:
+  build:
+    - language: blade
+      grammar_dir: .

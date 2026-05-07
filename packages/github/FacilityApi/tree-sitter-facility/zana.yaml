@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-facility
+description: Tree-sitter grammar for facility.
+homepage: https://github.com/FacilityApi/tree-sitter-facility
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:FacilityApi/tree-sitter-facility
+treesitter:
+  build:
+    - language: facility
+      grammar_dir: .

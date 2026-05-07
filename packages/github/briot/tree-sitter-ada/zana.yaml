@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-ada
+description: Tree-sitter grammar for ada.
+homepage: https://github.com/briot/tree-sitter-ada
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:briot/tree-sitter-ada
+treesitter:
+  build:
+    - language: ada
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-enforce
+description: Tree-sitter grammar for enforce.
+homepage: https://github.com/simonvic/tree-sitter-enforce
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:simonvic/tree-sitter-enforce
+treesitter:
+  build:
+    - language: enforce
+      grammar_dir: .

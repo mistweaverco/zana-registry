@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-starlark
+description: Tree-sitter grammar for starlark.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-starlark
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-starlark
+treesitter:
+  build:
+    - language: starlark
+      grammar_dir: .

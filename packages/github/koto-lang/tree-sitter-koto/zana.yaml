@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-koto
+description: Tree-sitter grammar for koto.
+homepage: https://github.com/koto-lang/tree-sitter-koto
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:koto-lang/tree-sitter-koto
+treesitter:
+  build:
+    - language: koto
+      grammar_dir: .

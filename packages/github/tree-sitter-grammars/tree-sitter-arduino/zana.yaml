@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-arduino
+description: Tree-sitter grammar for arduino.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-arduino
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-arduino
+treesitter:
+  build:
+    - language: arduino
+      grammar_dir: .

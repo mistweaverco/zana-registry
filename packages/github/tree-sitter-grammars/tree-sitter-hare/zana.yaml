@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-hare
+description: Tree-sitter grammar for hare.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-hare
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-hare
+treesitter:
+  build:
+    - language: hare
+      grammar_dir: .

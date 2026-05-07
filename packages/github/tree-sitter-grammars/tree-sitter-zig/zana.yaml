@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-zig
+description: Tree-sitter grammar for zig.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-zig
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-zig
+treesitter:
+  build:
+    - language: zig
+      grammar_dir: .

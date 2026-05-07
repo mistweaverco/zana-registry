@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-pioasm
+description: Tree-sitter grammar for pioasm.
+homepage: https://github.com/leo60228/tree-sitter-pioasm
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:leo60228/tree-sitter-pioasm
+treesitter:
+  build:
+    - language: pioasm
+      grammar_dir: .

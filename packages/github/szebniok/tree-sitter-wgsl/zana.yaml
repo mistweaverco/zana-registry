@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-wgsl
+description: Tree-sitter grammar for wgsl.
+homepage: https://github.com/szebniok/tree-sitter-wgsl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:szebniok/tree-sitter-wgsl
+treesitter:
+  build:
+    - language: wgsl
+      grammar_dir: .

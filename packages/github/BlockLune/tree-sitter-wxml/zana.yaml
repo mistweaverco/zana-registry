@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-wxml
+description: Tree-sitter grammar for wxml.
+homepage: https://github.com/BlockLune/tree-sitter-wxml
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:BlockLune/tree-sitter-wxml
+treesitter:
+  build:
+    - language: wxml
+      grammar_dir: .

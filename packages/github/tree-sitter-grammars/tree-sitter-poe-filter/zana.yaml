@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-poe-filter
+description: Tree-sitter grammar for poe_filter.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-poe-filter
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-poe-filter
+treesitter:
+  build:
+    - language: poe_filter
+      grammar_dir: .

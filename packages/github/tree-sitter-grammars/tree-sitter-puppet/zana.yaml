@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-puppet
+description: Tree-sitter grammar for puppet.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-puppet
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-puppet
+treesitter:
+  build:
+    - language: puppet
+      grammar_dir: .

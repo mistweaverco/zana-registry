@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-groovy
+description: Tree-sitter grammar for groovy.
+homepage: https://github.com/murtaza64/tree-sitter-groovy
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:murtaza64/tree-sitter-groovy
+treesitter:
+  build:
+    - language: groovy
+      grammar_dir: .

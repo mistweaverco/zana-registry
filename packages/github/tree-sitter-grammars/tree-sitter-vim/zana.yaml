@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-vim
+description: Tree-sitter grammar for vim.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-vim
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-vim
+treesitter:
+  build:
+    - language: vim
+      grammar_dir: .

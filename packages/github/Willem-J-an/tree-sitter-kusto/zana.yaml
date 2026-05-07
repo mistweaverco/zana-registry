@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-kusto
+description: Tree-sitter grammar for kusto.
+homepage: https://github.com/Willem-J-an/tree-sitter-kusto
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:Willem-J-an/tree-sitter-kusto
+treesitter:
+  build:
+    - language: kusto
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-editorconfig
+description: Tree-sitter grammar for editorconfig.
+homepage: https://github.com/ValdezFOmar/tree-sitter-editorconfig
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ValdezFOmar/tree-sitter-editorconfig
+treesitter:
+  build:
+    - language: editorconfig
+      grammar_dir: .

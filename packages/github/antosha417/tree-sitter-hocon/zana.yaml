@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-hocon
+description: Tree-sitter grammar for hocon.
+homepage: https://github.com/antosha417/tree-sitter-hocon
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:antosha417/tree-sitter-hocon
+treesitter:
+  build:
+    - language: hocon
+      grammar_dir: .

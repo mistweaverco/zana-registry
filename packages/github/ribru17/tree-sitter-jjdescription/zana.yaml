@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-jjdescription
+description: Tree-sitter grammar for jjdescription.
+homepage: https://github.com/ribru17/tree-sitter-jjdescription
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ribru17/tree-sitter-jjdescription
+treesitter:
+  build:
+    - language: jjdescription
+      grammar_dir: .

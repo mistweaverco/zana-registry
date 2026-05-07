@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-liquidsoap
+description: Tree-sitter grammar for liquidsoap.
+homepage: https://github.com/savonet/tree-sitter-liquidsoap
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:savonet/tree-sitter-liquidsoap
+treesitter:
+  build:
+    - language: liquidsoap
+      grammar_dir: .

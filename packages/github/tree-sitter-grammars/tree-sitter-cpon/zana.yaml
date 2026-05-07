@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-cpon
+description: Tree-sitter grammar for cpon.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-cpon
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-cpon
+treesitter:
+  build:
+    - language: cpon
+      grammar_dir: .

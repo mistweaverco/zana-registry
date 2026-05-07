@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-glimmer
+description: Tree-sitter grammar for glimmer.
+homepage: https://github.com/ember-tooling/tree-sitter-glimmer
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ember-tooling/tree-sitter-glimmer
+treesitter:
+  build:
+    - language: glimmer
+      grammar_dir: .

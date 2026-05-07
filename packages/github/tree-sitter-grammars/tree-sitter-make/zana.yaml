@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-make
+description: Tree-sitter grammar for make.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-make
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-make
+treesitter:
+  build:
+    - language: make
+      grammar_dir: .

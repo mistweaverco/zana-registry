@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-xml
+description: Tree-sitter grammars for dtd, xml.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-xml
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-xml
+treesitter:
+  build:
+    - language: dtd
+      grammar_dir: dtd
+    - language: xml
+      grammar_dir: xml

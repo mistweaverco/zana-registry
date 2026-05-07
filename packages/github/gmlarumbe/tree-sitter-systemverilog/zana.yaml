@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-systemverilog
+description: Tree-sitter grammar for systemverilog.
+homepage: https://github.com/gmlarumbe/tree-sitter-systemverilog
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:gmlarumbe/tree-sitter-systemverilog
+treesitter:
+  build:
+    - language: systemverilog
+      grammar_dir: .

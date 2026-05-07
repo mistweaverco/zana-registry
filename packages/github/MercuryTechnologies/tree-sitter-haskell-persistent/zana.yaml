@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-haskell-persistent
+description: Tree-sitter grammar for haskell_persistent.
+homepage: https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:MercuryTechnologies/tree-sitter-haskell-persistent
+treesitter:
+  build:
+    - language: haskell_persistent
+      grammar_dir: .

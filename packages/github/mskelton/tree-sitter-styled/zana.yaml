@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-styled
+description: Tree-sitter grammar for styled.
+homepage: https://github.com/mskelton/tree-sitter-styled
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:mskelton/tree-sitter-styled
+treesitter:
+  build:
+    - language: styled
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-kotlin
+description: Tree-sitter grammar for kotlin.
+homepage: https://github.com/fwcd/tree-sitter-kotlin
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:fwcd/tree-sitter-kotlin
+treesitter:
+  build:
+    - language: kotlin
+      grammar_dir: .

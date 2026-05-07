@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-angular
+description: Tree-sitter grammar for angular.
+homepage: https://github.com/dlvandenberg/tree-sitter-angular
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:dlvandenberg/tree-sitter-angular
+treesitter:
+  build:
+    - language: angular
+      grammar_dir: .

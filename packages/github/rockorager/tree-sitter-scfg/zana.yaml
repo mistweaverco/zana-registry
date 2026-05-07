@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-scfg
+description: Tree-sitter grammar for scfg.
+homepage: https://github.com/rockorager/tree-sitter-scfg
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:rockorager/tree-sitter-scfg
+treesitter:
+  build:
+    - language: scfg
+      grammar_dir: .

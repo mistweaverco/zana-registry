@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-rego
+description: Tree-sitter grammar for rego.
+homepage: https://github.com/FallenAngel97/tree-sitter-rego
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:FallenAngel97/tree-sitter-rego
+treesitter:
+  build:
+    - language: rego
+      grammar_dir: .

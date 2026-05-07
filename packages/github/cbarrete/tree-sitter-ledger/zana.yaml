@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-ledger
+description: Tree-sitter grammar for ledger.
+homepage: https://github.com/cbarrete/tree-sitter-ledger
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:cbarrete/tree-sitter-ledger
+treesitter:
+  build:
+    - language: ledger
+      grammar_dir: .

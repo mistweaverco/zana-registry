@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-qmljs
+description: Tree-sitter grammar for qmljs.
+homepage: https://github.com/yuja/tree-sitter-qmljs
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:yuja/tree-sitter-qmljs
+treesitter:
+  build:
+    - language: qmljs
+      grammar_dir: .

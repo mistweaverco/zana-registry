@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-ralph
+description: Tree-sitter grammar for ralph.
+homepage: https://github.com/alephium/tree-sitter-ralph
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:alephium/tree-sitter-ralph
+treesitter:
+  build:
+    - language: ralph
+      grammar_dir: .

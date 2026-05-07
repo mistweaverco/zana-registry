@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-rescript
+description: Tree-sitter grammar for rescript.
+homepage: https://github.com/rescript-lang/tree-sitter-rescript
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:rescript-lang/tree-sitter-rescript
+treesitter:
+  build:
+    - language: rescript
+      grammar_dir: .

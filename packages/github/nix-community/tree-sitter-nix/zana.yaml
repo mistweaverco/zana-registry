@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-nix
+description: Tree-sitter grammar for nix.
+homepage: https://github.com/nix-community/tree-sitter-nix
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:nix-community/tree-sitter-nix
+treesitter:
+  build:
+    - language: nix
+      grammar_dir: .

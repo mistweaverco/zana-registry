@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-glimmer-javascript
+description: Tree-sitter grammar for glimmer_javascript.
+homepage: https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:NullVoxPopuli/tree-sitter-glimmer-javascript
+treesitter:
+  build:
+    - language: glimmer_javascript
+      grammar_dir: .

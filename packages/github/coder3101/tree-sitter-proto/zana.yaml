@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-proto
+description: Tree-sitter grammar for proto.
+homepage: https://github.com/coder3101/tree-sitter-proto
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:coder3101/tree-sitter-proto
+treesitter:
+  build:
+    - language: proto
+      grammar_dir: .

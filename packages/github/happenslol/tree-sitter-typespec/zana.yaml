@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-typespec
+description: Tree-sitter grammar for typespec.
+homepage: https://github.com/happenslol/tree-sitter-typespec
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:happenslol/tree-sitter-typespec
+treesitter:
+  build:
+    - language: typespec
+      grammar_dir: .

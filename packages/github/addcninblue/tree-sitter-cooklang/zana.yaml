@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-cooklang
+description: Tree-sitter grammar for cooklang.
+homepage: https://github.com/addcninblue/tree-sitter-cooklang
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:addcninblue/tree-sitter-cooklang
+treesitter:
+  build:
+    - language: cooklang
+      grammar_dir: .

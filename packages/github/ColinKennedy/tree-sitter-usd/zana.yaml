@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-usd
+description: Tree-sitter grammar for usd.
+homepage: https://github.com/ColinKennedy/tree-sitter-usd
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ColinKennedy/tree-sitter-usd
+treesitter:
+  build:
+    - language: usd
+      grammar_dir: .

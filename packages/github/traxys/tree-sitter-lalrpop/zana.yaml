@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-lalrpop
+description: Tree-sitter grammar for lalrpop.
+homepage: https://github.com/traxys/tree-sitter-lalrpop
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:traxys/tree-sitter-lalrpop
+treesitter:
+  build:
+    - language: lalrpop
+      grammar_dir: .

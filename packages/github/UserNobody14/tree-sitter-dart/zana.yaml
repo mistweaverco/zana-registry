@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-dart
+description: Tree-sitter grammar for dart.
+homepage: https://github.com/UserNobody14/tree-sitter-dart
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:UserNobody14/tree-sitter-dart
+treesitter:
+  build:
+    - language: dart
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-go-mod
+description: Tree-sitter grammar for gomod.
+homepage: https://github.com/camdencheek/tree-sitter-go-mod
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:camdencheek/tree-sitter-go-mod
+treesitter:
+  build:
+    - language: gomod
+      grammar_dir: .

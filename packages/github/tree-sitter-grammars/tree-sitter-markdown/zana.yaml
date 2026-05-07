@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-markdown
+description: Tree-sitter grammars for markdown, markdown_inline.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-markdown
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-markdown
+treesitter:
+  build:
+    - language: markdown
+      grammar_dir: tree-sitter-markdown
+    - language: markdown_inline
+      grammar_dir: tree-sitter-markdown-inline
