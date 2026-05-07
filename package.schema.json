@@ -799,9 +799,25 @@
     "components:sources:github": {
       "oneOf": [
         {
+          "$ref": "#/definitions/components:sources:github:repository"
+        },
+        {
           "$ref": "#/definitions/components:sources:github:release"
         }
       ]
+    },
+    "components:sources:github:repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^github:.+/.+"
+        }
+      }
     },
     "components:sources:github:release": {
       "type": "object",
