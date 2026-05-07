@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-jq
+description: Tree-sitter grammar for jq.
+homepage: https://github.com/flurie/tree-sitter-jq
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:flurie/tree-sitter-jq
+treesitter:
+  build:
+    - language: jq
+      grammar_dir: .

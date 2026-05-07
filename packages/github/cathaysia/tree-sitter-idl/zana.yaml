@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-idl
+description: Tree-sitter grammar for idl.
+homepage: https://github.com/cathaysia/tree-sitter-idl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:cathaysia/tree-sitter-idl
+treesitter:
+  build:
+    - language: idl
+      grammar_dir: .

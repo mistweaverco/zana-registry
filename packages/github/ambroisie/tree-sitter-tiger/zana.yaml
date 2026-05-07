@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-tiger
+description: Tree-sitter grammar for tiger.
+homepage: https://github.com/ambroisie/tree-sitter-tiger
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ambroisie/tree-sitter-tiger
+treesitter:
+  build:
+    - language: tiger
+      grammar_dir: .

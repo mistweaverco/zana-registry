@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-julia
+description: Tree-sitter grammar for julia.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-julia
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-julia
+treesitter:
+  build:
+    - language: julia
+      grammar_dir: .

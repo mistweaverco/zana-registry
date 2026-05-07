@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-prql
+description: Tree-sitter grammar for prql.
+homepage: https://github.com/PRQL/tree-sitter-prql
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:PRQL/tree-sitter-prql
+treesitter:
+  build:
+    - language: prql
+      grammar_dir: .

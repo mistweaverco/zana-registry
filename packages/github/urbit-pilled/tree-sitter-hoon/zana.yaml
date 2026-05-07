@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-hoon
+description: Tree-sitter grammar for hoon.
+homepage: https://github.com/urbit-pilled/tree-sitter-hoon
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:urbit-pilled/tree-sitter-hoon
+treesitter:
+  build:
+    - language: hoon
+      grammar_dir: .

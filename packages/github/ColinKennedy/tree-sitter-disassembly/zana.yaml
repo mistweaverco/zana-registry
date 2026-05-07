@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-disassembly
+description: Tree-sitter grammar for disassembly.
+homepage: https://github.com/ColinKennedy/tree-sitter-disassembly
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ColinKennedy/tree-sitter-disassembly
+treesitter:
+  build:
+    - language: disassembly
+      grammar_dir: .

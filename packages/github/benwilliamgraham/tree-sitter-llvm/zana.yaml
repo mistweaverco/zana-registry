@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-llvm
+description: Tree-sitter grammar for llvm.
+homepage: https://github.com/benwilliamgraham/tree-sitter-llvm
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:benwilliamgraham/tree-sitter-llvm
+treesitter:
+  build:
+    - language: llvm
+      grammar_dir: .

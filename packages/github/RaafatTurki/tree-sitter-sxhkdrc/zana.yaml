@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-sxhkdrc
+description: Tree-sitter grammar for sxhkdrc.
+homepage: https://github.com/RaafatTurki/tree-sitter-sxhkdrc
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:RaafatTurki/tree-sitter-sxhkdrc
+treesitter:
+  build:
+    - language: sxhkdrc
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-rbs
+description: Tree-sitter grammar for rbs.
+homepage: https://github.com/joker1007/tree-sitter-rbs
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:joker1007/tree-sitter-rbs
+treesitter:
+  build:
+    - language: rbs
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-pascal
+description: Tree-sitter grammar for pascal.
+homepage: https://github.com/Isopod/tree-sitter-pascal
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:Isopod/tree-sitter-pascal
+treesitter:
+  build:
+    - language: pascal
+      grammar_dir: .

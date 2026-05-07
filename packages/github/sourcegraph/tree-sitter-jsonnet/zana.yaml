@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-jsonnet
+description: Tree-sitter grammar for jsonnet.
+homepage: https://github.com/sourcegraph/tree-sitter-jsonnet
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:sourcegraph/tree-sitter-jsonnet
+treesitter:
+  build:
+    - language: jsonnet
+      grammar_dir: .

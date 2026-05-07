@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-asm
+description: Tree-sitter grammar for asm.
+homepage: https://github.com/RubixDev/tree-sitter-asm
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:RubixDev/tree-sitter-asm
+treesitter:
+  build:
+    - language: asm
+      grammar_dir: .

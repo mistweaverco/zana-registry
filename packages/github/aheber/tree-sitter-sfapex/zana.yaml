@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-sfapex
+description: Tree-sitter grammars for apex, sflog, soql, sosl.
+homepage: https://github.com/aheber/tree-sitter-sfapex
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:aheber/tree-sitter-sfapex
+treesitter:
+  build:
+    - language: apex
+      grammar_dir: apex
+    - language: sflog
+      grammar_dir: sflog
+    - language: soql
+      grammar_dir: soql
+    - language: sosl
+      grammar_dir: sosl

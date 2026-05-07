@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-pem
+description: Tree-sitter grammar for pem.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-pem
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-pem
+treesitter:
+  build:
+    - language: pem
+      grammar_dir: .

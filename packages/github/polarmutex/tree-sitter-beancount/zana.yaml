@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-beancount
+description: Tree-sitter grammar for beancount.
+homepage: https://github.com/polarmutex/tree-sitter-beancount
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:polarmutex/tree-sitter-beancount
+treesitter:
+  build:
+    - language: beancount
+      grammar_dir: .

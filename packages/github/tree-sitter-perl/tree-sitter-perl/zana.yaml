@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-perl
+description: Tree-sitter grammar for perl.
+homepage: https://github.com/tree-sitter-perl/tree-sitter-perl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-perl/tree-sitter-perl
+treesitter:
+  build:
+    - language: perl
+      grammar_dir: .

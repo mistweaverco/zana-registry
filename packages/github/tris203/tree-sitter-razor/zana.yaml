@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-razor
+description: Tree-sitter grammar for razor.
+homepage: https://github.com/tris203/tree-sitter-razor
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tris203/tree-sitter-razor
+treesitter:
+  build:
+    - language: razor
+      grammar_dir: .

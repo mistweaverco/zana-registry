@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-fidl
+description: Tree-sitter grammar for fidl.
+homepage: https://github.com/google/tree-sitter-fidl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:google/tree-sitter-fidl
+treesitter:
+  build:
+    - language: fidl
+      grammar_dir: .

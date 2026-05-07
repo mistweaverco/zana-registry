@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: superhtml
+description: Tree-sitter grammar for superhtml.
+homepage: https://github.com/kristoff-it/superhtml
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:kristoff-it/superhtml
+treesitter:
+  build:
+    - language: superhtml
+      grammar_dir: tree-sitter-superhtml

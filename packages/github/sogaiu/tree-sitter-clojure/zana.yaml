@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-clojure
+description: Tree-sitter grammar for clojure.
+homepage: https://github.com/sogaiu/tree-sitter-clojure
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:sogaiu/tree-sitter-clojure
+treesitter:
+  build:
+    - language: clojure
+      grammar_dir: .

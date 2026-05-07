@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-go-sum
+description: Tree-sitter grammar for gosum.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-go-sum
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-go-sum
+treesitter:
+  build:
+    - language: gosum
+      grammar_dir: .

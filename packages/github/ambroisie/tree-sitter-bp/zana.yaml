@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-bp
+description: Tree-sitter grammar for bp.
+homepage: https://github.com/ambroisie/tree-sitter-bp
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ambroisie/tree-sitter-bp
+treesitter:
+  build:
+    - language: bp
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-comment
+description: Tree-sitter grammar for comment.
+homepage: https://github.com/stsewd/tree-sitter-comment
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:stsewd/tree-sitter-comment
+treesitter:
+  build:
+    - language: comment
+      grammar_dir: .

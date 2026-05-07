@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-runescript
+description: Tree-sitter grammar for runescript.
+homepage: https://github.com/2004Scape/tree-sitter-runescript
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:2004Scape/tree-sitter-runescript
+treesitter:
+  build:
+    - language: runescript
+      grammar_dir: .

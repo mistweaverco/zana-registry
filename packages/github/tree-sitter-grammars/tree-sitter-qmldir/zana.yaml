@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-qmldir
+description: Tree-sitter grammar for qmldir.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-qmldir
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-qmldir
+treesitter:
+  build:
+    - language: qmldir
+      grammar_dir: .

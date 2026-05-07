@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-go-template
+description: Tree-sitter grammars for gotmpl, helm.
+homepage: https://github.com/ngalaiko/tree-sitter-go-template
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ngalaiko/tree-sitter-go-template
+treesitter:
+  build:
+    - language: gotmpl
+      grammar_dir: .
+    - language: helm
+      grammar_dir: dialects/helm

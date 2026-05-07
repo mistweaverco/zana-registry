@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-tlaplus
+description: Tree-sitter grammar for tlaplus.
+homepage: https://github.com/tlaplus-community/tree-sitter-tlaplus
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tlaplus-community/tree-sitter-tlaplus
+treesitter:
+  build:
+    - language: tlaplus
+      grammar_dir: .

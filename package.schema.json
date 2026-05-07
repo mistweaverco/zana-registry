@@ -74,6 +74,9 @@
     "opt": {
       "$ref": "#/definitions/components:opt"
     },
+    "treesitter": {
+      "$ref": "#/definitions/components:treesitter"
+    },
     "ci_skip": {
       "oneOf": [
         {
@@ -617,7 +620,8 @@
         "LSP",
         "Linter",
         "Runtime",
-        "TUI"
+        "TUI",
+        "Tree-sitter-parser"
       ]
     },
     "components:deprecation": {
@@ -988,6 +992,33 @@
         }
       },
       "additionalProperties": false
+    },
+    "components:treesitter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "build": {
+          "type": "array",
+          "description": "Build tree-sitter parsers from upstream source using the tree-sitter CLI.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "language",
+              "grammar_dir"
+            ],
+            "properties": {
+              "language": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_\\-]+$"
+              },
+              "grammar_dir": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

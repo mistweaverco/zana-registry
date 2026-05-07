@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-fish
+description: Tree-sitter grammar for fish.
+homepage: https://github.com/ram02z/tree-sitter-fish
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ram02z/tree-sitter-fish
+treesitter:
+  build:
+    - language: fish
+      grammar_dir: .

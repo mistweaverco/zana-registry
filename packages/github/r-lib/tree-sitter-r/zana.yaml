@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-r
+description: Tree-sitter grammar for r.
+homepage: https://github.com/r-lib/tree-sitter-r
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:r-lib/tree-sitter-r
+treesitter:
+  build:
+    - language: r
+      grammar_dir: .

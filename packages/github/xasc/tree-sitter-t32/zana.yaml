@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-t32
+description: Tree-sitter grammar for t32.
+homepage: https://github.com/xasc/tree-sitter-t32
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:xasc/tree-sitter-t32
+treesitter:
+  build:
+    - language: t32
+      grammar_dir: .

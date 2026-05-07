@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-xcompose
+description: Tree-sitter grammar for xcompose.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-xcompose
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-xcompose
+treesitter:
+  build:
+    - language: xcompose
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-capnp
+description: Tree-sitter grammar for capnp.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-capnp
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-capnp
+treesitter:
+  build:
+    - language: capnp
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-elixir
+description: Tree-sitter grammar for elixir.
+homepage: https://github.com/elixir-lang/tree-sitter-elixir
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:elixir-lang/tree-sitter-elixir
+treesitter:
+  build:
+    - language: elixir
+      grammar_dir: .

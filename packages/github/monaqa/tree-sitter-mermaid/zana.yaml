@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-mermaid
+description: Tree-sitter grammar for mermaid.
+homepage: https://github.com/monaqa/tree-sitter-mermaid
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:monaqa/tree-sitter-mermaid
+treesitter:
+  build:
+    - language: mermaid
+      grammar_dir: .

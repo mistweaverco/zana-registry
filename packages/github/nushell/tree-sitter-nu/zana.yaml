@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-nu
+description: Tree-sitter grammar for nu.
+homepage: https://github.com/nushell/tree-sitter-nu
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:nushell/tree-sitter-nu
+treesitter:
+  build:
+    - language: nu
+      grammar_dir: .

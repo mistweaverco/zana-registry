@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-astro
+description: Tree-sitter grammar for astro.
+homepage: https://github.com/virchau13/tree-sitter-astro
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:virchau13/tree-sitter-astro
+treesitter:
+  build:
+    - language: astro
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-godot-resource
+description: Tree-sitter grammar for godot_resource.
+homepage: https://github.com/PrestonKnopp/tree-sitter-godot-resource
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:PrestonKnopp/tree-sitter-godot-resource
+treesitter:
+  build:
+    - language: godot_resource
+      grammar_dir: .

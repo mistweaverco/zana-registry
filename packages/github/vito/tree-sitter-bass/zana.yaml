@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-bass
+description: Tree-sitter grammar for bass.
+homepage: https://github.com/vito/tree-sitter-bass
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:vito/tree-sitter-bass
+treesitter:
+  build:
+    - language: bass
+      grammar_dir: .

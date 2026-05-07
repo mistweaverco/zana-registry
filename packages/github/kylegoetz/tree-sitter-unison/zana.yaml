@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-unison
+description: Tree-sitter grammar for unison.
+homepage: https://github.com/kylegoetz/tree-sitter-unison
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:kylegoetz/tree-sitter-unison
+treesitter:
+  build:
+    - language: unison
+      grammar_dir: .

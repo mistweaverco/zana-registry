@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-pkl
+description: Tree-sitter grammar for pkl.
+homepage: https://github.com/apple/tree-sitter-pkl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:apple/tree-sitter-pkl
+treesitter:
+  build:
+    - language: pkl
+      grammar_dir: .

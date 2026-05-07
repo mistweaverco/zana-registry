@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-gitcommit
+description: Tree-sitter grammar for gitcommit.
+homepage: https://github.com/gbprod/tree-sitter-gitcommit
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:gbprod/tree-sitter-gitcommit
+treesitter:
+  build:
+    - language: gitcommit
+      grammar_dir: .

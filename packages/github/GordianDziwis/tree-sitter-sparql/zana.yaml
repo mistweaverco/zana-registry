@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-sparql
+description: Tree-sitter grammar for sparql.
+homepage: https://github.com/GordianDziwis/tree-sitter-sparql
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:GordianDziwis/tree-sitter-sparql
+treesitter:
+  build:
+    - language: sparql
+      grammar_dir: .

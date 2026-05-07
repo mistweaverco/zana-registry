@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-roc
+description: Tree-sitter grammar for roc.
+homepage: https://github.com/faldor20/tree-sitter-roc
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:faldor20/tree-sitter-roc
+treesitter:
+  build:
+    - language: roc
+      grammar_dir: .

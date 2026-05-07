@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-circom
+description: Tree-sitter grammar for circom.
+homepage: https://github.com/Decurity/tree-sitter-circom
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:Decurity/tree-sitter-circom
+treesitter:
+  build:
+    - language: circom
+      grammar_dir: .

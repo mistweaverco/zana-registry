@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-vimdoc
+description: Tree-sitter grammar for vimdoc.
+homepage: https://github.com/neovim/tree-sitter-vimdoc
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:neovim/tree-sitter-vimdoc
+treesitter:
+  build:
+    - language: vimdoc
+      grammar_dir: .

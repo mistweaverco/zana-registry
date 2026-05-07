@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-leo
+description: Tree-sitter grammar for leo.
+homepage: https://github.com/r001/tree-sitter-leo
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:r001/tree-sitter-leo
+treesitter:
+  build:
+    - language: leo
+      grammar_dir: .

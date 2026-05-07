@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-cairo
+description: Tree-sitter grammar for cairo.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-cairo
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-cairo
+treesitter:
+  build:
+    - language: cairo
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-gdshader
+description: Tree-sitter grammar for gdshader.
+homepage: https://github.com/airblast-dev/tree-sitter-gdshader
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:airblast-dev/tree-sitter-gdshader
+treesitter:
+  build:
+    - language: gdshader
+      grammar_dir: .

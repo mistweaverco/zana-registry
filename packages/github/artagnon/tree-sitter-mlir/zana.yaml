@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-mlir
+description: Tree-sitter grammar for mlir.
+homepage: https://github.com/artagnon/tree-sitter-mlir
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:artagnon/tree-sitter-mlir
+treesitter:
+  build:
+    - language: mlir
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-djot
+description: Tree-sitter grammar for djot.
+homepage: https://github.com/treeman/tree-sitter-djot
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:treeman/tree-sitter-djot
+treesitter:
+  build:
+    - language: djot
+      grammar_dir: .

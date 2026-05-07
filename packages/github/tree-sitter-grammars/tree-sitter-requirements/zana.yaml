@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-requirements
+description: Tree-sitter grammar for requirements.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-requirements
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-requirements
+treesitter:
+  build:
+    - language: requirements
+      grammar_dir: .

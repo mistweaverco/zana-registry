@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-kcl
+description: Tree-sitter grammar for kcl.
+homepage: https://github.com/kcl-lang/tree-sitter-kcl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:kcl-lang/tree-sitter-kcl
+treesitter:
+  build:
+    - language: kcl
+      grammar_dir: .

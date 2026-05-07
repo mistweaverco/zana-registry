@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-m68k
+description: Tree-sitter grammar for m68k.
+homepage: https://github.com/grahambates/tree-sitter-m68k
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:grahambates/tree-sitter-m68k
+treesitter:
+  build:
+    - language: m68k
+      grammar_dir: .

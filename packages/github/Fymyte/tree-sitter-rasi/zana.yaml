@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-rasi
+description: Tree-sitter grammar for rasi.
+homepage: https://github.com/Fymyte/tree-sitter-rasi
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:Fymyte/tree-sitter-rasi
+treesitter:
+  build:
+    - language: rasi
+      grammar_dir: .

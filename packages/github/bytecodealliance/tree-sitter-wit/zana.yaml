@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-wit
+description: Tree-sitter grammar for wit.
+homepage: https://github.com/bytecodealliance/tree-sitter-wit
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:bytecodealliance/tree-sitter-wit
+treesitter:
+  build:
+    - language: wit
+      grammar_dir: .

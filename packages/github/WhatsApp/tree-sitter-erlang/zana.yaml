@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-erlang
+description: Tree-sitter grammar for erlang.
+homepage: https://github.com/WhatsApp/tree-sitter-erlang
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:WhatsApp/tree-sitter-erlang
+treesitter:
+  build:
+    - language: erlang
+      grammar_dir: .

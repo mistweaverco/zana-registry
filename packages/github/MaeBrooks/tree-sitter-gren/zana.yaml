@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-gren
+description: Tree-sitter grammar for gren.
+homepage: https://github.com/MaeBrooks/tree-sitter-gren
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:MaeBrooks/tree-sitter-gren
+treesitter:
+  build:
+    - language: gren
+      grammar_dir: .

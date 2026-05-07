@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-rnoweb
+description: Tree-sitter grammar for rnoweb.
+homepage: https://github.com/bamonroe/tree-sitter-rnoweb
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:bamonroe/tree-sitter-rnoweb
+treesitter:
+  build:
+    - language: rnoweb
+      grammar_dir: .

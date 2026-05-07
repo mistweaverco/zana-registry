@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-ron
+description: Tree-sitter grammar for ron.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-ron
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-ron
+treesitter:
+  build:
+    - language: ron
+      grammar_dir: .

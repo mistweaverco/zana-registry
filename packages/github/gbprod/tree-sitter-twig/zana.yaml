@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-twig
+description: Tree-sitter grammar for twig.
+homepage: https://github.com/gbprod/tree-sitter-twig
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:gbprod/tree-sitter-twig
+treesitter:
+  build:
+    - language: twig
+      grammar_dir: .

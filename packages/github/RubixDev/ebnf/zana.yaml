@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: ebnf
+description: Tree-sitter grammar for ebnf.
+homepage: https://github.com/RubixDev/ebnf
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:RubixDev/ebnf
+treesitter:
+  build:
+    - language: ebnf
+      grammar_dir: crates/tree-sitter-ebnf

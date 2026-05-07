@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-desktop
+description: Tree-sitter grammar for desktop.
+homepage: https://github.com/ValdezFOmar/tree-sitter-desktop
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ValdezFOmar/tree-sitter-desktop
+treesitter:
+  build:
+    - language: desktop
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-snakemake
+description: Tree-sitter grammar for snakemake.
+homepage: https://github.com/osthomas/tree-sitter-snakemake
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:osthomas/tree-sitter-snakemake
+treesitter:
+  build:
+    - language: snakemake
+      grammar_dir: .

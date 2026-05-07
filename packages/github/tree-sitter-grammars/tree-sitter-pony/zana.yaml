@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-pony
+description: Tree-sitter grammar for pony.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-pony
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-pony
+treesitter:
+  build:
+    - language: pony
+      grammar_dir: .

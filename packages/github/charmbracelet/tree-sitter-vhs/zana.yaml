@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-vhs
+description: Tree-sitter grammar for vhs.
+homepage: https://github.com/charmbracelet/tree-sitter-vhs
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:charmbracelet/tree-sitter-vhs
+treesitter:
+  build:
+    - language: vhs
+      grammar_dir: .

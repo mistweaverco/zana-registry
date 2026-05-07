@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-nim-format-string
+description: Tree-sitter grammar for nim_format_string.
+homepage: https://github.com/aMOPel/tree-sitter-nim-format-string
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:aMOPel/tree-sitter-nim-format-string
+treesitter:
+  build:
+    - language: nim_format_string
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-hurl
+description: Tree-sitter grammar for hurl.
+homepage: https://github.com/pfeiferj/tree-sitter-hurl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:pfeiferj/tree-sitter-hurl
+treesitter:
+  build:
+    - language: hurl
+      grammar_dir: .

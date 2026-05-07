@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: v-analyzer
+description: Tree-sitter grammar for v.
+homepage: https://github.com/vlang/v-analyzer
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:vlang/v-analyzer
+treesitter:
+  build:
+    - language: v
+      grammar_dir: tree_sitter_v

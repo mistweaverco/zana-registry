@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-typst
+description: Tree-sitter grammar for typst.
+homepage: https://github.com/uben0/tree-sitter-typst
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:uben0/tree-sitter-typst
+treesitter:
+  build:
+    - language: typst
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-systemtap
+description: Tree-sitter grammar for systemtap.
+homepage: https://github.com/ok-ryoko/tree-sitter-systemtap
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ok-ryoko/tree-sitter-systemtap
+treesitter:
+  build:
+    - language: systemtap
+      grammar_dir: .

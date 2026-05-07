@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-po
+description: Tree-sitter grammar for po.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-po
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-po
+treesitter:
+  build:
+    - language: po
+      grammar_dir: .

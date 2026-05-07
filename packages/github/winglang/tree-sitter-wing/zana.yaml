@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-wing
+description: Tree-sitter grammar for wing.
+homepage: https://github.com/winglang/tree-sitter-wing
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:winglang/tree-sitter-wing
+treesitter:
+  build:
+    - language: wing
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-tact
+description: Tree-sitter grammar for tact.
+homepage: https://github.com/tact-lang/tree-sitter-tact
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tact-lang/tree-sitter-tact
+treesitter:
+  build:
+    - language: tact
+      grammar_dir: .

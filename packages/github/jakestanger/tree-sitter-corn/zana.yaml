@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-corn
+description: Tree-sitter grammar for corn.
+homepage: https://github.com/jakestanger/tree-sitter-corn
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:jakestanger/tree-sitter-corn
+treesitter:
+  build:
+    - language: corn
+      grammar_dir: .

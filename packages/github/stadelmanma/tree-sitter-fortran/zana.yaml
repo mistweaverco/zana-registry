@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-fortran
+description: Tree-sitter grammar for fortran.
+homepage: https://github.com/stadelmanma/tree-sitter-fortran
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:stadelmanma/tree-sitter-fortran
+treesitter:
+  build:
+    - language: fortran
+      grammar_dir: .

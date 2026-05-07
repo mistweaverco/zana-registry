@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-toml
+description: Tree-sitter grammar for toml.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-toml
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-toml
+treesitter:
+  build:
+    - language: toml
+      grammar_dir: .

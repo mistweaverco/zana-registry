@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-kitty
+description: Tree-sitter grammar for kitty.
+homepage: https://github.com/OXY2DEV/tree-sitter-kitty
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:OXY2DEV/tree-sitter-kitty
+treesitter:
+  build:
+    - language: kitty
+      grammar_dir: .

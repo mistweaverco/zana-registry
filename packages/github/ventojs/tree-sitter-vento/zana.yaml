@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-vento
+description: Tree-sitter grammar for vento.
+homepage: https://github.com/ventojs/tree-sitter-vento
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:ventojs/tree-sitter-vento
+treesitter:
+  build:
+    - language: vento
+      grammar_dir: .

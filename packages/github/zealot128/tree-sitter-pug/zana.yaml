@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-pug
+description: Tree-sitter grammar for pug.
+homepage: https://github.com/zealot128/tree-sitter-pug
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:zealot128/tree-sitter-pug
+treesitter:
+  build:
+    - language: pug
+      grammar_dir: .

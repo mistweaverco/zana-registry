@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-sourcepawn
+description: Tree-sitter grammar for sourcepawn.
+homepage: https://github.com/nilshelmig/tree-sitter-sourcepawn
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:nilshelmig/tree-sitter-sourcepawn
+treesitter:
+  build:
+    - language: sourcepawn
+      grammar_dir: .

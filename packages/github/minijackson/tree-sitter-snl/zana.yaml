@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-snl
+description: Tree-sitter grammar for snl.
+homepage: https://github.com/minijackson/tree-sitter-snl
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:minijackson/tree-sitter-snl
+treesitter:
+  build:
+    - language: snl
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-matlab
+description: Tree-sitter grammar for matlab.
+homepage: https://github.com/acristoffers/tree-sitter-matlab
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:acristoffers/tree-sitter-matlab
+treesitter:
+  build:
+    - language: matlab
+      grammar_dir: .

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-eds
+description: Tree-sitter grammar for eds.
+homepage: https://github.com/uyha/tree-sitter-eds
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:uyha/tree-sitter-eds
+treesitter:
+  build:
+    - language: eds
+      grammar_dir: .

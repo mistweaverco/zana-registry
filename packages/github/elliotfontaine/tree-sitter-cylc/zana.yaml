@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-cylc
+description: Tree-sitter grammar for cylc.
+homepage: https://github.com/elliotfontaine/tree-sitter-cylc
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:elliotfontaine/tree-sitter-cylc
+treesitter:
+  build:
+    - language: cylc
+      grammar_dir: .

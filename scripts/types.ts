@@ -87,6 +87,9 @@ export interface MasonPackageInfo {
   licenses: string[];
   languages: string[];
   categories: string[];
+  treesitter?: {
+    build?: Array<{ language: string; grammar_dir: string }>;
+  };
   source: {
     id: string;
   };
@@ -124,6 +127,9 @@ export interface PackageInfo {
   categories: string[];
   experimental?: boolean;
   aliases?: string[];
+  treesitter?: {
+    build?: Array<{ language: string; grammar_dir: string }>;
+  };
   source: {
     id: string;
   };

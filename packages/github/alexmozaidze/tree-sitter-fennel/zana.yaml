@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-fennel
+description: Tree-sitter grammar for fennel.
+homepage: https://github.com/alexmozaidze/tree-sitter-fennel
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:alexmozaidze/tree-sitter-fennel
+treesitter:
+  build:
+    - language: fennel
+      grammar_dir: .

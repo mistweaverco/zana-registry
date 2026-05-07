@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-foam
+description: Tree-sitter grammar for foam.
+homepage: https://github.com/FoamScience/tree-sitter-foam
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:FoamScience/tree-sitter-foam
+treesitter:
+  build:
+    - language: foam
+      grammar_dir: .

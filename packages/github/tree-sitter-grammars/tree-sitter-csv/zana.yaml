@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-csv
+description: Tree-sitter grammars for csv, psv, tsv.
+homepage: https://github.com/tree-sitter-grammars/tree-sitter-csv
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:tree-sitter-grammars/tree-sitter-csv
+treesitter:
+  build:
+    - language: csv
+      grammar_dir: csv
+    - language: psv
+      grammar_dir: psv
+    - language: tsv
+      grammar_dir: tsv

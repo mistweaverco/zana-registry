@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-teal
+description: Tree-sitter grammar for teal.
+homepage: https://github.com/euclidianAce/tree-sitter-teal
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:euclidianAce/tree-sitter-teal
+treesitter:
+  build:
+    - language: teal
+      grammar_dir: .

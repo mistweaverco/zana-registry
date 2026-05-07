@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-inko
+description: Tree-sitter grammar for inko.
+homepage: https://github.com/inko-lang/tree-sitter-inko
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:inko-lang/tree-sitter-inko
+treesitter:
+  build:
+    - language: inko
+      grammar_dir: .

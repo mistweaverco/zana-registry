@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
+---
+name: tree-sitter-http
+description: Tree-sitter grammar for http.
+homepage: https://github.com/rest-nvim/tree-sitter-http
+licenses:
+  - MIT
+languages: []
+categories:
+  - Tree-sitter-parser
+source:
+  id: github:rest-nvim/tree-sitter-http
+treesitter:
+  build:
+    - language: http
+      grammar_dir: .
