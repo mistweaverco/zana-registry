@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import { type Package, PackageTreesitterIntegration } from '$lib/types';
 	import TagFilter from '$lib/TagFilter.svelte';
-	import { page } from '$app/state';
 	import { pushState, replaceState } from '$app/navigation';
 	import { browser } from '$app/environment';
 
@@ -55,11 +54,11 @@
 		);
 	}
 
-	const getCurrentSearch = () => (browser ? window.location.search : page.url.search);
+	const getCurrentSearch = () => (browser ? window.location.search : '');
 	const getCurrentSearchParams = () => new URLSearchParams(getCurrentSearch());
 
 	const applySearchParams = (next: URLSearchParams, mode: 'push' | 'replace' = 'push') => {
-		const url = new URL(browser ? window.location.href : page.url);
+		const url = new URL(browser ? window.location.href : '');
 		url.search = next.toString();
 		suppressNextUrlToStateSync = true;
 		if (mode === 'replace') replaceState(url, {});
