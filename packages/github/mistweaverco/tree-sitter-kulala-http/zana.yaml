@@ -15,4 +15,4 @@ source:
 treesitter:
   build:
     - language: kulala_http
-      grammar_dir: .
+      grammar_dir: kulala_http/kulala_http
