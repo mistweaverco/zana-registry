@@ -88,7 +88,11 @@ export interface MasonPackageInfo {
   languages: string[];
   categories: string[];
   treesitter?: {
-    build?: Array<{ language: string; grammar_dir: string }>;
+    build?: Array<{
+      language: string;
+      grammar_dir: string;
+      inherits?: string[];
+    }>;
   };
   source: {
     id: string;
@@ -128,7 +132,11 @@ export interface PackageInfo {
   experimental?: boolean;
   aliases?: string[];
   treesitter?: {
-    build?: Array<{ language: string; grammar_dir: string }>;
+    build?: Array<{
+      language: string;
+      grammar_dir: string;
+      inherits?: string[];
+    }>;
   };
   source: {
     id: string;
