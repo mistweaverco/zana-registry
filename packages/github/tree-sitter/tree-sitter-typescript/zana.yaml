@@ -17,7 +17,9 @@ treesitter:
   build:
     - language: typescript
       grammar_dir: typescript
+      inherits:
+        - javascript
     - language: tsx
       grammar_dir: tsx
-  inherits:
-    - javascript
+      inherits:
+        - javascript
