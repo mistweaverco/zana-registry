@@ -45,6 +45,36 @@
 
 	const uniqSorted = (values: string[]) =>
 		Array.from(new Set(values)).sort((a, b) => a.localeCompare(b));
+
+	/** Keep first-seen casing; drop duplicates that only differ by case. */
+	const dedupeInsensitiveSorted = (values: string[]): string[] => {
+		const seen = new Set<string>();
+		const out: string[] = [];
+		for (const v of values) {
+			const k = v.toLowerCase();
+			if (seen.has(k)) continue;
+			seen.add(k);
+			out.push(v);
+		}
+		return out.sort((a, b) => a.localeCompare(b));
+	};
+
+	/** Prefer registry spelling when the pool has a case-insensitive match. */
+	const canonicalizeAgainstPool = (selected: string[], pool: string[]): string[] => {
+		const out: string[] = [];
+		const seen = new Set<string>();
+		for (const raw of selected) {
+			const t = raw.trim();
+			if (!t) continue;
+			const canon = pool.find((p) => p.toLowerCase() === t.toLowerCase()) ?? t;
+			const k = canon.toLowerCase();
+			if (seen.has(k)) continue;
+			seen.add(k);
+			out.push(canon);
+		}
+		return out.sort((a, b) => a.localeCompare(b));
+	};
+
 	$: availableLanguages = uniqSorted(packages.flatMap((p) => p.languages ?? []));
 	$: availableCategories = uniqSorted(packages.flatMap((p) => p.categories ?? []));
 	$: if (detailsId && activePackageData) {
@@ -161,13 +191,23 @@
 				}
 				// Search by aliases
 				if (pkg.aliases && Array.isArray(pkg.aliases)) {
-					return pkg.aliases.some((alias: string) => {
-						const match = alias.toLowerCase().includes(q);
-						if (match) {
-							pkg.searchMatchInfo = `Alias ${alias} matched`;
-							return true;
-						}
-					});
+					const aliasMatch = pkg.aliases.find((alias: string) =>
+						alias.toLowerCase().includes(q)
+					);
+					if (aliasMatch !== undefined) {
+						pkg.searchMatchInfo = `Alias ${aliasMatch} matched`;
+						return true;
+					}
+				}
+				const langMatch = (pkg.languages ?? []).find((l) => l.toLowerCase().includes(q));
+				if (langMatch !== undefined) {
+					pkg.searchMatchInfo = `Language matched (${langMatch})`;
+					return true;
+				}
+				const catMatch = (pkg.categories ?? []).find((c) => c.toLowerCase().includes(q));
+				if (catMatch !== undefined) {
+					pkg.searchMatchInfo = `Category matched (${catMatch})`;
+					return true;
 				}
 				return false;
 			});
@@ -175,12 +215,16 @@
 
 		if (selectedLanguages.length > 0) {
 			const want = new Set(selectedLanguages.map((v) => v.toLowerCase()));
-			pkgs = pkgs.filter((pkg) => (pkg.languages ?? []).some((l) => want.has(l.toLowerCase())));
+			pkgs = pkgs.filter((pkg) =>
+				(pkg.languages ?? []).some((l) => want.has(l.toLowerCase()))
+			);
 		}
 
 		if (selectedCategories.length > 0) {
 			const want = new Set(selectedCategories.map((v) => v.toLowerCase()));
-			pkgs = pkgs.filter((pkg) => (pkg.categories ?? []).some((c) => want.has(c.toLowerCase())));
+			pkgs = pkgs.filter((pkg) =>
+				(pkg.categories ?? []).some((c) => want.has(c.toLowerCase()))
+			);
 		}
 		filteredPackages = pkgs.length !== packages.length ? pkgs : [];
 	};
@@ -188,8 +232,12 @@
 	const syncStateFromUrl = () => {
 		const sp = getCurrentSearchParams();
 		query = sp.get('q') ?? '';
-		selectedLanguages = uniqSorted(sp.getAll('lang').filter(Boolean));
-		selectedCategories = uniqSorted(sp.getAll('cat').filter(Boolean));
+		selectedLanguages = dedupeInsensitiveSorted(sp.getAll('lang').filter(Boolean));
+		selectedCategories = dedupeInsensitiveSorted(sp.getAll('cat').filter(Boolean));
+		if (packages.length > 0) {
+			selectedLanguages = canonicalizeAgainstPool(selectedLanguages, availableLanguages);
+			selectedCategories = canonicalizeAgainstPool(selectedCategories, availableCategories);
+		}
 		detailsId = sp.get('details');
 		filterPackages();
 	};
@@ -227,14 +275,18 @@
 	const addLanguage = (value: string) => {
 		const v = value.trim();
 		if (!v) return;
-		selectedLanguages = uniqSorted([...selectedLanguages, v]);
+		const canon =
+			availableLanguages.find((p) => p.toLowerCase() === v.toLowerCase()) ?? v;
+		if (selectedLanguages.some((x) => x.toLowerCase() === canon.toLowerCase())) return;
+		selectedLanguages = dedupeInsensitiveSorted([...selectedLanguages, canon]);
 		languageInput = '';
 		filterPackages();
 		void syncUrlFromState({ includeQuery: false });
 	};
 
 	const removeLanguage = (value: string) => {
-		selectedLanguages = selectedLanguages.filter((v) => v !== value);
+		const lower = value.toLowerCase();
+		selectedLanguages = selectedLanguages.filter((x) => x.toLowerCase() !== lower);
 		filterPackages();
 		void syncUrlFromState({ includeQuery: false });
 	};
@@ -242,14 +294,18 @@
 	const addCategory = (value: string) => {
 		const v = value.trim();
 		if (!v) return;
-		selectedCategories = uniqSorted([...selectedCategories, v]);
+		const canon =
+			availableCategories.find((p) => p.toLowerCase() === v.toLowerCase()) ?? v;
+		if (selectedCategories.some((x) => x.toLowerCase() === canon.toLowerCase())) return;
+		selectedCategories = dedupeInsensitiveSorted([...selectedCategories, canon]);
 		categoryInput = '';
 		filterPackages();
 		void syncUrlFromState({ includeQuery: false });
 	};
 
 	const removeCategory = (value: string) => {
-		selectedCategories = selectedCategories.filter((v) => v !== value);
+		const lower = value.toLowerCase();
+		selectedCategories = selectedCategories.filter((x) => x.toLowerCase() !== lower);
 		filterPackages();
 		void syncUrlFromState({ includeQuery: false });
 	};
@@ -267,6 +323,10 @@
 			return 0;
 		});
 		packages = sortedData;
+		const langPool = uniqSorted(sortedData.flatMap((p: Package) => p.languages ?? []));
+		const catPool = uniqSorted(sortedData.flatMap((p: Package) => p.categories ?? []));
+		selectedLanguages = canonicalizeAgainstPool(selectedLanguages, langPool);
+		selectedCategories = canonicalizeAgainstPool(selectedCategories, catPool);
 		filterPackages();
 	});
 

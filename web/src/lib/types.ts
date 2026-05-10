@@ -16,6 +16,8 @@ export interface Package {
 		build: {
 			language: string;
 			grammar_dir: string;
+			/** Base grammar language names for query inheritance (e.g. javascript for typescript). */
+			inherits?: string[];
 		}[];
 	};
 }
