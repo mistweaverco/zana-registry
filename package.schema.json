@@ -1030,6 +1030,14 @@
               },
               "grammar_dir": {
                 "type": "string"
+              },
+              "inherits": {
+                "type": "array",
+                "description": "Base tree-sitter language names whose queries this grammar extends (e.g. typescript inheriting javascript). Used by clients for Neovim query patching.",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_\\-]+$"
+                }
               }
             }
           }
