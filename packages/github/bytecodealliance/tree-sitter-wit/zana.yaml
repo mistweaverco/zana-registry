@@ -14,6 +14,8 @@ treesitter:
   build:
     - language: wit
       grammar_dir: .
+      integrations:
+        - neovim
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-wit
         semver: true

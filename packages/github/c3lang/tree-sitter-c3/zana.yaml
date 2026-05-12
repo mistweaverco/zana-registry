@@ -14,6 +14,8 @@ treesitter:
   build:
     - language: c3
       grammar_dir: .
+      integrations:
+        - neovim
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-c3
         semver: true

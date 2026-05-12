@@ -17,6 +17,8 @@ treesitter:
   build:
     - language: typescript
       grammar_dir: typescript
+      integrations:
+        - neovim
       inherits:
         - javascript
       external_queries:
@@ -24,6 +26,8 @@ treesitter:
         semver: true
     - language: tsx
       grammar_dir: tsx
+      integrations:
+        - neovim
       inherits:
         - javascript
       external_queries:

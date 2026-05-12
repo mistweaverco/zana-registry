@@ -14,6 +14,8 @@ treesitter:
   build:
     - language: robots_txt
       grammar_dir: .
+      integrations:
+        - neovim
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-robots_txt
         semver: true
