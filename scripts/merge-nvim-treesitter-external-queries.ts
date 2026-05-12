@@ -35,6 +35,7 @@ type ExternalQueries = { repo_url: string; semver?: boolean; ref?: string };
 type BuildRow = {
   language: string;
   grammar_dir: string;
+  integrations?: string[];
   inherits?: string[];
   external_queries?: ExternalQueries;
 };
@@ -113,11 +114,17 @@ const main = async () => {
 
     let changed = false;
     const nextBuild = doc.treesitter!.build!.map((row) => {
+      let integrations = row.integrations ?? [];
+      if (integrations.length === 0) {
+        integrations = ["neovim"];
+        changed = true;
+      }
+      const withIntegrations: BuildRow = { ...row, integrations };
       const want = langToQueries.get(row.language);
-      if (!want) return row;
-      if (sameExternal(row.external_queries, want)) return row;
+      if (!want) return withIntegrations;
+      if (sameExternal(withIntegrations.external_queries, want)) return withIntegrations;
       changed = true;
-      return { ...row, external_queries: { ...want } };
+      return { ...withIntegrations, external_queries: { ...want } };
     });
 
     if (!changed) continue;

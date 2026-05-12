@@ -14,16 +14,22 @@ treesitter:
   build:
     - language: csv
       grammar_dir: csv
+      integrations:
+        - neovim
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-csv
         semver: true
     - language: psv
       grammar_dir: psv
+      integrations:
+        - neovim
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-psv
         semver: true
     - language: tsv
       grammar_dir: tsv
+      integrations:
+        - neovim
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-tsv
         semver: true

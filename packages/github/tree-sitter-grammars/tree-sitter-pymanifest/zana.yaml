@@ -14,6 +14,8 @@ treesitter:
   build:
     - language: pymanifest
       grammar_dir: .
+      integrations:
+        - neovim
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-pymanifest
         semver: true

@@ -14,6 +14,8 @@ treesitter:
   build:
     - language: ebnf
       grammar_dir: crates/tree-sitter-ebnf
+      integrations:
+        - neovim
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ebnf
         semver: true

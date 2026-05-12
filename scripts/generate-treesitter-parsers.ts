@@ -19,6 +19,7 @@ type ExternalQueries = { repo_url: string; semver?: boolean };
 type BuildRow = {
   language: string;
   grammar_dir: string;
+  integrations: string[];
   external_queries?: ExternalQueries;
 };
 
@@ -77,7 +78,11 @@ const main = () => {
       }
     }
     const builds = repoToBuilds.get(repoKey) ?? [];
-    const row: BuildRow = { language: languageKey, grammar_dir };
+    const row: BuildRow = {
+      language: languageKey,
+      grammar_dir,
+      integrations: ["neovim"],
+    };
     if (external_queries) row.external_queries = external_queries;
     builds.push(row);
     repoToBuilds.set(repoKey, builds);

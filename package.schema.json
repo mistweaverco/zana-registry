@@ -1009,6 +1009,13 @@
       },
       "additionalProperties": false
     },
+    "enums:treesitter_editor_integration": {
+      "type": "string",
+      "enum": [
+        "neovim"
+      ],
+      "description": "Editor/IDE backend for tree-sitter-parser integration (query layout, install paths)."
+    },
     "components:treesitter": {
       "type": "object",
       "additionalProperties": false,
@@ -1021,7 +1028,8 @@
             "additionalProperties": false,
             "required": [
               "language",
-              "grammar_dir"
+              "grammar_dir",
+              "integrations"
             ],
             "properties": {
               "language": {
@@ -1030,6 +1038,14 @@
               },
               "grammar_dir": {
                 "type": "string"
+              },
+              "integrations": {
+                "type": "array",
+                "minItems": 1,
+                "description": "Which editor/IDE integration backends may use this build row (queries, Neovim parser install, etc.).",
+                "items": {
+                  "$ref": "#/definitions/enums:treesitter_editor_integration"
+                }
               },
               "inherits": {
                 "type": "array",

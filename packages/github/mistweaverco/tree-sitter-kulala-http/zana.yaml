@@ -16,3 +16,5 @@ treesitter:
   build:
     - language: kulala_http
       grammar_dir: .
+      integrations:
+        - neovim
