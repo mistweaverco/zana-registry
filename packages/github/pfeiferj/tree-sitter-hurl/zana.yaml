@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: hurl
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-hurl
+        semver: true

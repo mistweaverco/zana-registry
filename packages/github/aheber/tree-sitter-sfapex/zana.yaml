@@ -14,9 +14,21 @@ treesitter:
   build:
     - language: apex
       grammar_dir: apex
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-apex
+        semver: true
     - language: sflog
       grammar_dir: sflog
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-sflog
+        semver: true
     - language: soql
       grammar_dir: soql
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-soql
+        semver: true
     - language: sosl
       grammar_dir: sosl
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-sosl
+        semver: true

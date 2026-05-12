@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: superhtml
       grammar_dir: tree-sitter-superhtml
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-superhtml
+        semver: true

@@ -92,6 +92,11 @@ export interface MasonPackageInfo {
       language: string;
       grammar_dir: string;
       inherits?: string[];
+      external_queries?: {
+        repo_url: string;
+        ref?: string;
+        semver?: boolean;
+      };
     }>;
   };
   source: {
@@ -136,6 +141,11 @@ export interface PackageInfo {
       language: string;
       grammar_dir: string;
       inherits?: string[];
+      external_queries?: {
+        repo_url: string;
+        ref?: string;
+        semver?: boolean;
+      };
     }>;
   };
   source: {

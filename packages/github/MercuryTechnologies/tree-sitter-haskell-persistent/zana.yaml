@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: haskell_persistent
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-haskell_persistent
+        semver: true

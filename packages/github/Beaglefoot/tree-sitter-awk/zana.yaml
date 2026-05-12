@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: awk
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-awk
+        semver: true

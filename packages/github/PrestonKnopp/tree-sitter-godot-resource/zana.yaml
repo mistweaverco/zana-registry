@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: godot_resource
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-godot_resource
+        semver: true

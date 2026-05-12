@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: cue
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-cue
+        semver: true

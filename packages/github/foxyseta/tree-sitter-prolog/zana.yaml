@@ -14,5 +14,11 @@ treesitter:
   build:
     - language: problog
       grammar_dir: grammars/problog
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-problog
+        semver: true
     - language: prolog
       grammar_dir: grammars/prolog
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-prolog
+        semver: true

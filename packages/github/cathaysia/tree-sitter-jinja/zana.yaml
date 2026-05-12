@@ -14,5 +14,11 @@ treesitter:
   build:
     - language: jinja
       grammar_dir: tree-sitter-jinja
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-jinja
+        semver: true
     - language: jinja_inline
       grammar_dir: tree-sitter-jinja_inline
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-jinja_inline
+        semver: true
