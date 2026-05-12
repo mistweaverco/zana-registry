@@ -8,7 +8,18 @@ type RegistryEntry = {
   source?: {
     parser_url?: string;
     parser_location?: string;
+    queries_url?: string;
+    queries_semver?: boolean;
+    type?: string;
   };
+};
+
+type ExternalQueries = { repo_url: string; semver?: boolean };
+
+type BuildRow = {
+  language: string;
+  grammar_dir: string;
+  external_queries?: ExternalQueries;
 };
 
 type RegistryJson = Record<string, RegistryEntry> & { $schema?: string };
@@ -45,13 +56,11 @@ const main = () => {
   ) as RegistryJson;
 
   // Group registry entries by parser repo (GitHub only).
-  const repoToBuilds = new Map<
-    RepoKey,
-    Array<{ language: string; grammar_dir: string }>
-  >();
+  const repoToBuilds = new Map<RepoKey, BuildRow[]>();
 
-  for (const [languageKey, entry] of Object.entries(registry)) {
+  for (const [languageKey, raw] of Object.entries(registry)) {
     if (languageKey === "$schema") continue;
+    const entry = raw as RegistryEntry;
     const parserUrl = entry?.source?.parser_url;
     if (!parserUrl) continue;
 
@@ -59,8 +68,18 @@ const main = () => {
     if (!repoKey) continue;
 
     const grammar_dir = entry?.source?.parser_location ?? ".";
+    const qUrl = entry?.source?.queries_url?.trim();
+    let external_queries: ExternalQueries | undefined;
+    if (qUrl) {
+      external_queries = { repo_url: qUrl };
+      if (entry?.source?.queries_semver) {
+        external_queries.semver = true;
+      }
+    }
     const builds = repoToBuilds.get(repoKey) ?? [];
-    builds.push({ language: languageKey, grammar_dir });
+    const row: BuildRow = { language: languageKey, grammar_dir };
+    if (external_queries) row.external_queries = external_queries;
+    builds.push(row);
     repoToBuilds.set(repoKey, builds);
   }
 

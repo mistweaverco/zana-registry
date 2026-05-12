@@ -14,5 +14,11 @@ treesitter:
   build:
     - language: ziggy
       grammar_dir: tree-sitter-ziggy
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ziggy
+        semver: true
     - language: ziggy_schema
       grammar_dir: tree-sitter-ziggy-schema
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ziggy_schema
+        semver: true

@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: vala
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-vala
+        semver: true

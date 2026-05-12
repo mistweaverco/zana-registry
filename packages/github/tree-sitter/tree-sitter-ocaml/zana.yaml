@@ -14,5 +14,11 @@ treesitter:
   build:
     - language: ocaml
       grammar_dir: grammars/ocaml
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ocaml
+        semver: true
     - language: ocaml_interface
       grammar_dir: grammars/interface
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ocaml_interface
+        semver: true

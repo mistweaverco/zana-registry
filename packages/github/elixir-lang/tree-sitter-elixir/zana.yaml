@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: elixir
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-elixir
+        semver: true

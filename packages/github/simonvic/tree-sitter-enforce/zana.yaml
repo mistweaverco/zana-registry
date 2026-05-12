@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: enforce
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-enforce
+        semver: true

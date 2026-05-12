@@ -14,5 +14,11 @@ treesitter:
   build:
     - language: markdown
       grammar_dir: tree-sitter-markdown
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown
+        semver: true
     - language: markdown_inline
       grammar_dir: tree-sitter-markdown-inline
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown_inline
+        semver: true

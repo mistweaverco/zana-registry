@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: groq
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-groq
+        semver: true

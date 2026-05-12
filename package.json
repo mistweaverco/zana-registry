@@ -2,6 +2,11 @@
   "name": "zana-registry",
   "module": "scripts/updater/index.ts",
   "type": "module",
+  "scripts": {
+    "validate-schema": "bun scripts/validate-schema.ts",
+    "merge-nvim-treesitter-queries": "bun scripts/merge-nvim-treesitter-external-queries.ts",
+    "merge-nvim-treesitter-queries:dry-run": "bun scripts/merge-nvim-treesitter-external-queries.ts --dry-run"
+  },
   "devDependencies": {
     "@eslint/js": "9.20.0",
     "@types/bun": "latest",

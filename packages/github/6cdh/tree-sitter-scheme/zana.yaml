@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: scheme
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-scheme
+        semver: true

@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: runescript
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-runescript
+        semver: true

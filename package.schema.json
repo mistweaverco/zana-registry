@@ -1038,9 +1038,35 @@
                   "type": "string",
                   "pattern": "^[a-zA-Z0-9_\\-]+$"
                 }
+              },
+              "external_queries": {
+                "$ref": "#/definitions/components:treesitter_external_queries",
+                "description": "Optional separate git repository that only ships Neovim tree-sitter query files (.scm), e.g. neovim-treesitter/nvim-treesitter-queries-* (see neovim-treesitter/treesitter-parser-registry)."
               }
             }
           }
+        }
+      }
+    },
+    "components:treesitter_external_queries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo_url"
+      ],
+      "properties": {
+        "repo_url": {
+          "type": "string",
+          "minLength": 1,
+          "description": "HTTPS (or git) URL of the query-only repository."
+        },
+        "ref": {
+          "type": "string",
+          "description": "Optional branch, tag, or commit for git clone. If omitted and semver is false, the remote default branch is used."
+        },
+        "semver": {
+          "type": "boolean",
+          "description": "When true and ref is omitted, clients may resolve the highest semver tag (queries_semver in the neovim-treesitter parser registry)."
         }
       }
     }

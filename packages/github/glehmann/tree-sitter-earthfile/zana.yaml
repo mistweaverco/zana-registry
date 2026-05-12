@@ -14,3 +14,6 @@ treesitter:
   build:
     - language: earthfile
       grammar_dir: .
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-earthfile
+        semver: true
