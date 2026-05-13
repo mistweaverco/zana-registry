@@ -24,5 +24,7 @@ treesitter:
       integrations:
         - neovim
       external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ocaml_interface
-        semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ocaml_interface
+          semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ocaml
+          semver: true

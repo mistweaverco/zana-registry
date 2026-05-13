@@ -17,5 +17,7 @@ treesitter:
       integrations:
         - neovim
       external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-objc
-        semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-objc
+          semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-c
+          semver: true

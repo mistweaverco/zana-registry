@@ -17,8 +17,10 @@ treesitter:
       integrations:
         - neovim
       external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-problog
-        semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-problog
+          semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-prolog
+          semver: true
     - language: prolog
       grammar_dir: grammars/prolog
       integrations:
