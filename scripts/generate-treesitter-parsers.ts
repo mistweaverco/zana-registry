@@ -5,12 +5,15 @@ import * as yaml from "js-yaml";
 import { getZanaYAMLHeader } from "./utils";
 
 type RegistryEntry = {
+  requires?: string[];
   source?: {
     parser_url?: string;
     parser_location?: string;
     queries_url?: string;
     queries_semver?: boolean;
     type?: string;
+    url?: string;
+    semver?: boolean;
   };
 };
 
@@ -18,8 +21,9 @@ type ExternalQueries = { repo_url: string; semver?: boolean };
 
 type BuildRow = {
   language: string;
-  grammar_dir: string;
+  grammar_dir?: string;
   integrations: string[];
+  queries_only?: boolean;
   external_queries?: ExternalQueries;
 };
 
@@ -44,6 +48,27 @@ const parseGithubRepo = (url: string): RepoKey | null => {
 };
 
 const ensureDir = (dir: string) => fs.mkdirSync(dir, { recursive: true });
+
+const queryOnlyExternalQueries = (
+  entry: RegistryEntry | undefined,
+): ExternalQueries | undefined => {
+  if (entry?.source?.type !== "queries_only") return undefined;
+  const repo_url = entry.source.url?.trim();
+  if (!repo_url) return undefined;
+  const external_queries: ExternalQueries = { repo_url };
+  if (entry.source.semver) external_queries.semver = true;
+  return external_queries;
+};
+
+const addBuildRow = (builds: BuildRow[], row: BuildRow) => {
+  const existing = builds.find((b) => b.language === row.language);
+  if (!existing) {
+    builds.push(row);
+    return;
+  }
+  if (row.queries_only) existing.queries_only = true;
+  if (row.external_queries) existing.external_queries = row.external_queries;
+};
 
 const main = () => {
   if (!fs.existsSync(REGISTRY_PATH)) {
@@ -84,7 +109,20 @@ const main = () => {
       integrations: ["neovim"],
     };
     if (external_queries) row.external_queries = external_queries;
-    builds.push(row);
+    addBuildRow(builds, row);
+
+    for (const req of entry.requires ?? []) {
+      const language = req.trim();
+      if (!language) continue;
+      const reqExternalQueries = queryOnlyExternalQueries(registry[language]);
+      if (!reqExternalQueries) continue;
+      addBuildRow(builds, {
+        language,
+        integrations: ["neovim"],
+        queries_only: true,
+        external_queries: reqExternalQueries,
+      });
+    }
     repoToBuilds.set(repoKey, builds);
   }
 

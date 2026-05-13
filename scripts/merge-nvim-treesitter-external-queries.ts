@@ -51,9 +51,10 @@ type ExternalQueriesSpec = ExternalQueriesEntry | ExternalQueriesEntry[];
 
 type BuildRow = {
   language: string;
-  grammar_dir: string;
+  grammar_dir?: string;
   integrations?: string[];
   inherits?: string[];
+  queries_only?: boolean;
   external_queries?: ExternalQueriesSpec;
 };
 
@@ -138,6 +139,9 @@ const mergeNvListInto = (
   return cur ?? canonicalExternalQueriesSpec([]);
 };
 
+const isNvimQueriesOnly = (entry?: NvimRegistryEntry): boolean =>
+  (entry?.source?.type ?? "").trim() === "queries_only";
+
 const externalListWouldChange = (
   existing: ExternalQueriesSpec | undefined,
   wants: ExternalQueriesEntry[],
@@ -145,6 +149,20 @@ const externalListWouldChange = (
   if (wants.length === 0) return false;
   const merged = mergeNvListInto(existing, wants);
   return !entryArraysEqual(asEntryArray(existing), asEntryArray(merged));
+};
+
+const removeExternalQueriesByURL = (
+  existing: ExternalQueriesSpec | undefined,
+  repoURLs: Set<string>,
+): { next?: ExternalQueriesSpec; changed: boolean } => {
+  if (repoURLs.size === 0) return { next: existing, changed: false };
+  const cur = asEntryArray(existing);
+  const nextEntries = cur.filter((e) => !repoURLs.has(e.repo_url));
+  if (nextEntries.length === cur.length) return { next: existing, changed: false };
+  return {
+    next: nextEntries.length > 0 ? canonicalExternalQueriesSpec(nextEntries) : undefined,
+    changed: true,
+  };
 };
 
 /** Primary language query repo plus each `requires` language (deduped by repo). */
@@ -174,10 +192,39 @@ const desiredNvimExternalQueries = (
   push(primary);
 
   for (const req of entry?.requires ?? []) {
+    if (isNvimQueriesOnly(registry[req.trim()])) continue;
     const dep = langToQueries.get(req.trim());
     if (dep) push({ ...dep });
   }
 
+  return out;
+};
+
+/** Query-only required languages need their own build rows so Neovim receives queries/<lang>. */
+const desiredNvimQueryOnlyBuildRows = (
+  registry: NvimRegistry,
+  langToQueries: Map<string, ExternalQueriesEntry>,
+  lang: string,
+): Array<{ language: string; external_queries: ExternalQueriesEntry }> => {
+  lang = lang.trim();
+  if (lang === "" || lang === "$schema") return [];
+  const entry = registry[lang];
+  const out: Array<{ language: string; external_queries: ExternalQueriesEntry }> = [];
+  const seen = new Set<string>();
+
+  const push = (language: string) => {
+    const clean = language.trim();
+    if (!clean || seen.has(clean)) return;
+    const nvimEntry = registry[clean];
+    if (!isNvimQueriesOnly(nvimEntry)) return;
+    const external_queries = langToQueries.get(clean);
+    if (!external_queries) return;
+    seen.add(clean);
+    out.push({ language: clean, external_queries });
+  };
+
+  if (isNvimQueriesOnly(entry)) push(lang);
+  for (const req of entry?.requires ?? []) push(req);
   return out;
 };
 
@@ -231,6 +278,7 @@ const main = async () => {
     scanned++;
 
     let changed = false;
+    const queryOnlyRows = new Map<string, ExternalQueriesEntry>();
     const nextBuild = doc.treesitter!.build!.map((row) => {
       let integrations = row.integrations ?? [];
       if (integrations.length === 0) {
@@ -238,15 +286,82 @@ const main = async () => {
         changed = true;
       }
       const withIntegrations: BuildRow = { ...row, integrations };
+      const desiredQueryOnlyRows = desiredNvimQueryOnlyBuildRows(
+        registry,
+        langToQueries,
+        row.language.trim(),
+      );
+      for (const desired of desiredQueryOnlyRows) {
+        queryOnlyRows.set(desired.language, desired.external_queries);
+      }
+      const queryOnlyRepoURLs = new Set(
+        desiredQueryOnlyRows
+          .filter((desired) => desired.language !== row.language.trim())
+          .map((desired) => desired.external_queries.repo_url),
+      );
+      const pruned = removeExternalQueriesByURL(
+        withIntegrations.external_queries,
+        queryOnlyRepoURLs,
+      );
+      if (pruned.changed) {
+        changed = true;
+        if (pruned.next) {
+          withIntegrations.external_queries = pruned.next;
+        } else {
+          delete withIntegrations.external_queries;
+        }
+      }
       const desired = desiredNvimExternalQueries(registry, langToQueries, row.language.trim());
+      const shouldBeQueriesOnly = isNvimQueriesOnly(registry[row.language.trim()]);
+      if (shouldBeQueriesOnly && withIntegrations.queries_only !== true) {
+        withIntegrations.queries_only = true;
+        changed = true;
+      }
       if (desired.length === 0) return withIntegrations;
-      if (!externalListWouldChange(withIntegrations.external_queries, desired)) return withIntegrations;
+      if (!externalListWouldChange(withIntegrations.external_queries, desired)) {
+        return withIntegrations;
+      }
       changed = true;
       return {
         ...withIntegrations,
         external_queries: mergeNvListInto(withIntegrations.external_queries, desired),
       };
     });
+
+    for (const [language, externalQueries] of queryOnlyRows) {
+      const existing = nextBuild.find((row) => row.language.trim() === language);
+      if (existing) {
+        let rowChanged = false;
+        const integrations = existing.integrations ?? [];
+        if (integrations.length === 0) {
+          existing.integrations = ["neovim"];
+          rowChanged = true;
+        } else if (!integrations.includes("neovim")) {
+          existing.integrations = [...integrations, "neovim"];
+          rowChanged = true;
+        }
+        if (existing.queries_only !== true) {
+          existing.queries_only = true;
+          rowChanged = true;
+        }
+        if (externalListWouldChange(existing.external_queries, [externalQueries])) {
+          existing.external_queries = mergeNvListInto(existing.external_queries, [
+            externalQueries,
+          ]);
+          rowChanged = true;
+        }
+        if (rowChanged) changed = true;
+        continue;
+      }
+
+      nextBuild.push({
+        language,
+        integrations: ["neovim"],
+        queries_only: true,
+        external_queries: canonicalExternalQueriesSpec([externalQueries]),
+      });
+      changed = true;
+    }
 
     if (!changed) continue;
 

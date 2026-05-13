@@ -21,5 +21,10 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-html
           semver: true
-        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-html_tags
-          semver: true
+    - language: html_tags
+      integrations:
+        - neovim
+      queries_only: true
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-html_tags
+        semver: true

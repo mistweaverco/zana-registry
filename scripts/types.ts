@@ -65,6 +65,26 @@ export type LuaRocksManifestResponse = {
   };
 };
 
+type TreeSitterExternalQueries =
+  | {
+      repo_url: string;
+      ref?: string;
+      semver?: boolean;
+    }
+  | Array<{
+      repo_url: string;
+      ref?: string;
+      semver?: boolean;
+    }>;
+
+type TreeSitterBuildRow = {
+  language: string;
+  grammar_dir?: string;
+  inherits?: string[];
+  queries_only?: boolean;
+  external_queries?: TreeSitterExternalQueries;
+};
+
 export type NuGetDataResponse = {
   versions: string[];
 };
@@ -88,16 +108,7 @@ export interface MasonPackageInfo {
   languages: string[];
   categories: string[];
   treesitter?: {
-    build?: Array<{
-      language: string;
-      grammar_dir: string;
-      inherits?: string[];
-      external_queries?: {
-        repo_url: string;
-        ref?: string;
-        semver?: boolean;
-      };
-    }>;
+    build?: TreeSitterBuildRow[];
   };
   source: {
     id: string;
@@ -137,16 +148,7 @@ export interface PackageInfo {
   experimental?: boolean;
   aliases?: string[];
   treesitter?: {
-    build?: Array<{
-      language: string;
-      grammar_dir: string;
-      inherits?: string[];
-      external_queries?: {
-        repo_url: string;
-        ref?: string;
-        semver?: boolean;
-      };
-    }>;
+    build?: TreeSitterBuildRow[];
   };
   source: {
     id: string;
