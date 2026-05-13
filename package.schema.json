@@ -16,7 +16,6 @@
     },
     "homepage": {
       "type": "string",
-      "format": "uri",
       "pattern": "^https?://",
       "description": "A URL to the package's homepage."
     },
@@ -642,6 +641,37 @@
         }
       }
     },
+    "components:source_version_override": {
+      "type": "object",
+      "description": "Per-constraint overrides for source id and optional fetch/build fields.",
+      "additionalProperties": false,
+      "required": ["constraint", "id"],
+      "properties": {
+        "constraint": {
+          "type": "string",
+          "pattern": "^semver:(<=)?v?\\d+\\.\\d+\\.\\d+([\\-+][0-9A-Za-z\\.-]+)?"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "build": {
+          "$ref": "#/definitions/components:source_build_any"
+        },
+        "bin": {
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/definitions/components:sources:github:release/properties/asset"
+        },
+        "extra_packages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "components:source": {
       "allOf": [
         {
@@ -650,24 +680,7 @@
             "version_overrides": {
               "type": "array",
               "items": {
-                "type": "object",
-                "allOf": [
-                  {
-                    "type": "object",
-                    "required": [
-                      "constraint"
-                    ],
-                    "properties": {
-                      "constraint": {
-                        "type": "string",
-                        "pattern": "^semver:(<=)?v?\\d+\\.\\d+\\.\\d+([\\-+][0-9A-Za-z\\.-]+)?"
-                      }
-                    }
-                  },
-                  {
-                    "$ref": "#/definitions/components:source/definitions/Source"
-                  }
-                ]
+                "$ref": "#/definitions/components:source_version_override"
               }
             }
           }
@@ -686,6 +699,9 @@
               "$ref": "#/definitions/components:sources:codeberg"
             },
             {
+              "$ref": "#/definitions/components:sources:composer"
+            },
+            {
               "$ref": "#/definitions/components:sources:gem"
             },
             {
@@ -701,10 +717,19 @@
               "$ref": "#/definitions/components:sources:golang"
             },
             {
+              "$ref": "#/definitions/components:sources:luarocks"
+            },
+            {
               "$ref": "#/definitions/components:sources:npm"
             },
             {
+              "$ref": "#/definitions/components:sources:nuget"
+            },
+            {
               "$ref": "#/definitions/components:sources:openvsx"
+            },
+            {
+              "$ref": "#/definitions/components:sources:opam"
             },
             {
               "$ref": "#/definitions/components:sources:pypi"
@@ -772,6 +797,16 @@
         }
       }
     },
+    "components:sources:composer": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^composer:.+"
+        }
+      }
+    },
     "components:sources:gem": {
       "type": "object",
       "required": [
@@ -796,6 +831,51 @@
         }
       }
     },
+    "components:source_build_shell": {
+      "type": "object",
+      "description": "Single shell script run in the package source directory after checkout.",
+      "additionalProperties": false,
+      "required": ["run"],
+      "properties": {
+        "run": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Shell script to execute (e.g. npm install && npm run compile)."
+        }
+      }
+    },
+    "components:source_build_matrix_row": {
+      "type": "object",
+      "description": "Platform-specific build step (target + run + optional output path keys such as bin).",
+      "required": ["target", "run"],
+      "properties": {
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Platform id (see enums:platform in the client; e.g. unix, win, linux_x64)."
+        },
+        "run": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "components:source_build_any": {
+      "description": "Either a single shell block or a list of per-platform build rows.",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/components:source_build_shell"
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/components:source_build_matrix_row"
+          }
+        }
+      ]
+    },
     "components:sources:github": {
       "oneOf": [
         {
@@ -816,6 +896,9 @@
         "id": {
           "type": "string",
           "pattern": "^github:.+/.+"
+        },
+        "build": {
+          "$ref": "#/definitions/components:source_build_any"
         }
       }
     },
@@ -928,6 +1011,16 @@
         }
       }
     },
+    "components:sources:luarocks": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^luarocks:.+"
+        }
+      }
+    },
     "components:sources:npm": {
       "type": "object",
       "required": [
@@ -947,6 +1040,23 @@
         }
       }
     },
+    "components:sources:nuget": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^nuget:.+"
+        },
+        "extra_packages": {
+          "type": "array",
+          "description": "Extra NuGet packages required by the main package to function.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "components:sources:openvsx": {
       "type": "object",
       "required": [
@@ -956,6 +1066,16 @@
         "id": {
           "type": "string",
           "pattern": "^openvsx:.+"
+        }
+      }
+    },
+    "components:sources:opam": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^opam:.+"
         }
       }
     },
