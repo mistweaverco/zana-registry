@@ -1148,7 +1148,6 @@
             "additionalProperties": false,
             "required": [
               "language",
-              "grammar_dir",
               "integrations"
             ],
             "properties": {
@@ -1175,6 +1174,10 @@
                   "pattern": "^[a-zA-Z0-9_\\-]+$"
                 }
               },
+              "queries_only": {
+                "type": "boolean",
+                "description": "When true, this build row installs Neovim query files only and does not require a tree-sitter parser build."
+              },
               "external_queries": {
                 "oneOf": [
                   {
@@ -1190,7 +1193,31 @@
                 ],
                 "description": "Optional separate git repository or repositories that only ship Neovim tree-sitter query files (.scm), e.g. neovim-treesitter/nvim-treesitter-queries-* (see neovim-treesitter/treesitter-parser-registry). May be a single object or a list when multiple query repos apply to the same grammar."
               }
-            }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "queries_only": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "queries_only"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "external_queries"
+                  ]
+                },
+                "else": {
+                  "required": [
+                    "grammar_dir"
+                  ]
+                }
+              }
+            ]
           }
         }
       }
