@@ -26,5 +26,7 @@ treesitter:
       integrations:
         - neovim
       external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-terraform
-        semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-terraform
+          semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-hcl
+          semver: true

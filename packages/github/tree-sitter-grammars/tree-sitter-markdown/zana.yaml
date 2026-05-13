@@ -17,8 +17,10 @@ treesitter:
       integrations:
         - neovim
       external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown
-        semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown
+          semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown_inline
+          semver: true
     - language: markdown_inline
       grammar_dir: tree-sitter-markdown-inline
       integrations:

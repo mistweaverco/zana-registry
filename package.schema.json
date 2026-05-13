@@ -1056,8 +1056,19 @@
                 }
               },
               "external_queries": {
-                "$ref": "#/definitions/components:treesitter_external_queries",
-                "description": "Optional separate git repository that only ships Neovim tree-sitter query files (.scm), e.g. neovim-treesitter/nvim-treesitter-queries-* (see neovim-treesitter/treesitter-parser-registry)."
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/components:treesitter_external_queries"
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/definitions/components:treesitter_external_queries"
+                    }
+                  }
+                ],
+                "description": "Optional separate git repository or repositories that only ship Neovim tree-sitter query files (.scm), e.g. neovim-treesitter/nvim-treesitter-queries-* (see neovim-treesitter/treesitter-parser-registry). May be a single object or a list when multiple query repos apply to the same grammar."
               }
             }
           }
