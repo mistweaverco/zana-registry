@@ -1,13 +1,11 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tree-sitter-hcl
-description: Tree-sitter grammar for hcl and terraform.
+description: Tree-sitter grammar for terraform.
 homepage: https://github.com/MichaHoffmann/tree-sitter-hcl
 licenses:
   - MIT
-languages:
-  - terraform
-  - hcl
+languages: []
 categories:
   - Tree-sitter-parser
 source:
@@ -23,10 +21,3 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-hcl
           semver: true
-    - language: hcl
-      grammar_dir: dialects/terraform
-      integrations:
-        - neovim
-      external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-hcl
-        semver: true

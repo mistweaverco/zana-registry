@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tree-sitter-glimmer-javascript
-description: Tree-sitter grammar for glimmer_javascript.
+description: Tree-sitter grammars for ecma, glimmer_javascript.
 homepage: https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript
 licenses:
   - MIT
@@ -12,17 +12,17 @@ source:
   id: github:NullVoxPopuli/tree-sitter-glimmer-javascript
 treesitter:
   build:
-    - language: glimmer_javascript
-      grammar_dir: .
-      integrations:
-        - neovim
-      external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-glimmer_javascript
-        semver: true
     - language: ecma
       integrations:
         - neovim
       queries_only: true
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ecma
+        semver: true
+    - language: glimmer_javascript
+      grammar_dir: .
+      integrations:
+        - neovim
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-glimmer_javascript
         semver: true

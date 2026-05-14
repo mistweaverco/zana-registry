@@ -24,6 +24,12 @@ import * as fs from "fs";
 import * as path from "path";
 import * as yaml from "js-yaml";
 
+const args = process.argv.slice(2);
+
+const filterPackagesByNameContains = args.includes("--filter-by-name")
+  ? args[args.indexOf("--filter-by-name") + 1]
+  : null;
+
 const getApiURL = (sourceId: string): string | null => {
   let apiURL: string | null = null;
   // New format: provider:package-id (e.g., "github:owner/repo", "npm:package-name")
@@ -215,7 +221,9 @@ const getDataFromApi = async (
   }
 };
 
-const getGithubLatestTagFallback = async (sourceId: string): Promise<string | null> => {
+const getGithubLatestTagFallback = async (
+  sourceId: string,
+): Promise<string | null> => {
   const parts = sourceId.split(":");
   if (parts.length < 2) {
     return null;
@@ -247,7 +255,9 @@ const getGithubLatestTagFallback = async (sourceId: string): Promise<string | nu
   }
 };
 
-const getGithubLatestCommitFallback = async (sourceId: string): Promise<string | null> => {
+const getGithubLatestCommitFallback = async (
+  sourceId: string,
+): Promise<string | null> => {
   const parts = sourceId.split(":");
   if (parts.length < 2) {
     return null;
@@ -535,13 +545,22 @@ const convertToMasonFormat = (newFormatId: string): string => {
 const findPackageFiles = (dir: string): string[] => {
   const packageFiles: string[] = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       // Recursively search subdirectories
       packageFiles.push(...findPackageFiles(fullPath));
     } else if (entry.isFile() && entry.name === "zana.yaml") {
+      // if parent filterPackagesByNameContains is set,
+      // only include if parent directory name contains the filter string
+      // e.g., --filter-by-name=tree-sitter-svelte will include tree-sitter-svelte/zana.yaml
+      // but exclude tree-sitter-python/zana.yaml
+      if (filterPackagesByNameContains) {
+        const parentDirName = path.basename(path.dirname(fullPath));
+        if (!parentDirName.includes(filterPackagesByNameContains)) {
+          continue;
+        }
+      }
       packageFiles.push(fullPath);
     }
   }

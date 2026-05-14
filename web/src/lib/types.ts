@@ -15,9 +15,13 @@ export interface Package {
 	treesitter?: {
 		build: {
 			language: string;
-			grammar_dir: string;
+			grammar_dir?: string;
+			integrations?: string[];
+			requires?: string[];
 			/** Base grammar language names for query inheritance (e.g. javascript for typescript). */
 			inherits?: string[];
+			injections?: string[];
+			queries_only?: boolean;
 		}[];
 	};
 }

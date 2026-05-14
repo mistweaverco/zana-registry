@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tree-sitter-qmljs
-description: Tree-sitter grammar for qmljs.
+description: Tree-sitter grammars for ecma, qmljs.
 homepage: https://github.com/yuja/tree-sitter-qmljs
 licenses:
   - MIT
@@ -12,17 +12,17 @@ source:
   id: github:yuja/tree-sitter-qmljs
 treesitter:
   build:
-    - language: qmljs
-      grammar_dir: .
-      integrations:
-        - neovim
-      external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-qmljs
-        semver: true
     - language: ecma
       integrations:
         - neovim
       queries_only: true
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ecma
+        semver: true
+    - language: qmljs
+      grammar_dir: .
+      integrations:
+        - neovim
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-qmljs
         semver: true

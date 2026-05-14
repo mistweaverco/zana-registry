@@ -5,6 +5,8 @@
  * and merges query repo metadata into external_queries (single object or array).
  * Supports `source.queries_url` / `queries_semver` (type external_queries) and
  * `source.url` / `semver` (type queries_only, e.g. html_tags).
+ * When the nvim entry has `queries_url` (non queries_only), fetches that repo's
+ * `parser.json` on main/master and merges `inject_deps` into `treesitter.build[].injections`.
  * If the nvim entry lists `requires`, each required language's query repo is merged too
  * (e.g. html → html_tags; angular → html + html_tags).
  *
@@ -54,6 +56,7 @@ type BuildRow = {
   grammar_dir?: string;
   integrations?: string[];
   inherits?: string[];
+  injections?: string[];
   queries_only?: boolean;
   external_queries?: ExternalQueriesSpec;
 };
@@ -62,6 +65,69 @@ type ZanaDoc = {
   name?: string;
   treesitter?: { build?: BuildRow[] };
   [key: string]: unknown;
+};
+
+type ParserJson = { inject_deps?: string[] };
+
+/** https://github.com/org/repo → raw parser.json URLs (main then master). */
+const githubQueriesUrlToParserJsonUrls = (queriesUrl: string): string[] => {
+  const u = queriesUrl.trim().replace(/\.git\/?$/i, "");
+  const m = u.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)\/?$/i);
+  if (!m) return [];
+  const [, owner, repo] = m;
+  const base = `https://raw.githubusercontent.com/${owner}/${repo}`;
+  return [`${base}/refs/heads/main/parser.json`, `${base}/refs/heads/master/parser.json`];
+};
+
+const fetchInjectDepsFromQueriesUrl = async (queriesUrl: string): Promise<string[] | undefined> => {
+  for (const url of githubQueriesUrlToParserJsonUrls(queriesUrl)) {
+    try {
+      const res = await fetch(url, { redirect: "follow" });
+      if (!res.ok) continue;
+      const j = (await res.json()) as ParserJson;
+      const raw = j.inject_deps;
+      if (!Array.isArray(raw) || raw.length === 0) return undefined;
+      const seen = new Set<string>();
+      const out: string[] = [];
+      for (const x of raw) {
+        const s = String(x).trim();
+        if (!s || seen.has(s)) continue;
+        seen.add(s);
+        out.push(s);
+      }
+      out.sort((a, b) => a.localeCompare(b));
+      return out.length > 0 ? out : undefined;
+    } catch {
+      /* try next */
+    }
+  }
+  return undefined;
+};
+
+const mergeInjectionsFromQueriesRepoParserJson = async (
+  registry: NvimRegistry,
+  build: BuildRow[],
+): Promise<boolean> => {
+  let changed = false;
+  for (const row of build) {
+    const lang = row.language.trim();
+    if (!lang || lang === "$schema") continue;
+    const entry = registry[lang] as NvimRegistryEntry | undefined;
+    const src = entry?.source;
+    if (!src) continue;
+    if ((src.type ?? "").trim() === "queries_only") continue;
+    const qUrl = src.queries_url?.trim();
+    if (!qUrl) continue;
+    const fetched = await fetchInjectDepsFromQueriesUrl(qUrl);
+    if (!fetched?.length) continue;
+    const cur = new Set([...(row.injections ?? []), ...fetched]);
+    const next = [...cur].sort((a, b) => a.localeCompare(b));
+    if (JSON.stringify(row.injections ?? []) !== JSON.stringify(next)) {
+      row.injections = next;
+      changed = true;
+    }
+  }
+  return changed;
 };
 
 const findPackageFiles = (dir: string): string[] => {
@@ -360,6 +426,10 @@ const main = async () => {
         queries_only: true,
         external_queries: canonicalExternalQueriesSpec([externalQueries]),
       });
+      changed = true;
+    }
+
+    if (await mergeInjectionsFromQueriesRepoParserJson(registry, nextBuild)) {
       changed = true;
     }
 

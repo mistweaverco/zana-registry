@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tree-sitter-angular
-description: Tree-sitter grammar for angular.
+description: Tree-sitter grammars for angular, html_tags.
 homepage: https://github.com/dlvandenberg/tree-sitter-angular
 licenses:
   - MIT

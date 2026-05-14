@@ -21,3 +21,5 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-cpp
           semver: true
+      injections:
+        - cuda

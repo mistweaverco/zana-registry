@@ -620,7 +620,8 @@
         "Linter",
         "Runtime",
         "TUI",
-        "Tree-sitter-parser"
+        "Tree-sitter-parser",
+        "Tree-sitter-queries"
       ]
     },
     "components:deprecation": {
@@ -1166,6 +1167,22 @@
                   "$ref": "#/definitions/enums:treesitter_editor_integration"
                 }
               },
+              "requires": {
+                "type": "array",
+                "description": "Other tree-sitter language names that must be installed before this grammar can build (parser-layer dependency).",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_\\-]+$"
+                }
+              },
+              "injections": {
+                "type": "array",
+                "description": "Host language names for injected regions (runtime/editor metadata; clients may use for layered resolution).",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_\\-]+$"
+                }
+              },
               "inherits": {
                 "type": "array",
                 "description": "Base tree-sitter language names whose queries this grammar extends (e.g. typescript inheriting javascript). Used by clients for Neovim query patching.",
@@ -1225,14 +1242,16 @@
     "components:treesitter_external_queries": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "repo_url"
-      ],
       "properties": {
         "repo_url": {
           "type": "string",
           "minLength": 1,
           "description": "HTTPS (or git) URL of the query-only repository."
+        },
+        "package": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Registry source id (e.g. github:neovim-treesitter/nvim-treesitter-queries-typescript) whose git URL clients resolve instead of repo_url."
         },
         "ref": {
           "type": "string",
@@ -1242,7 +1261,19 @@
           "type": "boolean",
           "description": "When true and ref is omitted, clients may resolve the highest semver tag (queries_semver in the neovim-treesitter parser registry)."
         }
-      }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "repo_url"
+          ]
+        },
+        {
+          "required": [
+            "package"
+          ]
+        }
+      ]
     }
   }
 }
