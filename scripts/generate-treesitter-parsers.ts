@@ -25,6 +25,13 @@ type BuildRow = {
   integrations: string[];
   queries_only?: boolean;
   external_queries?: ExternalQueries;
+  /** From queries repo parser.json inject_deps when queries_url is set (Neovim nvim-treesitter-queries-*). */
+  injections?: string[];
+};
+
+/** parser.json in nvim-treesitter query repos (e.g. main/parser.json). */
+type QueriesRepoParserJson = {
+  inject_deps?: string[];
 };
 
 type RegistryJson = Record<string, RegistryEntry> & { $schema?: string };
@@ -45,6 +52,48 @@ const parseGithubRepo = (url: string): RepoKey | null => {
   );
   if (!m) return null;
   return `${m[1]}/${m[2]}`;
+};
+
+/** Map https://github.com/org/repo → raw parser.json on default branch. */
+const githubQueriesUrlToParserJsonUrls = (queriesUrl: string): string[] => {
+  const u = queriesUrl.trim().replace(/\.git\/?$/i, "");
+  const m = u.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)\/?$/i);
+  if (!m) return [];
+  const [, owner, repo] = m;
+  const base = `https://raw.githubusercontent.com/${owner}/${repo}`;
+  return [
+    `${base}/refs/heads/main/parser.json`,
+    `${base}/refs/heads/master/parser.json`,
+  ];
+};
+
+const fetchInjectDepsFromQueriesRepo = async (
+  queriesUrl: string,
+): Promise<string[] | undefined> => {
+  const urls = githubQueriesUrlToParserJsonUrls(queriesUrl);
+  if (urls.length === 0) return undefined;
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, { redirect: "follow" });
+      if (!res.ok) continue;
+      const j = (await res.json()) as QueriesRepoParserJson;
+      const raw = j.inject_deps;
+      if (!Array.isArray(raw) || raw.length === 0) return undefined;
+      const seen = new Set<string>();
+      const out: string[] = [];
+      for (const x of raw) {
+        const s = String(x).trim();
+        if (!s || seen.has(s)) continue;
+        seen.add(s);
+        out.push(s);
+      }
+      out.sort((a, b) => a.localeCompare(b));
+      return out.length > 0 ? out : undefined;
+    } catch {
+      /* try next branch URL */
+    }
+  }
+  return undefined;
 };
 
 const ensureDir = (dir: string) => fs.mkdirSync(dir, { recursive: true });
@@ -68,9 +117,20 @@ const addBuildRow = (builds: BuildRow[], row: BuildRow) => {
   }
   if (row.queries_only) existing.queries_only = true;
   if (row.external_queries) existing.external_queries = row.external_queries;
+  if (row.injections?.length) {
+    const merged = new Set([
+      ...(existing.injections ?? []),
+      ...row.injections.map((s) => s.trim()).filter(Boolean),
+    ]);
+    existing.injections = [...merged].sort((a, b) => a.localeCompare(b));
+  }
 };
 
-const main = () => {
+const main = async () => {
+  const args = process.argv.slice(2);
+  const keepExisting = args.includes("--keep-existing");
+  const posArgs = args.filter((a) => a !== "--keep-existing");
+
   if (!fs.existsSync(REGISTRY_PATH)) {
     throw new Error(
       `Missing registry file at ${REGISTRY_PATH}. Download it first.`,
@@ -102,6 +162,9 @@ const main = () => {
         external_queries.semver = true;
       }
     }
+    const injections = qUrl
+      ? await fetchInjectDepsFromQueriesRepo(qUrl)
+      : undefined;
     const builds = repoToBuilds.get(repoKey) ?? [];
     const row: BuildRow = {
       language: languageKey,
@@ -109,6 +172,7 @@ const main = () => {
       integrations: ["neovim"],
     };
     if (external_queries) row.external_queries = external_queries;
+    if (injections?.length) row.injections = injections;
     addBuildRow(builds, row);
 
     for (const req of entry.requires ?? []) {
@@ -129,14 +193,16 @@ const main = () => {
   const generated: string[] = [];
   const skippedExisting: string[] = [];
 
-  for (const [repoKey, builds] of [...repoToBuilds.entries()].sort((a, b) =>
-    a[0].localeCompare(b[0]),
-  )) {
+  for (
+    const [repoKey, builds] of [...repoToBuilds.entries()].sort((a, b) =>
+      a[0].localeCompare(b[0])
+    )
+  ) {
     const [owner, repo] = repoKey.split("/");
     const packageDir = path.join(PACKAGES_DIR, owner, repo);
     const yamlPath = path.join(packageDir, "zana.yaml");
 
-    if (fs.existsSync(yamlPath)) {
+    if (keepExisting && fs.existsSync(yamlPath)) {
       skippedExisting.push(yamlPath);
       continue;
     }
@@ -147,7 +213,9 @@ const main = () => {
     const languagesList = builds.map((b) => b.language).join(", ");
     const doc = {
       name: repo,
-      description: `Tree-sitter grammar${builds.length === 1 ? "" : "s"} for ${languagesList}.`,
+      description: `Tree-sitter grammar${
+        builds.length === 1 ? "" : "s"
+      } for ${languagesList}.`,
       homepage: `https://github.com/${repoKey}`,
       licenses: ["MIT"],
       languages: [],
@@ -173,5 +241,7 @@ const main = () => {
   if (generated.length > 0) console.log(generated.join("\n"));
 };
 
-main();
-
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

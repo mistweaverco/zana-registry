@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tree-sitter-javascript
-description: Tree-sitter grammar for javascript.
+description: Tree-sitter grammars for ecma, javascript, jsx.
 homepage: https://github.com/tree-sitter/tree-sitter-javascript
 licenses:
   - MIT
@@ -12,19 +12,19 @@ source:
   id: github:tree-sitter/tree-sitter-javascript
 treesitter:
   build:
-    - language: javascript
-      grammar_dir: .
-      integrations:
-        - neovim
-      external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-javascript
-        semver: true
     - language: ecma
       integrations:
         - neovim
       queries_only: true
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ecma
+        semver: true
+    - language: javascript
+      grammar_dir: .
+      integrations:
+        - neovim
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-javascript
         semver: true
     - language: jsx
       integrations:

@@ -5,7 +5,8 @@
   "scripts": {
     "validate-schema": "bun scripts/validate-schema.ts",
     "merge-nvim-treesitter-queries": "bun scripts/merge-nvim-treesitter-external-queries.ts",
-    "merge-nvim-treesitter-queries:dry-run": "bun scripts/merge-nvim-treesitter-external-queries.ts --dry-run"
+    "merge-nvim-treesitter-queries:dry-run": "bun scripts/merge-nvim-treesitter-external-queries.ts --dry-run",
+    "generate-treesitter-parsers": "bun scripts/generate-treesitter-parsers.ts"
   },
   "devDependencies": {
     "@eslint/js": "9.20.0",

@@ -65,23 +65,23 @@ export type LuaRocksManifestResponse = {
   };
 };
 
-type TreeSitterExternalQueries =
-  | {
-      repo_url: string;
-      ref?: string;
-      semver?: boolean;
-    }
-  | Array<{
-      repo_url: string;
-      ref?: string;
-      semver?: boolean;
-    }>;
+type TreeSitterExternalQueryEntry = {
+  repo_url?: string;
+  package?: string;
+  ref?: string;
+  semver?: boolean;
+};
+
+type TreeSitterExternalQueries = TreeSitterExternalQueryEntry | TreeSitterExternalQueryEntry[];
 
 type TreeSitterBuildRow = {
   language: string;
   grammar_dir?: string;
+  requires?: string[];
   inherits?: string[];
+  injections?: string[];
   queries_only?: boolean;
+  integrations?: string[];
   external_queries?: TreeSitterExternalQueries;
 };
 

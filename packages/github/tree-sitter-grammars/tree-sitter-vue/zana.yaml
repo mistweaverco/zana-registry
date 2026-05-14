@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tree-sitter-vue
-description: Tree-sitter grammar for vue.
+description: Tree-sitter grammars for html_tags, vue.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-vue
 licenses:
   - MIT
@@ -12,13 +12,6 @@ source:
   id: github:tree-sitter-grammars/tree-sitter-vue
 treesitter:
   build:
-    - language: vue
-      grammar_dir: .
-      integrations:
-        - neovim
-      external_queries:
-        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-vue
-        semver: true
     - language: html_tags
       integrations:
         - neovim
@@ -26,3 +19,17 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-html_tags
         semver: true
+    - language: vue
+      grammar_dir: .
+      integrations:
+        - neovim
+      external_queries:
+        repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-vue
+        semver: true
+      injections:
+        - css
+        - javascript
+        - pug
+        - scss
+        - tsx
+        - typescript
