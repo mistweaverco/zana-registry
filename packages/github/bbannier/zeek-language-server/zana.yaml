@@ -13,8 +13,8 @@ source:
   id: github:bbannier/zeek-language-server
   asset:
     - target: linux_x64_gnu
-      file: zeek-language-server-x86_64-unknown-linux-gnu
+      file: zeek-language-server-x86_64-unknown-linux-gnu.tar.xz
     - target: darwin_x64
-      file: zeek-language-server-x86_64-apple-darwin
+      file: zeek-language-server-x86_64-apple-darwin.tar.xz
 bin:
   zeek-language-server: "{{source.asset.file}}"
