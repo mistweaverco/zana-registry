@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: luau-lsp
-description: An implementation of a language server for the Luau programming language.
+description: |
+  An implementation of a language server for the Luau programming
+  language.
 homepage: https://github.com/JohnnyMorganz/luau-lsp
 licenses:
   - MIT
@@ -24,6 +26,7 @@ source:
       file: luau-lsp-win64.zip
       bin: luau-lsp.exe
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: vscode:https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/{{version}}/editors/code/package.json
 bin:
-  luau-lsp: '{{source.asset.bin}}'
+  luau-lsp: "{{source.asset.bin}}"

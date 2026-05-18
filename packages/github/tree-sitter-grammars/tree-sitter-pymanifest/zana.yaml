@@ -5,7 +5,8 @@ description: Tree-sitter grammar for pymanifest.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-pymanifest
 licenses:
   - MIT
-languages: []
+languages:
+  - pymanifest
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-pymanifest
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

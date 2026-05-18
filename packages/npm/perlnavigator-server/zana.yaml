@@ -12,6 +12,7 @@ categories:
 source:
   id: npm:perlnavigator-server
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: vscode:https://raw.githubusercontent.com/bscan/PerlNavigator/v{{version}}/package.json
 bin:
   perlnavigator: node:node_modules/perlnavigator-server/out/server.js

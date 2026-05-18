@@ -24,6 +24,7 @@ source:
       file: elp-macos-aarch64-apple-darwin-otp-26.2.tar.gz
       bin: elp
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: vscode:https://raw.githubusercontent.com/WhatsApp/erlang-language-platform/{{version}}/editors/code/package.json
 bin:
-  elp: '{{source.asset.bin}}'
+  elp: "{{source.asset.bin}}"

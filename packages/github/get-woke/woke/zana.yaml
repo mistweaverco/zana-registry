@@ -36,4 +36,4 @@ source:
       file: woke-{{ version | strip_prefix "v" }}-windows-386.zip
       bin: woke-{{ version | strip_prefix "v" }}-windows-386/woke.exe
 bin:
-  woke: '{{source.asset.bin}}'
+  woke: "{{source.asset.bin}}"

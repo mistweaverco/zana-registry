@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: fprettify
-description: fprettify is an auto-formatter for modern Fortran code that imposes strict whitespace formatting, written in Python.
+description: |
+  fprettify is an auto-formatter for modern Fortran code that
+  imposes strict whitespace formatting, written in Python.
 homepage: https://pypi.org/project/fprettify
 licenses:
   - GPL-3.0-or-later

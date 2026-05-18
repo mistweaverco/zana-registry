@@ -26,4 +26,4 @@ source:
       file: joker-win-amd64.zip
       bin: joker.exe
 bin:
-  joker: '{{source.asset.bin}}'
+  joker: "{{source.asset.bin}}"

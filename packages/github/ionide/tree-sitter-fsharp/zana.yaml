@@ -5,7 +5,8 @@ description: Tree-sitter grammar for fsharp.
 homepage: https://github.com/ionide/tree-sitter-fsharp
 licenses:
   - MIT
-languages: []
+languages:
+  - fsharp
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-fsharp
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

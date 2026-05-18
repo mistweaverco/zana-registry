@@ -2,7 +2,8 @@
 ---
 name: erlang-debugger
 description: |
-  Step by step debugger for Erlang, powered by the Erlang/OTP interpreter and following the DAP protocol.
+  Step by step debugger for Erlang, powered by the Erlang/OTP interpreter and
+  following the DAP protocol.
 homepage: https://erlang-ls.github.io/
 licenses:
   - Apache-2.0
@@ -22,4 +23,4 @@ source:
         </dev/null rebar3 escriptize
       els_dap: _build/default/bin/els_dap
 bin:
-  els_dap: '{{source.build.els_dap}}'
+  els_dap: "{{source.build.els_dap}}"

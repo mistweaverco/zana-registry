@@ -2,7 +2,8 @@
 ---
 name: gotestsum
 description: |
-  'go test' runner with output optimized for humans, JUnit XML for CI integration, and a summary of the test results.
+  'go test' runner with output optimized for humans, JUnit XML for CI
+  integration, and a summary of the test results.
 homepage: https://github.com/gotestyourself/gotestsum
 licenses:
   - Apache-2.0

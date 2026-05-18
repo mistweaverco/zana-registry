@@ -51,4 +51,4 @@ source:
           file: stylua-win64.zip
           bin: stylua.exe
 bin:
-  stylua: '{{source.asset.bin}}'
+  stylua: "{{source.asset.bin}}"

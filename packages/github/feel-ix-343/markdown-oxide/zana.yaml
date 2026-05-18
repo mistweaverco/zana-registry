@@ -2,8 +2,8 @@
 ---
 name: markdown-oxide
 description: |
-  Markdown language server with advanced linking support made to be completely compatible with Obsidian; An Obsidian
-  Language Server.
+  Markdown language server with advanced linking support made to be completely
+  compatible with Obsidian; An Obsidian Language Server.
 homepage: https://github.com/Feel-ix-343/markdown-oxide
 licenses:
   - CC0-1.0
@@ -30,4 +30,4 @@ source:
       file: markdown-oxide-{{version}}-x86_64-pc-windows-gnu.zip
       bin: markdown-oxide-{{version}}-x86_64-pc-windows-gnu/markdown-oxide.exe
 bin:
-  markdown-oxide: '{{source.asset.bin}}'
+  markdown-oxide: "{{source.asset.bin}}"

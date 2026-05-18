@@ -5,7 +5,8 @@ description: Tree-sitter grammar for scheme.
 homepage: https://github.com/6cdh/tree-sitter-scheme
 licenses:
   - MIT
-languages: []
+languages:
+  - scheme
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-scheme
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

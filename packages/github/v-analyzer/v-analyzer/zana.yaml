@@ -25,6 +25,7 @@ source:
       file: v-analyzer-windows-x86_64.zip
       bin: v-analyzer.exe
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: vscode:https://raw.githubusercontent.com/v-analyzer/v-analyzer/{{version}}/editors/code/package.json
 bin:
-  v-analyzer: '{{source.asset.bin}}'
+  v-analyzer: "{{source.asset.bin}}"

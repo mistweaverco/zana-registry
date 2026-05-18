@@ -19,3 +19,16 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-hcl
         semver: true
+    - language: terraform
+      grammar_dir: dialects/terraform
+      integrations:
+        - neovim
+      external_queries:
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-terraform
+          semver: true
+        - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-hcl
+          semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

@@ -5,7 +5,9 @@ description: Tree-sitter grammars for ecma, glimmer_javascript.
 homepage: https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript
 licenses:
   - MIT
-languages: []
+languages:
+  - ecma
+  - glimmer_javascript
 categories:
   - Tree-sitter-parser
 source:
@@ -26,3 +28,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-glimmer_javascript
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

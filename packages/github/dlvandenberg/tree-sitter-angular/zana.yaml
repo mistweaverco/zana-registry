@@ -5,7 +5,9 @@ description: Tree-sitter grammars for angular, html_tags.
 homepage: https://github.com/dlvandenberg/tree-sitter-angular
 licenses:
   - MIT
-languages: []
+languages:
+  - angular
+  - html_tags
 categories:
   - Tree-sitter-parser
 source:
@@ -28,3 +30,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-html_tags
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

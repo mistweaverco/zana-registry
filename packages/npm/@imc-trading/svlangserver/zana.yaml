@@ -2,8 +2,8 @@
 ---
 name: svlangserver
 description: |
-  A language server for systemverilog that has been tested to work with coc.nvim, VSCode, Sublime Text 4, emacs, and
-  Neovim.
+  A language server for systemverilog that has been tested to work with
+  coc.nvim, VSCode, Sublime Text 4, emacs, and Neovim.
 homepage: https://github.com/imc-trading/svlangserver
 licenses:
   - MIT

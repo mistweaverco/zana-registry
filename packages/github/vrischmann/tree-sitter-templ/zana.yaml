@@ -5,7 +5,8 @@ description: Tree-sitter grammar for templ.
 homepage: https://github.com/vrischmann/tree-sitter-templ
 licenses:
   - MIT
-languages: []
+languages:
+  - templ
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-templ
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

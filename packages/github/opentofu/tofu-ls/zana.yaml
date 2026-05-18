@@ -37,4 +37,4 @@ source:
       file: tofu-ls_Windows_x86_64.tar.gz
       bin: tofu-ls.exe
 bin:
-  tofu-ls: '{{source.asset.bin}}'
+  tofu-ls: "{{source.asset.bin}}"

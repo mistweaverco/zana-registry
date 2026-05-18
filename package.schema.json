@@ -76,6 +76,9 @@
     "treesitter": {
       "$ref": "#/definitions/components:treesitter"
     },
+    "requires": {
+      "$ref": "#/definitions/components:requires"
+    },
     "ci_skip": {
       "oneOf": [
         {
@@ -90,14 +93,7 @@
       ]
     }
   },
-  "required": [
-    "name",
-    "description",
-    "homepage",
-    "licenses",
-    "categories",
-    "source"
-  ],
+  "required": ["name", "description", "homepage", "licenses", "categories", "source"],
   "definitions": {
     "enums:spdx-license": {
       "$comment": "SPDX license list; releaseDate=2022-12-15; source=https://raw.githubusercontent.com/spdx/license-list-data/master/json/licenses.json",
@@ -624,13 +620,38 @@
         "Tree-sitter-queries"
       ]
     },
+    "components:requires": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "all": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/components:requires-package-ref"
+          },
+          "description": "All listed package source IDs must be installed."
+        },
+        "one": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/components:requires-package-ref"
+          },
+          "description": "At least one of the listed package source IDs must be installed."
+        }
+      }
+    },
+    "components:requires-package-ref": {
+      "type": "string",
+      "pattern": "^(pkg:[a-zA-Z0-9_\\-]+/[^@\\s]+|(?:github|gitlab|codeberg|npm|pypi|golang|cargo|gem|composer|luarocks|nuget|opam|openvsx|generic):[^@\\s]+)(?:@[^@\\s]+)?$",
+      "description": "Registry package source ID, optionally with @version."
+    },
     "components:deprecation": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "since",
-        "message"
-      ],
+      "required": ["since", "message"],
       "properties": {
         "message": {
           "type": "string",
@@ -776,9 +797,7 @@
     },
     "components:sources:cargo": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -788,9 +807,7 @@
     },
     "components:sources:codeberg": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -810,9 +827,7 @@
     },
     "components:sources:gem": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -822,9 +837,7 @@
     },
     "components:sources:generic": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -890,9 +903,7 @@
     "components:sources:github:repository": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -905,10 +916,7 @@
     },
     "components:sources:github:release": {
       "type": "object",
-      "required": [
-        "id",
-        "asset"
-      ],
+      "required": ["id", "asset"],
       "properties": {
         "id": {
           "type": "string",
@@ -921,10 +929,7 @@
               "items": {
                 "type": "object",
                 "additionalProperties": true,
-                "required": [
-                  "file",
-                  "target"
-                ],
+                "required": ["file", "target"],
                 "properties": {
                   "target": {
                     "oneOf": [
@@ -958,9 +963,7 @@
             {
               "type": "object",
               "additionalProperties": true,
-              "required": [
-                "file"
-              ],
+              "required": ["file"],
               "properties": {
                 "file": {
                   "oneOf": [
@@ -983,9 +986,7 @@
     },
     "components:sources:gitlab": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -995,9 +996,7 @@
     },
     "components:sources:golang": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -1024,9 +1023,7 @@
     },
     "components:sources:npm": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -1060,9 +1057,7 @@
     },
     "components:sources:openvsx": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -1082,9 +1077,7 @@
     },
     "components:sources:pypi": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -1132,9 +1125,7 @@
     },
     "enums:treesitter_editor_integration": {
       "type": "string",
-      "enum": [
-        "neovim"
-      ],
+      "enum": ["neovim"],
       "description": "Editor/IDE backend for tree-sitter-parser integration (query layout, install paths)."
     },
     "components:treesitter": {
@@ -1147,10 +1138,7 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": [
-              "language",
-              "integrations"
-            ],
+            "required": ["language", "integrations"],
             "properties": {
               "language": {
                 "type": "string",
@@ -1219,19 +1207,13 @@
                       "const": true
                     }
                   },
-                  "required": [
-                    "queries_only"
-                  ]
+                  "required": ["queries_only"]
                 },
                 "then": {
-                  "required": [
-                    "external_queries"
-                  ]
+                  "required": ["external_queries"]
                 },
                 "else": {
-                  "required": [
-                    "grammar_dir"
-                  ]
+                  "required": ["grammar_dir"]
                 }
               }
             ]
@@ -1264,14 +1246,10 @@
       },
       "oneOf": [
         {
-          "required": [
-            "repo_url"
-          ]
+          "required": ["repo_url"]
         },
         {
-          "required": [
-            "package"
-          ]
+          "required": ["package"]
         }
       ]
     }

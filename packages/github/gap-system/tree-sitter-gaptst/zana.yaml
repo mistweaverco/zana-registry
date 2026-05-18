@@ -5,7 +5,8 @@ description: Tree-sitter grammar for gaptst.
 homepage: https://github.com/gap-system/tree-sitter-gaptst
 licenses:
   - MIT
-languages: []
+languages:
+  - gaptst
 categories:
   - Tree-sitter-parser
 source:
@@ -21,3 +22,7 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-gap
           semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

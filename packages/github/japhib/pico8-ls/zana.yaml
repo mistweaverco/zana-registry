@@ -13,6 +13,7 @@ source:
   id: github:japhib/pico8-ls
   build:
     run: |
+
       npm install
       npm run compile
       npm install --production

@@ -5,7 +5,8 @@ description: Tree-sitter grammar for racket.
 homepage: https://github.com/6cdh/tree-sitter-racket
 licenses:
   - MIT
-languages: []
+languages:
+  - racket
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-racket
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

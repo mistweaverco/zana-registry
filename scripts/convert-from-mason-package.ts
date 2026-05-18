@@ -57,12 +57,26 @@ const convertPackageId = (masonId: string): string => {
   return `${provider}:${packageId}`;
 };
 
+type VersionOverride = {
+  id: string;
+  version: string;
+  version_overrides?: VersionOverride[];
+};
+
+type SourceInfo = {
+  id: string;
+  version: string;
+  version_overrides?: VersionOverride[];
+};
+
 // Convert version_overrides if they exist
-const convertVersionOverrides = (source: any): any => {
+const convertVersionOverrides = (source: SourceInfo): VersionOverride => {
   if (source.version_overrides && Array.isArray(source.version_overrides)) {
     return {
       ...source,
-      version_overrides: source.version_overrides.map((override: any) => ({
+      version_overrides: source.version_overrides.map((
+        override: VersionOverride,
+      ) => ({
         ...override,
         id: override.id ? convertPackageId(override.id) : override.id,
       })),
@@ -72,12 +86,10 @@ const convertVersionOverrides = (source: any): any => {
 };
 
 // Remove Mason-specific fields from package data
-const removeMasonFields = (data: any): any => {
-  const {
-    neovim,
-    version,
-    ...rest
-  } = data;
+const removeMasonFields = (
+  data: PackageInfo,
+): Omit<PackageInfo, "neovim" | "version"> => {
+  const { neovim, version, ...rest } = data;
   return rest;
 };
 
@@ -192,7 +204,8 @@ const main = async () => {
               }
 
               // Write updated existing package
-              const updatedYamlContent = getZanaYAMLHeader() + "\n" +
+              const updatedYamlContent = getZanaYAMLHeader() +
+                "\n" +
                 yaml.dump(existingPackage, {
                   lineWidth: -1,
                   noRefs: true,
@@ -244,7 +257,8 @@ const main = async () => {
       fs.mkdirSync(newPackageDir, { recursive: true });
 
       // Write updated YAML file
-      const newYamlContent = getZanaYAMLHeader() + "\n" +
+      const newYamlContent = getZanaYAMLHeader() +
+        "\n" +
         yaml.dump(zanaPackageData, {
           lineWidth: -1,
           noRefs: true,

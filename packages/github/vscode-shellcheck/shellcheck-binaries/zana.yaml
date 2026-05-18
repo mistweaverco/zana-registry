@@ -31,4 +31,4 @@ source:
       file: shellcheck-{{version}}.windows.x86_64.tar.gz
       bin: shellcheck.exe
 bin:
-  shellcheck: '{{source.asset.bin}}'
+  shellcheck: "{{source.asset.bin}}"

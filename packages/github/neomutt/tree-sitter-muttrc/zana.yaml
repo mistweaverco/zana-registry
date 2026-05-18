@@ -5,7 +5,8 @@ description: Tree-sitter grammar for muttrc.
 homepage: https://github.com/neomutt/tree-sitter-muttrc
 licenses:
   - MIT
-languages: []
+languages:
+  - muttrc
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-muttrc
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

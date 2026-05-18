@@ -5,7 +5,8 @@ description: Tree-sitter grammar for fish.
 homepage: https://github.com/ram02z/tree-sitter-fish
 licenses:
   - MIT
-languages: []
+languages:
+  - fish
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-fish
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: basedpyright
-description: Fork of the Pyright static type checker for Python, with extra Pylance features.
+description: |
+  Fork of the Pyright static type checker for Python, with extra
+  Pylance features.
 homepage: https://detachhead.github.io/basedpyright
 licenses:
   - MIT
@@ -12,6 +14,7 @@ categories:
 source:
   id: pypi:basedpyright
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: vscode:https://raw.githubusercontent.com/DetachHead/basedpyright/v{{version}}/packages/vscode-pyright/package.json
 bin:
   basedpyright: pypi:basedpyright

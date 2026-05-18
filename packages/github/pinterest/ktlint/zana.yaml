@@ -20,4 +20,4 @@ source:
       file: ktlint:ktlint.jar
       bin: java-jar:ktlint.jar
 bin:
-  ktlint: '{{source.asset.bin}}'
+  ktlint: "{{source.asset.bin}}"

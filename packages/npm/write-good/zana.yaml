@@ -2,7 +2,8 @@
 ---
 name: write-good
 description: |
-  Naive linter for English prose for developers who can't write good and wanna learn to do other stuff good too.
+  Naive linter for English prose for developers who can't write good and wanna
+  learn to do other stuff good too.
 homepage: https://github.com/btford/write-good
 licenses:
   - MIT

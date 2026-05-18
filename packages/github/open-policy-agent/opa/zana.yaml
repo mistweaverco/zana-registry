@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: opa
-description: Open Policy Agent (OPA) is an open source, general-purpose policy engine.
+description: |
+  Open Policy Agent (OPA) is an open source, general-purpose
+  policy engine.
 homepage: https://github.com/open-policy-agent/opa
 licenses:
   - Apache-2.0
@@ -26,4 +28,4 @@ source:
     - target: win_x64
       file: opa_windows_amd64.exe
 bin:
-  opa: '{{source.asset.file}}'
+  opa: "{{source.asset.file}}"

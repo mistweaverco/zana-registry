@@ -150,6 +150,10 @@ export interface PackageInfo {
   treesitter?: {
     build?: TreeSitterBuildRow[];
   };
+  requires?: {
+    all?: string[];
+    one?: string[];
+  };
   source: {
     id: string;
   };

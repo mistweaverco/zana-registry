@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: serve-d
-description: Microsoft language server protocol implementation for D using workspace-d.
+description: |
+  Microsoft language server protocol implementation for D using
+  workspace-d.
 homepage: https://github.com/Pure-D/serve-d
 licenses:
   - MIT
@@ -27,4 +29,4 @@ source:
       file: serve-d_{{ version | strip_prefix "v" }}-windows-x86.zip
       bin: serve-d.exe
 bin:
-  serve-d: '{{source.asset.bin}}'
+  serve-d: "{{source.asset.bin}}"

@@ -43,20 +43,20 @@ This is the registry that Zana uses to fetch package information.
 
 The registry currently supports the following package providers:
 
-  - `cargo`
-  - `codeberg`
-  - `composer`
-  - `gem`
-  - `generic` (shell commands)
-  - `github`
-  - `gitlab`
-  - `golang`
-  - `luarocks`
-  - `npm`
-  - `nuget`
-  - `opam`
-  - `openvsx`
-  - `pypi`
+- `cargo`
+- `codeberg`
+- `composer`
+- `gem`
+- `generic` (shell commands)
+- `github`
+- `gitlab`
+- `golang`
+- `luarocks`
+- `npm`
+- `nuget`
+- `opam`
+- `openvsx`
+- `pypi`
 
 ## Honorable mentions
 
@@ -87,8 +87,6 @@ Main differences between the Mason registry and the Zana registry:
 > [!NOTE]
 > The original Mason registry is licensed under
 > [Apache 2.0 License](https://github.com/mason-org/mason-registry/blob/main/LICENSE).
-
-
 
 [website]: https://getzana.net
 [registry-website]: https://registry.getzana.net

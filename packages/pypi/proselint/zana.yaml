@@ -2,8 +2,9 @@
 ---
 name: proselint
 description: |
-  proselint is a linter for English prose. It places the world's greatest writers and editors by your side, where they
-  whisper suggestions on how to improve your prose.
+  proselint is a linter for English prose. It places the world's greatest
+  writers and editors by your side, where they whisper suggestions on how to
+  improve your prose.
 homepage: https://github.com/amperser/proselint
 licenses:
   - BSD-3-Clause

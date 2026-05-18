@@ -12,6 +12,7 @@ categories:
 source:
   id: npm:pyright
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: vscode:https://raw.githubusercontent.com/microsoft/pyright/{{version}}/packages/vscode-pyright/package.json
 bin:
   pyright: npm:pyright

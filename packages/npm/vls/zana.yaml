@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: vetur-vls
-description: VLS (Vue Language Server) is a language server implementation compatible with Language Server Protocol.
+description: |
+  VLS (Vue Language Server) is a language server implementation
+  compatible with Language Server Protocol.
 homepage: https://github.com/vuejs/vetur
 licenses:
   - MIT

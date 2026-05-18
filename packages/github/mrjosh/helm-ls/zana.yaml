@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: helm-ls
-description: A language server that offers Helm support in early development - programmed in Go.
+description: |
+  A language server that offers Helm support in early development
+  - programmed in Go.
 homepage: https://github.com/mrjosh/helm-ls
 licenses:
   - MIT
@@ -39,4 +41,4 @@ source:
         - target: linux_arm
           file: helm_ls_linux_arm
 bin:
-  helm_ls: '{{source.asset.file}}'
+  helm_ls: "{{source.asset.file}}"

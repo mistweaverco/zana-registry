@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: checkmake
-description: checkmake is an experimental tool for linting and checking Makefiles. It may not do what you want it to.
+description: |
+  checkmake is an experimental tool for linting and checking
+  Makefiles. It may not do what you want it to.
 homepage: https://github.com/mrtazz/checkmake
 licenses:
   - MIT
@@ -27,4 +29,4 @@ source:
 share:
   man/man1/: man1/
 bin:
-  checkmake: '{{source.asset.bin}}'
+  checkmake: "{{source.asset.bin}}"

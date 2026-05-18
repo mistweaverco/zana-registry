@@ -2,8 +2,9 @@
 ---
 name: vacuum
 description: |
-  vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool. Built in go, it tears
-  through API specs faster than you can think. vacuum is compatible with Spectral rulesets and generates compatible
+  vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality
+  analysis tool. Built in go, it tears through API specs faster than you can
+  think. vacuum is compatible with Spectral rulesets and generates compatible
   reports.
 homepage: https://github.com/daveshanley/vacuum
 licenses:
@@ -40,4 +41,4 @@ source:
       file: vacuum_{{ version | strip_prefix "v" }}_windows_i386.tar.gz
       bin: vacuum.exe
 bin:
-  vacuum: '{{source.asset.bin}}'
+  vacuum: "{{source.asset.bin}}"

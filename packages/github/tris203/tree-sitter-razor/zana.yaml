@@ -5,7 +5,8 @@ description: Tree-sitter grammar for razor.
 homepage: https://github.com/tris203/tree-sitter-razor
 licenses:
   - MIT
-languages: []
+languages:
+  - razor
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-razor
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

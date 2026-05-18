@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: lemmy-help
-description: Every one needs help, so lemmy-help you! A CLI to generate vim/nvim help doc from emmylua.
+description: |
+  Every one needs help, so lemmy-help you! A CLI to generate
+  vim/nvim help doc from emmylua.
 homepage: https://github.com/numToStr/lemmy-help
 licenses:
   - MIT
@@ -32,4 +34,4 @@ source:
       file: lemmy-help-x86_64-pc-windows-msvc.zip
       bin: lemmy-help.exe
 bin:
-  lemmy-help: '{{source.asset.bin}}'
+  lemmy-help: "{{source.asset.bin}}"

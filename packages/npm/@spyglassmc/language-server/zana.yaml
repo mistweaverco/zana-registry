@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: spyglassmc-language-server
-description: This is a language server wrapped around some other Spyglass packages.
+description: |
+  This is a language server wrapped around some other Spyglass
+  packages.
 homepage: https://github.com/SpyglassMC/Spyglass/tree/main/packages/language-server
 licenses:
   - MIT

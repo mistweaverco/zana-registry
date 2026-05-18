@@ -8,9 +8,7 @@ import type { PackageInfo } from "./types";
 const packagesDir = path.join(__dirname, "..", "packages");
 
 // Parse package ID to extract provider and package path
-const parsePackageId = (
-  packageId: string,
-): { provider: string; packagePath: string } | null => {
+const parsePackageId = (packageId: string): { provider: string; packagePath: string } | null => {
   // Handle old format: pkg:provider/package-path
   // or new format: provider:package-path
   let provider: string;
@@ -149,10 +147,7 @@ for (const dirent of dirents) {
             existingPackage.aliases.push(packageData.name);
           }
           // Also add the old directory name if different
-          if (
-            dirent.name !== packageData.name &&
-            !existingPackage.aliases.includes(dirent.name)
-          ) {
+          if (dirent.name !== packageData.name && !existingPackage.aliases.includes(dirent.name)) {
             existingPackage.aliases.push(dirent.name);
           }
 
@@ -165,8 +160,8 @@ for (const dirent of dirents) {
           }
 
           // Write updated existing package
-          const updatedYamlContent = getZanaYAMLHeader() + "\n" +
-            yaml.dump(existingPackage, { lineWidth: -1 });
+          const updatedYamlContent =
+            getZanaYAMLHeader() + "\n" + yaml.dump(existingPackage, { lineWidth: -1 });
           fs.writeFileSync(newYamlPath, updatedYamlContent);
 
           console.log(
@@ -180,18 +175,13 @@ for (const dirent of dirents) {
             from: oldPackageDir,
             to: newPackageDir,
           });
-          console.log(
-            `✓ Migrated ${dirent.name} -> ${provider}/${packagePath} (as alias)`,
-          );
+          console.log(`✓ Migrated ${dirent.name} -> ${provider}/${packagePath} (as alias)`);
           continue;
-        } else if (
-          existingPackage && existingPackage.name === packageData.name
-        ) {
+        } else if (existingPackage && existingPackage.name === packageData.name) {
           // Same package name, skip as duplicate
           errors.push({
             package: dirent.name,
-            error:
-              `Package with same name already exists at target: ${newYamlPath}`,
+            error: `Package with same name already exists at target: ${newYamlPath}`,
           });
           continue;
         }
@@ -219,8 +209,7 @@ for (const dirent of dirents) {
     fs.mkdirSync(newPackageDir, { recursive: true });
 
     // Write updated YAML file
-    const newYamlContent = getZanaYAMLHeader() + "\n" +
-      yaml.dump(packageData, { lineWidth: -1 });
+    const newYamlContent = getZanaYAMLHeader() + "\n" + yaml.dump(packageData, { lineWidth: -1 });
 
     fs.writeFileSync(newYamlPath, newYamlContent);
 
@@ -256,9 +245,7 @@ if (errors.length > 0) {
 if (moved.length > 0) {
   console.log(`\n=== Migration Paths ===`);
   moved.slice(0, 10).forEach(({ from, to }) => {
-    console.log(
-      `  ${path.basename(from)} -> ${path.relative(packagesDir, to)}`,
-    );
+    console.log(`  ${path.basename(from)} -> ${path.relative(packagesDir, to)}`);
   });
   if (moved.length > 10) {
     console.log(`  ... and ${moved.length - 10} more`);

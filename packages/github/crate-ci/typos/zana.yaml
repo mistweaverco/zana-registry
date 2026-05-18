@@ -25,4 +25,4 @@ source:
       file: typos-{{ version }}-x86_64-pc-windows-msvc.zip
       bin: typos.exe
 bin:
-  typos: '{{source.asset.bin}}'
+  typos: "{{source.asset.bin}}"

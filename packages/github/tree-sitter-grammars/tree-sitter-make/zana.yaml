@@ -5,7 +5,8 @@ description: Tree-sitter grammar for make.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-make
 licenses:
   - MIT
-languages: []
+languages:
+  - make
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-make
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

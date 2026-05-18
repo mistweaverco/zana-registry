@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: marksman
-description: Markdown LSP server providing completion, cross-references, diagnostics, and more.
+description: |
+  Markdown LSP server providing completion, cross-references,
+  diagnostics, and more.
 homepage: https://github.com/artempyanykh/marksman
 licenses:
   - MIT
@@ -23,4 +25,4 @@ source:
     - target: win_x64
       file: marksman.exe
 bin:
-  marksman: '{{source.asset.file}}'
+  marksman: "{{source.asset.file}}"

@@ -33,4 +33,4 @@ source:
       file: llm-ls-i686-pc-windows-msvc.zip
       bin: llm-ls.exe
 bin:
-  llm-ls: '{{source.asset.bin}}'
+  llm-ls: "{{source.asset.bin}}"

@@ -16,7 +16,7 @@ source:
       run: ghcup install hls "$VERSION" -i "$PWD"
       staged: false
       env:
-        VERSION: '{{version}}'
+        VERSION: "{{version}}"
       bin:
         wrapper: bin/haskell-language-server-wrapper
         server_9_2_8: bin/haskell-language-server-9.2.8
@@ -27,7 +27,7 @@ source:
       run: ghcup install hls $env:VERSION -i ($pwd).path
       staged: false
       env:
-        VERSION: '{{version}}'
+        VERSION: "{{version}}"
       bin:
         wrapper: haskell-language-server-wrapper.exe
         server_9_2_8: haskell-language-server-9.2.8.exe
@@ -35,8 +35,8 @@ source:
         server_9_6_5: haskell-language-server-9.6.5.exe
         server_9_8_2: haskell-language-server-9.8.2.exe
 bin:
-  haskell-language-server-wrapper: '{{source.build.bin.wrapper}}'
-  haskell-language-server-9.2.8: '{{source.build.bin.server_9_2_8}}'
-  haskell-language-server-9.4.8: '{{source.build.bin.server_9_4_8}}'
-  haskell-language-server-9.6.5: '{{source.build.bin.server_9_6_5}}'
-  haskell-language-server-9.8.2: '{{source.build.bin.server_9_8_2}}'
+  haskell-language-server-wrapper: "{{source.build.bin.wrapper}}"
+  haskell-language-server-9.2.8: "{{source.build.bin.server_9_2_8}}"
+  haskell-language-server-9.4.8: "{{source.build.bin.server_9_4_8}}"
+  haskell-language-server-9.6.5: "{{source.build.bin.server_9_6_5}}"
+  haskell-language-server-9.8.2: "{{source.build.bin.server_9_8_2}}"

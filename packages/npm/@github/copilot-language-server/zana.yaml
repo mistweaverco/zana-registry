@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: copilot-language-server
-description: The Copilot Language Server enables any editor or IDE to integrate with GitHub Copilot via the language server protocol.
+description: |
+  The Copilot Language Server enables any editor or IDE to
+  integrate with GitHub Copilot via the language server protocol.
 homepage: https://github.com/github/copilot-language-server-release
 licenses:
   - MIT

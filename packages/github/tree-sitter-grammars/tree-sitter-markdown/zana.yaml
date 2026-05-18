@@ -5,7 +5,9 @@ description: Tree-sitter grammars for markdown, markdown_inline.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-markdown
 licenses:
   - MIT
-languages: []
+languages:
+  - markdown
+  - markdown_inline
 categories:
   - Tree-sitter-parser
 source:
@@ -28,3 +30,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown_inline
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

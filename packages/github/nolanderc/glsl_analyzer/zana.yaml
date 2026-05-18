@@ -32,4 +32,4 @@ source:
       file: aarch64-windows.zip
       bin: bin/glsl_analyzer.exe
 bin:
-  glsl_analyzer: '{{source.asset.bin}}'
+  glsl_analyzer: "{{source.asset.bin}}"

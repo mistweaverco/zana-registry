@@ -2,8 +2,9 @@
 ---
 name: rust_hdl
 description: |
-  rust_hdl is a VHDL language server and analysis library written in Rust. A complete VHDL language server protocol
-  implementation with diagnostics, navigate to symbol, find all references etc.
+  rust_hdl is a VHDL language server and analysis library written in Rust. A
+  complete VHDL language server protocol implementation with diagnostics,
+  navigate to symbol, find all references etc.
 homepage: https://github.com/VHDL-LS/rust_hdl
 licenses:
   - MPL-2.0
@@ -27,6 +28,6 @@ source:
       bin: vhdl_ls-x86_64-pc-windows-msvc/bin/vhdl_ls.exe
       libraries: vhdl_ls-x86_64-pc-windows-msvc/bin/vhdl_libraries/
 bin:
-  vhdl_ls: '{{source.asset.bin}}'
+  vhdl_ls: "{{source.asset.bin}}"
 share:
-  vhdl_libraries/: '{{source.asset.libraries}}'
+  vhdl_libraries/: "{{source.asset.libraries}}"

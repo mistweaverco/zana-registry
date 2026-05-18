@@ -16,4 +16,4 @@ source:
       file: lexical-{{version}}.zip:libexec/
       bin: exec:libexec/lexical/bin/start_lexical.sh
 bin:
-  lexical: '{{source.asset.bin}}'
+  lexical: "{{source.asset.bin}}"

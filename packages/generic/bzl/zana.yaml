@@ -2,8 +2,9 @@
 ---
 name: bzl
 description: |
-  Autocompletion, hover documentation, and debugging for BUILD files. Get a huge productivity boost with rule,
-  attribute, and function definitions right in your IDE.
+  Autocompletion, hover documentation, and debugging for BUILD files. Get a huge
+  productivity boost with rule, attribute, and function definitions right in
+  your IDE.
 homepage: https://bzl.io/
 licenses:
   - proprietary
@@ -32,4 +33,4 @@ source:
         bzl.exe: https://get.bzl.io/windows_amd64/{{version}}/bzl.exe
       bin: bzl.exe
 bin:
-  bzl: '{{source.download.bin}}'
+  bzl: "{{source.download.bin}}"

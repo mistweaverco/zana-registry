@@ -5,7 +5,9 @@ description: Tree-sitter grammars for ocaml, ocaml_interface.
 homepage: https://github.com/tree-sitter/tree-sitter-ocaml
 licenses:
   - MIT
-languages: []
+languages:
+  - ocaml
+  - ocaml_interface
 categories:
   - Tree-sitter-parser
 source:
@@ -28,3 +30,7 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ocaml
           semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

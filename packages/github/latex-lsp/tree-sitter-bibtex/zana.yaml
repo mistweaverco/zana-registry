@@ -5,7 +5,8 @@ description: Tree-sitter grammar for bibtex.
 homepage: https://github.com/latex-lsp/tree-sitter-bibtex
 licenses:
   - MIT
-languages: []
+languages:
+  - bibtex
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-bibtex
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

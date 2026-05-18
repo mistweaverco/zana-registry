@@ -5,7 +5,8 @@ description: Tree-sitter grammar for uxntal.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-uxntal
 licenses:
   - MIT
-languages: []
+languages:
+  - uxntal
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-uxntal
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

@@ -27,4 +27,4 @@ source:
     - target: win_x64
       file: jq-windows-amd64.exe
 bin:
-  jq: '{{source.asset.file}}'
+  jq: "{{source.asset.file}}"

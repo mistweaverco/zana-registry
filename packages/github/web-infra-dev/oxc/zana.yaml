@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: oxlint
-description: High-performance linter for JavaScript and TypeScript written in Rust.
+description: |
+  High-performance linter for JavaScript and TypeScript written in
+  Rust.
 homepage: https://github.com/web-infra-dev/oxc
 licenses:
   - MIT
@@ -26,4 +28,4 @@ source:
     - target: win_x64
       file: oxlint-win32-x64.exe
 bin:
-  oxlint: '{{source.asset.file}}'
+  oxlint: "{{source.asset.file}}"

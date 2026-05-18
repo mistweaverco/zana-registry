@@ -43,4 +43,4 @@ source:
         - target: win_x64
           file: typst-lsp-win32-x64.exe
 bin:
-  typst-lsp: '{{source.asset.file}}'
+  typst-lsp: "{{source.asset.file}}"

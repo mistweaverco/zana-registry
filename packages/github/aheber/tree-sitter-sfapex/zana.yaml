@@ -5,7 +5,11 @@ description: Tree-sitter grammars for apex, sflog, soql, sosl.
 homepage: https://github.com/aheber/tree-sitter-sfapex
 licenses:
   - MIT
-languages: []
+languages:
+  - apex
+  - sflog
+  - soql
+  - sosl
 categories:
   - Tree-sitter-parser
 source:
@@ -40,3 +44,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-sosl
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

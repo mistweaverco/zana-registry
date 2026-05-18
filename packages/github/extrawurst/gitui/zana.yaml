@@ -49,4 +49,4 @@ source:
           file: gitui-win.tar.gz
           bin: gitui.exe
 bin:
-  gitui: '{{source.asset.bin}}'
+  gitui: "{{source.asset.bin}}"

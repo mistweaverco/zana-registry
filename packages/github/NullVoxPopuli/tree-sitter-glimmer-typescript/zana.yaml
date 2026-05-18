@@ -5,7 +5,8 @@ description: Tree-sitter grammar for glimmer_typescript.
 homepage: https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript
 licenses:
   - MIT
-languages: []
+languages:
+  - glimmer_typescript
 categories:
   - Tree-sitter-parser
 source:
@@ -21,3 +22,7 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-typescript
           semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

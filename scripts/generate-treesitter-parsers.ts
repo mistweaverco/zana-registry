@@ -39,17 +39,11 @@ type RegistryJson = Record<string, RegistryEntry> & { $schema?: string };
 type RepoKey = `${string}/${string}`;
 
 const WORKSPACE_ROOT = path.join(__dirname, "..");
-const REGISTRY_PATH = path.join(
-  WORKSPACE_ROOT,
-  ".tmp",
-  "treesitter-registry.json",
-);
+const REGISTRY_PATH = path.join(WORKSPACE_ROOT, ".tmp", "treesitter-registry.json");
 const PACKAGES_DIR = path.join(WORKSPACE_ROOT, "packages", "github");
 
 const parseGithubRepo = (url: string): RepoKey | null => {
-  const m = url.match(
-    /^https:\/\/github\.com\/([^/]+)\/([^/]+?)(?:\.git)?\/?$/,
-  );
+  const m = url.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+?)(?:\.git)?\/?$/);
   if (!m) return null;
   return `${m[1]}/${m[2]}`;
 };
@@ -61,10 +55,7 @@ const githubQueriesUrlToParserJsonUrls = (queriesUrl: string): string[] => {
   if (!m) return [];
   const [, owner, repo] = m;
   const base = `https://raw.githubusercontent.com/${owner}/${repo}`;
-  return [
-    `${base}/refs/heads/main/parser.json`,
-    `${base}/refs/heads/master/parser.json`,
-  ];
+  return [`${base}/refs/heads/main/parser.json`, `${base}/refs/heads/master/parser.json`];
 };
 
 const fetchInjectDepsFromQueriesRepo = async (
@@ -132,14 +123,10 @@ const main = async () => {
   const posArgs = args.filter((a) => a !== "--keep-existing");
 
   if (!fs.existsSync(REGISTRY_PATH)) {
-    throw new Error(
-      `Missing registry file at ${REGISTRY_PATH}. Download it first.`,
-    );
+    throw new Error(`Missing registry file at ${REGISTRY_PATH}. Download it first.`);
   }
 
-  const registry = JSON.parse(
-    fs.readFileSync(REGISTRY_PATH, "utf8"),
-  ) as RegistryJson;
+  const registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, "utf8")) as RegistryJson;
 
   // Group registry entries by parser repo (GitHub only).
   const repoToBuilds = new Map<RepoKey, BuildRow[]>();
@@ -162,9 +149,7 @@ const main = async () => {
         external_queries.semver = true;
       }
     }
-    const injections = qUrl
-      ? await fetchInjectDepsFromQueriesRepo(qUrl)
-      : undefined;
+    const injections = qUrl ? await fetchInjectDepsFromQueriesRepo(qUrl) : undefined;
     const builds = repoToBuilds.get(repoKey) ?? [];
     const row: BuildRow = {
       language: languageKey,
@@ -193,11 +178,9 @@ const main = async () => {
   const generated: string[] = [];
   const skippedExisting: string[] = [];
 
-  for (
-    const [repoKey, builds] of [...repoToBuilds.entries()].sort((a, b) =>
-      a[0].localeCompare(b[0])
-    )
-  ) {
+  for (const [repoKey, builds] of [...repoToBuilds.entries()].sort((a, b) =>
+    a[0].localeCompare(b[0]),
+  )) {
     const [owner, repo] = repoKey.split("/");
     const packageDir = path.join(PACKAGES_DIR, owner, repo);
     const yamlPath = path.join(packageDir, "zana.yaml");
@@ -213,9 +196,7 @@ const main = async () => {
     const languagesList = builds.map((b) => b.language).join(", ");
     const doc = {
       name: repo,
-      description: `Tree-sitter grammar${
-        builds.length === 1 ? "" : "s"
-      } for ${languagesList}.`,
+      description: `Tree-sitter grammar${builds.length === 1 ? "" : "s"} for ${languagesList}.`,
       homepage: `https://github.com/${repoKey}`,
       licenses: ["MIT"],
       languages: [],
@@ -229,8 +210,7 @@ const main = async () => {
     };
 
     ensureDir(packageDir);
-    const content = getZanaYAMLHeader() + "\n" +
-      yaml.dump(doc, { lineWidth: -1, noRefs: true });
+    const content = getZanaYAMLHeader() + "\n" + yaml.dump(doc, { lineWidth: -1, noRefs: true });
     fs.writeFileSync(yamlPath, content, "utf8");
     generated.push(yamlPath);
   }

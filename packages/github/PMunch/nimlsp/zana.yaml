@@ -19,4 +19,4 @@ source:
       run: nimble build -y --localdeps
       bin: nimlsp.exe
 bin:
-  nimlsp: '{{source.build.bin}}'
+  nimlsp: "{{source.build.bin}}"

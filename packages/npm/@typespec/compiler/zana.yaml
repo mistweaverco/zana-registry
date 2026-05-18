@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tsp-server
-description: The language server for TypeSpec, a language for defining cloud service APIs and shapes.
+description: |
+  The language server for TypeSpec, a language for defining cloud
+  service APIs and shapes.
 homepage: https://github.com/microsoft/typespec
 licenses:
   - MIT

@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: protolint
-description: protolint is the pluggable linting/fixing utility for Protocol Buffer files (proto2+proto3).
+description: |
+  protolint is the pluggable linting/fixing utility for Protocol
+  Buffer files (proto2+proto3).
 homepage: https://github.com/yoheimuta/protolint
 licenses:
   - MIT
@@ -77,5 +79,5 @@ source:
             protolint: protolint.exe
             protoc_gen_protolint: protoc-gen-protolint.exe
 bin:
-  protolint: '{{source.asset.bin.protolint}}'
-  protoc-gen-protolint: '{{source.asset.bin.protoc_gen_protolint}}'
+  protolint: "{{source.asset.bin.protolint}}"
+  protoc-gen-protolint: "{{source.asset.bin.protoc_gen_protolint}}"

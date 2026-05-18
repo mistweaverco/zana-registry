@@ -1,7 +1,10 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: apex-language-server
-description: The Apex Language Server is an IDE-agnostic way for tools to access code-editing capabilities such as code completion, go to definition, find all usage, and refactoring.
+description: |
+  The Apex Language Server is an IDE-agnostic way for tools to
+  access code-editing capabilities such as code completion, go to
+  definition, find all usage, and refactoring.
 homepage: https://github.com/forcedotcom/salesforcedx-vscode
 licenses:
   - BSD-3-Clause

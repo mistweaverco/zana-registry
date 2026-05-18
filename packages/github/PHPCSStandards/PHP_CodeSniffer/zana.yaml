@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: phpcs
-description: phpcs tokenizes PHP, JavaScript and CSS files to detect violations of a defined standard.
+description: |
+  phpcs tokenizes PHP, JavaScript and CSS files to detect
+  violations of a defined standard.
 homepage: https://github.com/PHPCSStandards/PHP_CodeSniffer
 licenses:
   - BSD-3-Clause

@@ -22,4 +22,4 @@ source:
       file: crystalline_x86_64-unknown-linux-musl.gz
       bin: crystalline_x86_64-unknown-linux-musl
 bin:
-  crystalline: '{{source.asset.bin}}'
+  crystalline: "{{source.asset.bin}}"

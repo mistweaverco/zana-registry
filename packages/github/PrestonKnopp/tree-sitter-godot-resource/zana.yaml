@@ -5,7 +5,8 @@ description: Tree-sitter grammar for godot_resource.
 homepage: https://github.com/PrestonKnopp/tree-sitter-godot-resource
 licenses:
   - MIT
-languages: []
+languages:
+  - godot_resource
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-godot_resource
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

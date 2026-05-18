@@ -5,7 +5,8 @@ description: Tree-sitter grammar for bpftrace.
 homepage: https://github.com/sgruszka/tree-sitter-bpftrace
 licenses:
   - MIT
-languages: []
+languages:
+  - bpftrace
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-bpftrace
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

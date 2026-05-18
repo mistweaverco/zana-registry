@@ -33,4 +33,4 @@ source:
       file: typos-lsp-{{ version }}-aarch64-pc-windows-msvc.zip
       bin: target/aarch64-pc-windows-msvc/release/typos-lsp.exe
 bin:
-  typos-lsp: '{{source.asset.bin}}'
+  typos-lsp: "{{source.asset.bin}}"

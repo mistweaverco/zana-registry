@@ -5,7 +5,8 @@ description: Tree-sitter grammar for ql.
 homepage: https://github.com/tree-sitter/tree-sitter-ql
 licenses:
   - MIT
-languages: []
+languages:
+  - ql
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ql
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

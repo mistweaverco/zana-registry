@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: arduino-language-server
-description: An Arduino Language Server based on Clangd to Arduino code autocompletion.
+description: |
+  An Arduino Language Server based on Clangd to Arduino code
+  autocompletion.
 homepage: https://github.com/arduino/arduino-language-server
 licenses:
   - MIT
@@ -33,4 +35,4 @@ source:
       file: arduino-language-server_{{version}}_Windows_32bit.zip
       bin: arduino-language-server.exe
 bin:
-  arduino-language-server: '{{source.asset.bin}}'
+  arduino-language-server: "{{source.asset.bin}}"

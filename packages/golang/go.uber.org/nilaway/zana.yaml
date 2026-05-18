@@ -2,9 +2,8 @@
 ---
 name: nilaway
 description: |
-  NilAway is a static analysis tool that seeks to help developers avoid
-  nil panics in production by catching them at compile time rather than
-  at runtime.
+  NilAway is a static analysis tool that seeks to help developers avoid nil
+  panics in production by catching them at compile time rather than at runtime.
 homepage: https://github.com/uber-go/nilaway
 licenses:
   - Apache-2.0

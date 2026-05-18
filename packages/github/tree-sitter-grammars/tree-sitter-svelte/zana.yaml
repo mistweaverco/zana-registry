@@ -5,7 +5,9 @@ description: Tree-sitter grammars for html_tags, svelte.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-svelte
 licenses:
   - MIT
-languages: []
+languages:
+  - html_tags
+  - svelte
 categories:
   - Tree-sitter-parser
 source:
@@ -31,3 +33,7 @@ treesitter:
         - javascript
         - scss
         - typescript
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

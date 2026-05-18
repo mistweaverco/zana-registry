@@ -34,4 +34,4 @@ source:
       file: codelldb-x86_64-windows.vsix
       bin: extension/adapter/codelldb.exe
 bin:
-  codelldb: '{{source.asset.bin}}'
+  codelldb: "{{source.asset.bin}}"

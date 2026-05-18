@@ -5,7 +5,8 @@ description: Tree-sitter grammar for m68k.
 homepage: https://github.com/grahambates/tree-sitter-m68k
 licenses:
   - MIT
-languages: []
+languages:
+  - m68k
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-m68k
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

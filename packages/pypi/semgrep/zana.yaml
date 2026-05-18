@@ -2,8 +2,9 @@
 ---
 name: semgrep
 description: |
-  Semgrep is a fast, open-source, static analysis engine for finding bugs, detecting vulnerabilities in third-party
-  dependencies, and enforcing code standards.
+  Semgrep is a fast, open-source, static analysis engine for finding bugs,
+  detecting vulnerabilities in third-party dependencies, and enforcing code
+  standards.
 homepage: https://github.com/returntocorp/semgrep
 licenses:
   - LGPL-2.1-or-later

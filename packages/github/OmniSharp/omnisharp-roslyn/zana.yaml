@@ -2,8 +2,8 @@
 ---
 name: omnisharp-roslyn
 description: |
-  OmniSharp language server based on Roslyn workspaces. This version of Omnisharp requires dotnet (.NET 6.0) to be
-  installed.
+  OmniSharp language server based on Roslyn workspaces. This version of
+  Omnisharp requires dotnet (.NET 6.0) to be installed.
 homepage: https://github.com/OmniSharp/omnisharp-roslyn
 licenses:
   - MIT
@@ -30,6 +30,6 @@ schemas:
   lsp: vscode:https://raw.githubusercontent.com/OmniSharp/omnisharp-vscode/master/package.json
 bin:
   omnisharp: dotnet:libexec/OmniSharp.dll
-  omnisharp-mono: '{{source.asset.bin}}'
+  omnisharp-mono: "{{source.asset.bin}}"
 aliases:
   - omnisharp-mono

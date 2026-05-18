@@ -25,4 +25,4 @@ source:
       file: aiken_{{ version }}_win32_amd64.zip
       bin: aiken.exe
 bin:
-  aiken: '{{source.asset.bin}}'
+  aiken: "{{source.asset.bin}}"

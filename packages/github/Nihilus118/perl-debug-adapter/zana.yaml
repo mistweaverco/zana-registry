@@ -13,6 +13,7 @@ source:
   id: github:Nihilus118/perl-debug-adapter
   build:
     run: |
+
       npm install
       npm run compile
 bin:

@@ -2,8 +2,9 @@
 ---
 name: gh
 description: |
-  gh is GitHub on the command line. It brings pull requests, issues, and other GitHub concepts to the terminal next to
-  where you are already working with git and your code.
+  gh is GitHub on the command line. It brings pull requests, issues, and other
+  GitHub concepts to the terminal next to where you are already working with git
+  and your code.
 homepage: https://cli.github.com
 licenses:
   - MIT
@@ -46,6 +47,6 @@ source:
       file: gh_{{ version | strip_prefix "v" }}_windows_arm64.zip
       bin: bin/gh.exe
 bin:
-  gh: '{{source.asset.bin}}'
+  gh: "{{source.asset.bin}}"
 share:
-  man/: '{{source.asset.man}}'
+  man/: "{{source.asset.man}}"

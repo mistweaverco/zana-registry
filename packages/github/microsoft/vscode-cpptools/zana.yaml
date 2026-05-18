@@ -67,4 +67,4 @@ source:
           file: cpptools-win32.vsix
           bin: extension/debugAdapters/bin/OpenDebugAD7.exe
 bin:
-  OpenDebugAD7: '{{source.asset.bin}}'
+  OpenDebugAD7: "{{source.asset.bin}}"

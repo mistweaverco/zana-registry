@@ -16,16 +16,19 @@ source:
         - darwin_x64
         - darwin_arm64
       files:
+        # yamllint disable-line rule:line-length
         jdtls.tar.gz: https://download.eclipse.org/jdtls/milestones/{{ version | strip_prefix "v" }}/jdt-language-server-{{ version | strip_prefix "v" }}-202408011337.tar.gz
         lombok.jar: https://projectlombok.org/downloads/lombok.jar
       config: config_mac/
     - target: linux
       files:
+        # yamllint disable-line rule:line-length
         jdtls.tar.gz: https://download.eclipse.org/jdtls/milestones/{{ version | strip_prefix "v" }}/jdt-language-server-{{ version | strip_prefix "v" }}-202408011337.tar.gz
         lombok.jar: https://projectlombok.org/downloads/lombok.jar
       config: config_linux/
     - target: win
       files:
+        # yamllint disable-line rule:line-length
         jdtls.tar.gz: https://download.eclipse.org/jdtls/milestones/{{ version | strip_prefix "v" }}/jdt-language-server-{{ version | strip_prefix "v" }}-202408011337.tar.gz
         lombok.jar: https://projectlombok.org/downloads/lombok.jar
       config: config_win/
@@ -37,4 +40,4 @@ share:
   jdtls/lombok.jar: lombok.jar
   jdtls/plugins/: plugins/
   jdtls/plugins/org.eclipse.equinox.launcher.jar: plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar
-  jdtls/config/: '{{source.download.config}}'
+  jdtls/config/: "{{source.download.config}}"

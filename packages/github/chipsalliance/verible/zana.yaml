@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: verible
-description: Verible is a suite of SystemVerilog developer tools, including a parser, style-linter, and formatter.
+description: |
+  Verible is a suite of SystemVerilog developer tools, including a
+  parser, style-linter, and formatter.
 homepage: https://chipsalliance.github.io/verible/
 licenses:
   - Apache-2.0
@@ -43,6 +45,7 @@ source:
       bin:
         diff: verible-{{version}}-win64/verible-verilog-diff.exe
         format: verible-{{version}}-win64/verible-verilog-format.exe
+        # yamllint disable-line rule:line-length
         kythe_extractor: verible-{{version}}-win64/verible-verilog-kythe-extractor.exe
         lint: verible-{{version}}-win64/verible-verilog-lint.exe
         ls: verible-{{version}}-win64/verible-verilog-ls.exe
@@ -57,6 +60,7 @@ source:
       bin:
         diff: verible-{{version}}-macOS/bin/verible-verilog-diff
         format: verible-{{version}}-macOS/bin/verible-verilog-format
+        # yamllint disable-line rule:line-length
         kythe_extractor: verible-{{version}}-macOS/bin/verible-verilog-kythe-extractor
         lint: verible-{{version}}-macOS/bin/verible-verilog-lint
         ls: verible-{{version}}-macOS/bin/verible-verilog-ls
@@ -65,12 +69,12 @@ source:
         project: verible-{{version}}-macOS/bin/verible-verilog-project
         syntax: verible-{{version}}-macOS/bin/verible-verilog-syntax
 bin:
-  verible-verilog-diff: '{{source.asset.bin.diff}}'
-  verible-verilog-format: '{{source.asset.bin.format}}'
-  verible-verilog-kythe-extractor: '{{source.asset.bin.kythe_extractor}}'
-  verible-verilog-lint: '{{source.asset.bin.lint}}'
-  verible-verilog-ls: '{{source.asset.bin.ls}}'
-  verible-verilog-obfuscate: '{{source.asset.bin.obfuscate}}'
-  verible-verilog-preprocessor: '{{source.asset.bin.preprocessor}}'
-  verible-verilog-project: '{{source.asset.bin.project}}'
-  verible-verilog-syntax: '{{source.asset.bin.syntax}}'
+  verible-verilog-diff: "{{source.asset.bin.diff}}"
+  verible-verilog-format: "{{source.asset.bin.format}}"
+  verible-verilog-kythe-extractor: "{{source.asset.bin.kythe_extractor}}"
+  verible-verilog-lint: "{{source.asset.bin.lint}}"
+  verible-verilog-ls: "{{source.asset.bin.ls}}"
+  verible-verilog-obfuscate: "{{source.asset.bin.obfuscate}}"
+  verible-verilog-preprocessor: "{{source.asset.bin.preprocessor}}"
+  verible-verilog-project: "{{source.asset.bin.project}}"
+  verible-verilog-syntax: "{{source.asset.bin.syntax}}"

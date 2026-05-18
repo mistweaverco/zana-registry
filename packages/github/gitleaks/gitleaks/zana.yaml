@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: gitleaks
-description: Gitleaks helps you protect and discover secrets in git repositories.
+description: |
+  Gitleaks helps you protect and discover secrets in git
+  repositories.
 homepage: https://github.com/gitleaks/gitleaks
 licenses:
   - MIT
@@ -45,4 +47,4 @@ source:
       file: gitleaks_{{ version | strip_prefix "v" }}_windows_x64.zip
       bin: gitleaks.exe
 bin:
-  gitleaks: '{{source.asset.bin}}'
+  gitleaks: "{{source.asset.bin}}"

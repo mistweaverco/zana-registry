@@ -19,4 +19,4 @@ source:
       file: smithy-language-server-{{version}}.zip
       bin: smithy-language-server-{{version}}/bin/smithy-language-server.bat
 bin:
-  smithy-language-server: '{{source.asset.bin}}'
+  smithy-language-server: "{{source.asset.bin}}"

@@ -2,8 +2,8 @@
 ---
 name: thriftls
 description: |
-  thriftls is a Thrift language server. It provides IDE features
-  to any LSP-compatible editor.
+  thriftls is a Thrift language server. It provides IDE features to any
+  LSP-compatible editor.
 homepage: https://github.com/joyme123/thrift-ls
 licenses:
   - Apache-2.0
@@ -29,4 +29,4 @@ source:
     - target: linux_arm64
       file: thriftls-linux-arm64
 bin:
-  thriftls: '{{source.asset.file}}'
+  thriftls: "{{source.asset.file}}"

@@ -25,4 +25,4 @@ source:
       file: selene-{{version}}-windows.zip
       bin: selene.exe
 bin:
-  selene: '{{source.asset.bin}}'
+  selene: "{{source.asset.bin}}"

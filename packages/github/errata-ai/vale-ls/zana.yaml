@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: vale-ls
-description: An implementation of the Language Server Protocol (LSP) for the Vale command-line tool.
+description: |
+  An implementation of the Language Server Protocol (LSP) for the
+  Vale command-line tool.
 homepage: https://vale.sh/
 licenses:
   - MIT
@@ -29,4 +31,4 @@ source:
       file: vale-ls-x86_64-pc-windows-gnu.zip
       bin: vale-ls.exe
 bin:
-  vale-ls: '{{source.asset.bin}}'
+  vale-ls: "{{source.asset.bin}}"

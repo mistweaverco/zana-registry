@@ -5,7 +5,8 @@ description: Tree-sitter grammar for typoscript.
 homepage: https://github.com/Teddytrombone/tree-sitter-typoscript
 licenses:
   - MIT
-languages: []
+languages:
+  - typoscript
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-typoscript
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

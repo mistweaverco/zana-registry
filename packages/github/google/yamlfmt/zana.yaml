@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: yamlfmt
-description: yamlfmt is an extensible command line tool or library to format yaml files.
+description: |
+  yamlfmt is an extensible command line tool or library to format
+  yaml files.
 homepage: https://github.com/google/yamlfmt
 licenses:
   - Apache-2.0
@@ -31,4 +33,4 @@ source:
       file: yamlfmt_{{ version | strip_prefix "v" }}_Windows_x86_64.tar.gz
       bin: yamlfmt.exe
 bin:
-  yamlfmt: '{{source.asset.bin}}'
+  yamlfmt: "{{source.asset.bin}}"

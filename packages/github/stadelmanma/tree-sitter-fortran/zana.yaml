@@ -5,7 +5,8 @@ description: Tree-sitter grammar for fortran.
 homepage: https://github.com/stadelmanma/tree-sitter-fortran
 licenses:
   - MIT
-languages: []
+languages:
+  - fortran
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-fortran
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

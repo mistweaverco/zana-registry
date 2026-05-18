@@ -38,6 +38,6 @@ source:
         - schema.json
       bin: windows-amd64-lsp.exe
 bin:
-  circleci-yaml-language-server: '{{source.asset.bin}}'
+  circleci-yaml-language-server: "{{source.asset.bin}}"
 share:
   circleci-yaml-language-server/schema.json: schema.json

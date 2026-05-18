@@ -15,6 +15,7 @@ categories:
 source:
   id: npm:stimulus-language-server
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: vscode:https://raw.githubusercontent.com/marcoroth/stimulus-lsp/v{{version}}/package.json
 bin:
   stimulus-language-server: npm:stimulus-language-server

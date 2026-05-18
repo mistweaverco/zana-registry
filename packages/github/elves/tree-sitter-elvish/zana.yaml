@@ -5,7 +5,8 @@ description: Tree-sitter grammar for elvish.
 homepage: https://github.com/elves/tree-sitter-elvish
 licenses:
   - MIT
-languages: []
+languages:
+  - elvish
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-elvish
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

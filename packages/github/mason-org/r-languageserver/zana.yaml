@@ -15,14 +15,14 @@ source:
     - target: unix
       run: ./bin/install "$VERSION"
       env:
-        VERSION: '{{version}}'
+        VERSION: "{{version}}"
       bin: ./bin/r-languageserver
     - target: win
       run: .\bin\install.ps1 "$env:VERSION"
       env:
-        VERSION: '{{version}}'
+        VERSION: "{{version}}"
       bin: ./bin/r-languageserver.cmd
 schemas:
   lsp: vscode:https://raw.githubusercontent.com/REditorSupport/vscode-r-lsp/master/package.json
 bin:
-  r-languageserver: '{{source.build.bin}}'
+  r-languageserver: "{{source.build.bin}}"

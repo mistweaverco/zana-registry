@@ -5,7 +5,8 @@ description: Tree-sitter grammar for fsh.
 homepage: https://github.com/mgramigna/tree-sitter-fsh
 licenses:
   - MIT
-languages: []
+languages:
+  - fsh
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-fsh
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

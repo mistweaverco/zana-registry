@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: cuelsp
-description: Language Server implementation for CUE, with built-in support for Dagger.
+description: |
+  Language Server implementation for CUE, with built-in support
+  for Dagger.
 homepage: https://github.com/dagger/cuelsp
 licenses:
   - Apache-2.0

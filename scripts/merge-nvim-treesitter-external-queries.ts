@@ -314,10 +314,7 @@ const main = async () => {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
   const posArgs = args.filter((a) => a !== "--dry-run");
-  const registryPath = path.resolve(
-    WORKSPACE_ROOT,
-    posArgs[0] ?? ".tmp/treesitter-registry.json",
-  );
+  const registryPath = path.resolve(WORKSPACE_ROOT, posArgs[0] ?? ".tmp/treesitter-registry.json");
 
   const registry = await loadRegistry(registryPath);
 
@@ -411,9 +408,7 @@ const main = async () => {
           rowChanged = true;
         }
         if (externalListWouldChange(existing.external_queries, [externalQueries])) {
-          existing.external_queries = mergeNvListInto(existing.external_queries, [
-            externalQueries,
-          ]);
+          existing.external_queries = mergeNvListInto(existing.external_queries, [externalQueries]);
           rowChanged = true;
         }
         if (rowChanged) changed = true;

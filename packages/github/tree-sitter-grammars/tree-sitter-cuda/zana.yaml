@@ -5,7 +5,8 @@ description: Tree-sitter grammar for cuda.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-cuda
 licenses:
   - MIT
-languages: []
+languages:
+  - cuda
 categories:
   - Tree-sitter-parser
 source:
@@ -23,3 +24,7 @@ treesitter:
           semver: true
       injections:
         - cuda
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

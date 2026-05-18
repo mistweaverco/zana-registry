@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: cobol-language-support
-description: COBOL Language Support provides autocomplete, highlighting and diagnostics for COBOL code and copybooks
+description: |
+  COBOL Language Support provides autocomplete, highlighting and
+  diagnostics for COBOL code and copybooks
 homepage: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol
 licenses:
   - EPL-2.0
@@ -31,4 +33,4 @@ source:
       file: cobol-language-support-win32-x64-{{version}}-signed.vsix
       bin: extension/server/native/engine.exe
 bin:
-  cobol-language-support: '{{source.asset.bin}}'
+  cobol-language-support: "{{source.asset.bin}}"

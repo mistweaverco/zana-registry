@@ -31,4 +31,4 @@ source:
       file: pylyzer-x86_64-pc-windows-msvc.zip
       bin: pylyzer.exe
 bin:
-  pylyzer: '{{source.asset.bin}}'
+  pylyzer: "{{source.asset.bin}}"

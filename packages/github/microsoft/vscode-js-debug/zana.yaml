@@ -26,4 +26,4 @@ source:
           npm install --production --ignore-scripts --legacy-peer-deps
       bin: node:out/src/vsDebugServer.js
 bin:
-  js-debug-adapter: '{{source.bin}}'
+  js-debug-adapter: "{{source.bin}}"

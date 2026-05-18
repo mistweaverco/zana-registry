@@ -24,4 +24,4 @@ source:
       file: jsonld-language-server-x86_64-pc-windows-msvc.zip
       bin: jsonld-language-server.exe
 bin:
-  jsonld-language-server: '{{source.asset.bin}}'
+  jsonld-language-server: "{{source.asset.bin}}"

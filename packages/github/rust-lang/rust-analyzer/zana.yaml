@@ -38,6 +38,7 @@ source:
       file: rust-analyzer-aarch64-pc-windows-msvc.zip
       bin: rust-analyzer.exe
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: vscode:https://raw.githubusercontent.com/rust-analyzer/rust-analyzer/{{version}}/editors/code/package.json
 bin:
-  rust-analyzer: '{{source.asset.bin}}'
+  rust-analyzer: "{{source.asset.bin}}"

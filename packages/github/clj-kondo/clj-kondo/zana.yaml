@@ -2,8 +2,9 @@
 ---
 name: clj-kondo
 description: |
-  Clj-kondo performs static analysis on Clojure, ClojureScript and EDN, without the need of a running REPL. It informs
-  you about potential errors while you are typing.
+  Clj-kondo performs static analysis on Clojure, ClojureScript and EDN, without
+  the need of a running REPL. It informs you about potential errors while you
+  are typing.
 homepage: https://github.com/clj-kondo/clj-kondo
 licenses:
   - EPL-1.0
@@ -34,4 +35,4 @@ source:
       file: clj-kondo-{{ version | strip_prefix "v" }}-windows-amd64.zip
       bin: clj-kondo.exe
 bin:
-  clj-kondo: '{{source.asset.bin}}'
+  clj-kondo: "{{source.asset.bin}}"
