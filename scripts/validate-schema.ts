@@ -3,10 +3,7 @@ import * as path from "path";
 import * as yaml from "js-yaml";
 import Ajv from "ajv";
 
-import type {
-  PackageInfoWithValidationErrorsSupport,
-  SchemaErrors,
-} from "./types";
+import type { PackageInfoWithValidationErrorsSupport, SchemaErrors } from "./types";
 
 import { getZanaYAMLHeader } from "./utils";
 
@@ -43,9 +40,7 @@ const packageFiles = findPackageFiles(packagesDir);
 
 packageFiles.forEach((packageYamlPath) => {
   const fileContents = fs.readFileSync(packageYamlPath, "utf8");
-  const packageData = yaml.loadAll(
-    fileContents,
-  ) as PackageInfoWithValidationErrorsSupport[];
+  const packageData = yaml.loadAll(fileContents) as PackageInfoWithValidationErrorsSupport[];
   const validSchema = ajv.validate(schema, packageData[0]);
   if (!validSchema) {
     schemaErrors.push({

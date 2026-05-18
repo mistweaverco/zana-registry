@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: lua-language-server
-description: A language server that offers Lua language support - programmed in Lua.
+description: |
+  A language server that offers Lua language support - programmed
+  in Lua.
 homepage: https://github.com/LuaLS/lua-language-server
 licenses:
   - MIT
@@ -73,4 +75,4 @@ source:
 schemas:
   lsp: vscode:https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.json
 bin:
-  lua-language-server: '{{source.asset.bin}}'
+  lua-language-server: "{{source.asset.bin}}"

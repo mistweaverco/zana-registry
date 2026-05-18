@@ -25,4 +25,4 @@ source:
     - target: win_x64
       file: tfsec-windows-amd64.exe
 bin:
-  tfsec: '{{source.asset.file}}'
+  tfsec: "{{source.asset.file}}"

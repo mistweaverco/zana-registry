@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: java-debug-adapter
-description: The debug server implementation for Java. It conforms to the debugger adapter protocol.
+description: |
+  The debug server implementation for Java. It conforms to the
+  debugger adapter protocol.
 homepage: https://github.com/microsoft/java-debug
 licenses:
   - EPL-1.0

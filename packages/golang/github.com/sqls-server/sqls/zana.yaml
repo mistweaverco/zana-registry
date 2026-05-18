@@ -12,6 +12,7 @@ categories:
 source:
   id: golang:github.com/sqls-server/sqls
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: https://raw.githubusercontent.com/sqls-server/sqls/{{version}}/schema.json
 bin:
   sqls: golang:sqls

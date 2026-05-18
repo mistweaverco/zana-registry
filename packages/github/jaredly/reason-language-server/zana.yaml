@@ -24,4 +24,4 @@ source:
       file: rls-windows.zip
       bin: rls-windows/reason-language-server.exe
 bin:
-  reason-language-server: '{{source.asset.bin}}'
+  reason-language-server: "{{source.asset.bin}}"

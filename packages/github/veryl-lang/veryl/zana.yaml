@@ -26,4 +26,4 @@ source:
       file: veryl-x86_64-windows.zip
       bin: veryl-ls.exe
 bin:
-  veryl-ls: '{{source.asset.bin}}'
+  veryl-ls: "{{source.asset.bin}}"

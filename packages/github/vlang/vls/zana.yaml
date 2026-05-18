@@ -21,4 +21,4 @@ source:
     - target: win_x64
       file: vls_windows_x64.exe
 bin:
-  vls: '{{source.asset.file}}'
+  vls: "{{source.asset.file}}"

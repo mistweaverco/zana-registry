@@ -27,5 +27,5 @@ source:
         ninja -Cbuild install
       bin: bin/glslls.exe
 bin:
-  glslls: '{{source.build.bin}}'
+  glslls: "{{source.build.bin}}"
 ci_skip: true

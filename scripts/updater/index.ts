@@ -59,9 +59,7 @@ const getApiURL = (sourceId: string): string | null => {
     case SourceType.GITLAB:
       // GitLab API requires URL-encoded project path
       // Format: gitlab:group/subgroup/project -> /projects/group%2Fsubgroup%2Fproject/releases
-      apiURL = `https://gitlab.com/api/v4/projects/${
-        encodeURIComponent(packageId)
-      }/releases`;
+      apiURL = `https://gitlab.com/api/v4/projects/${encodeURIComponent(packageId)}/releases`;
       break;
     case SourceType.CODEBERG:
       // Codeberg uses Gitea API v1
@@ -83,14 +81,12 @@ const getApiURL = (sourceId: string): string | null => {
     case SourceType.NUGET:
       // NuGet API v3 - format: nuget:package-name
       // Use the flat container API
-      apiURL =
-        `https://api.nuget.org/v3-flatcontainer/${packageId.toLowerCase()}/index.json`;
+      apiURL = `https://api.nuget.org/v3-flatcontainer/${packageId.toLowerCase()}/index.json`;
       break;
     case SourceType.OPAM:
       // OPAM packages are stored in GitHub opam-repository
       // Format: opam:package-name
-      apiURL =
-        `https://api.github.com/repos/ocaml/opam-repository/contents/packages/${packageId}`;
+      apiURL = `https://api.github.com/repos/ocaml/opam-repository/contents/packages/${packageId}`;
       break;
     case SourceType.OPENVSX:
       // Open VSX API - format: openvsx:publisher/extension
@@ -120,16 +116,16 @@ const getConfig = (sourceId: string): RequestInit | null => {
       // Sending "Bearer undefined" breaks requests.
       config = process.env.GITHUB_TOKEN
         ? {
-          headers: {
-            Accept: "application/vnd.github.v3+json",
-            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-          },
-        }
+            headers: {
+              Accept: "application/vnd.github.v3+json",
+              Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+            },
+          }
         : {
-          headers: {
-            Accept: "application/vnd.github.v3+json",
-          },
-        };
+            headers: {
+              Accept: "application/vnd.github.v3+json",
+            },
+          };
       break;
     case SourceType.NPM:
       config = {};
@@ -147,10 +143,10 @@ const getConfig = (sourceId: string): RequestInit | null => {
       // GitLab API can use token for rate limiting, but works without it
       config = process.env.GITLAB_TOKEN
         ? {
-          headers: {
-            Authorization: `Bearer ${process.env.GITLAB_TOKEN}`,
-          },
-        }
+            headers: {
+              Authorization: `Bearer ${process.env.GITLAB_TOKEN}`,
+            },
+          }
         : {};
       break;
     case SourceType.CODEBERG:
@@ -172,16 +168,16 @@ const getConfig = (sourceId: string): RequestInit | null => {
       // OPAM uses GitHub API, so we might need a token for rate limits
       config = process.env.GITHUB_TOKEN
         ? {
-          headers: {
-            Accept: "application/vnd.github.v3+json",
-            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-          },
-        }
+            headers: {
+              Accept: "application/vnd.github.v3+json",
+              Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+            },
+          }
         : {
-          headers: {
-            Accept: "application/vnd.github.v3+json",
-          },
-        };
+            headers: {
+              Accept: "application/vnd.github.v3+json",
+            },
+          };
       break;
     case SourceType.OPENVSX:
       config = {};
@@ -195,9 +191,7 @@ const getConfig = (sourceId: string): RequestInit | null => {
   return config;
 };
 
-const getDataFromApi = async (
-  sourceId: string,
-): APIResponse => {
+const getDataFromApi = async (sourceId: string): APIResponse => {
   const apiURL = getApiURL(sourceId);
   if (!apiURL) {
     return null;
@@ -221,9 +215,7 @@ const getDataFromApi = async (
   }
 };
 
-const getGithubLatestTagFallback = async (
-  sourceId: string,
-): Promise<string | null> => {
+const getGithubLatestTagFallback = async (sourceId: string): Promise<string | null> => {
   const parts = sourceId.split(":");
   if (parts.length < 2) {
     return null;
@@ -246,7 +238,7 @@ const getGithubLatestTagFallback = async (
     if (!resp.ok) {
       return null;
     }
-    const tags = await resp.json() as Array<{ name?: string }>;
+    const tags = (await resp.json()) as Array<{ name?: string }>;
     const t = Array.isArray(tags) && tags.length > 0 ? tags[0] : null;
     const name = t?.name ? String(t.name).trim() : "";
     return name || null;
@@ -255,9 +247,7 @@ const getGithubLatestTagFallback = async (
   }
 };
 
-const getGithubLatestCommitFallback = async (
-  sourceId: string,
-): Promise<string | null> => {
+const getGithubLatestCommitFallback = async (sourceId: string): Promise<string | null> => {
   const parts = sourceId.split(":");
   if (parts.length < 2) {
     return null;
@@ -279,7 +269,7 @@ const getGithubLatestCommitFallback = async (
     if (!resp.ok) {
       return null;
     }
-    const commits = await resp.json() as Array<{ sha?: string }>;
+    const commits = (await resp.json()) as Array<{ sha?: string }>;
     const c = Array.isArray(commits) && commits.length > 0 ? commits[0] : null;
     const sha = c?.sha ? String(c.sha).trim() : "";
     return sha || null;
@@ -378,15 +368,8 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
       // Format: luarocks:package-name
       parts = sourceId.split(":");
       pkgName = parts.length > 1 ? parts[1] : "";
-      data = (await getDataFromApi(sourceId)) as
-        | LuaRocksManifestResponse
-        | null;
-      if (
-        data &&
-        pkgName &&
-        data.repository &&
-        data.repository[pkgName]
-      ) {
+      data = (await getDataFromApi(sourceId)) as LuaRocksManifestResponse | null;
+      if (data && pkgName && data.repository && data.repository[pkgName]) {
         // Get all versions for this package
         const versions = Object.keys(data.repository[pkgName]);
         if (versions.length > 0) {
@@ -400,10 +383,7 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
       break;
     case SourceType.NUGET:
       data = (await getDataFromApi(sourceId)) as NuGetDataResponse | null;
-      if (
-        data && data.versions && Array.isArray(data.versions) &&
-        data.versions.length > 0
-      ) {
+      if (data && data.versions && Array.isArray(data.versions) && data.versions.length > 0) {
         // Get the latest version from the versions array
         version = data.versions[data.versions.length - 1];
       }
@@ -431,7 +411,9 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
       if (data && data.version) {
         version = data.version;
       } else if (
-        data && data.allVersions && Array.isArray(data.allVersions) &&
+        data &&
+        data.allVersions &&
+        Array.isArray(data.allVersions) &&
         data.allVersions.length > 0
       ) {
         // Fallback to allVersions array if version field doesn't exist
@@ -456,9 +438,7 @@ const getLatestVersion = async (sourceId: string): Promise<string | null> => {
 // getLatestVersions returns the latest stable and prerelease versions (when available)
 // for a given source ID. For most providers we only have a single "latest" concept
 // and expose it as the stable version.
-const getLatestVersions = async (
-  sourceId: string,
-): Promise<GithubDataLatestVersionsResponse> => {
+const getLatestVersions = async (sourceId: string): Promise<GithubDataLatestVersionsResponse> => {
   let stable: string | null = null;
   let prerelease: string | null = null;
   let latest: string | null = null;
@@ -494,14 +474,12 @@ const getLatestVersions = async (
         if (!resp.ok) {
           break;
         }
-        releases = await resp.json() as Array<{
+        releases = (await resp.json()) as Array<{
           tag_name?: string;
           prerelease?: boolean;
         }>;
         if (Array.isArray(releases) && releases.length > 0) {
-          prereleases = releases.filter((r) =>
-            r.prerelease && typeof r.tag_name === "string"
-          );
+          prereleases = releases.filter((r) => r.prerelease && typeof r.tag_name === "string");
           if (prereleases.length > 0) {
             prerelease = prereleases[0].tag_name ?? null;
           }
@@ -593,11 +571,9 @@ for (const packageYamlPath of packageFiles) {
     // validate that packageData is not null or undefined
     if (!packageData) {
       counter.failure++;
-      console.error(
-        "No valid YAML document found for package: ",
-        packageYamlPath,
-        { yamlDocuments },
-      );
+      console.error("No valid YAML document found for package: ", packageYamlPath, {
+        yamlDocuments,
+      });
       continue;
     }
   } catch (e) {
@@ -614,9 +590,7 @@ for (const packageYamlPath of packageFiles) {
     // not supported, but not an error
     continue;
   }
-  const { stable, prerelease } = await getLatestVersions(
-    packageData.source.id,
-  );
+  const { stable, prerelease } = await getLatestVersions(packageData.source.id);
   // Prefer stable version when available; fall back to prerelease
   const version = stable ?? prerelease;
   if (version) {
@@ -640,9 +614,7 @@ const masonRegistryJsonPath = path.join(__dirname, "..", "..", "registry.json");
 fs.writeFileSync(registryJsonPath, JSON.stringify(registry, null, 2));
 fs.writeFileSync(masonRegistryJsonPath, JSON.stringify(masonRegistry, null, 2));
 
-console.log(
-  `Registry files created at ${registryJsonPath} and ${masonRegistryJsonPath}`,
-);
+console.log(`Registry files created at ${registryJsonPath} and ${masonRegistryJsonPath}`);
 
 console.log(`Success: ${counter.success}`);
 console.log(`Failure: ${counter.failure}`);

@@ -5,7 +5,8 @@ description: Tree-sitter grammar for prisma.
 homepage: https://github.com/victorhqc/tree-sitter-prisma
 licenses:
   - MIT
-languages: []
+languages:
+  - prisma
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-prisma
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

@@ -46,4 +46,4 @@ source:
       file: harper-ls-x86_64-pc-windows-msvc.zip
       bin: harper-ls.exe
 bin:
-  harper-ls: '{{source.asset.bin}}'
+  harper-ls: "{{source.asset.bin}}"

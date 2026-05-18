@@ -30,4 +30,4 @@ source:
       file: efm-langserver_{{version}}_windows_arm64.zip
       bin: efm-langserver_{{version}}_windows_arm64/efm-langserver.exe
 bin:
-  efm-langserver: '{{source.asset.bin}}'
+  efm-langserver: "{{source.asset.bin}}"

@@ -1,3 +1,27 @@
+export type TreeSitterExternalQuery = {
+	repo_url: string;
+	ref?: string;
+	semver?: boolean;
+	package?: string;
+};
+
+export type TreeSitterBuildRow = {
+	language: string;
+	grammar_dir?: string;
+	integrations?: string[];
+	/** Parser-registry language names (not package-level requires). */
+	requires?: string[];
+	inherits?: string[];
+	injections?: string[];
+	queries_only?: boolean;
+	external_queries?: TreeSitterExternalQuery | TreeSitterExternalQuery[];
+};
+
+export type PackageRequires = {
+	all?: string[];
+	one?: string[];
+};
+
 export interface Package {
 	name: string;
 	source: {
@@ -11,18 +35,10 @@ export interface Package {
 	tags?: string[];
 	categories: string[];
 	aliases?: string[];
+	requires?: PackageRequires;
 	searchMatchInfo?: string;
 	treesitter?: {
-		build: {
-			language: string;
-			grammar_dir?: string;
-			integrations?: string[];
-			requires?: string[];
-			/** Base grammar language names for query inheritance (e.g. javascript for typescript). */
-			inherits?: string[];
-			injections?: string[];
-			queries_only?: boolean;
-		}[];
+		build: TreeSitterBuildRow[];
 	};
 }
 

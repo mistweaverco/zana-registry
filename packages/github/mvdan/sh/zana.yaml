@@ -27,4 +27,4 @@ source:
     - target: win_x64
       file: shfmt_{{version}}_windows_amd64.exe
 bin:
-  shfmt: '{{source.asset.file}}'
+  shfmt: "{{source.asset.file}}"

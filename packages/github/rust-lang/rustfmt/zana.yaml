@@ -28,4 +28,4 @@ source:
       file: rustfmt_windows-x86_64-msvc_{{version}}.zip
       bin: rustfmt_windows-x86_64-msvc_{{version}}/rustfmt.exe
 bin:
-  rustfmt: '{{source.asset.bin}}'
+  rustfmt: "{{source.asset.bin}}"

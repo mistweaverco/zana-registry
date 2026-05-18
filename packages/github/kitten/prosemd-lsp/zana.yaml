@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: prosemd-lsp
-description: An experimental proofreading and linting language server for markdown files.
+description: |
+  An experimental proofreading and linting language server for
+  markdown files.
 homepage: https://github.com/kitten/prosemd-lsp
 licenses:
   - LGPL-2.1-or-later
@@ -21,4 +23,4 @@ source:
     - target: win_x64
       file: prosemd-lsp-windows.exe
 bin:
-  prosemd-lsp: '{{source.asset.file}}'
+  prosemd-lsp: "{{source.asset.file}}"

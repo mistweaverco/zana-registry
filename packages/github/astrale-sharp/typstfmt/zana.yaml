@@ -29,4 +29,4 @@ source:
       file: typstfmt-x86_64-pc-windows-msvc.zip
       bin: typstfmt-x86_64-pc-windows-msvc/typstfmt.exe
 bin:
-  typstfmt: '{{source.asset.bin}}'
+  typstfmt: "{{source.asset.bin}}"

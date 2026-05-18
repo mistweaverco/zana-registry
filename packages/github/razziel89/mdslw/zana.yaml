@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: mdslw
-description: The MarkDown Sentence Line Wrapper, an auto-formatter that prepares your markdown for easy diff'ing.
+description: |
+  The MarkDown Sentence Line Wrapper, an auto-formatter that
+  prepares your markdown for easy diff'ing.
 homepage: https://github.com/razziel89/mdslw
 licenses:
   - GPL-3.0-only
@@ -21,4 +23,4 @@ source:
     - target: win_x64
       file: mdslw_x86_64-pc-windows-gnu.exe
 bin:
-  mdslw: '{{source.asset.file}}'
+  mdslw: "{{source.asset.file}}"

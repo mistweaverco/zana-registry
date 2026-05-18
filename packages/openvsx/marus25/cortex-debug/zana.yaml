@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: cortex-debug
-description: Visual Studio Code extension for enhancing debug capabilities for Cortex-M Microcontrollers.
+description: |
+  Visual Studio Code extension for enhancing debug capabilities
+  for Cortex-M Microcontrollers.
 homepage: https://github.com/Marus/cortex-debug
 licenses:
   - MIT

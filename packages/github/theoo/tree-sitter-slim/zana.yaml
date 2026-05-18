@@ -5,7 +5,8 @@ description: Tree-sitter grammar for slim.
 homepage: https://github.com/theoo/tree-sitter-slim
 licenses:
   - MIT
-languages: []
+languages:
+  - slim
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-slim
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

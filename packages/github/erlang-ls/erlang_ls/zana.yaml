@@ -2,8 +2,9 @@
 ---
 name: erlang-ls
 description: |
-  Erlang LS is a language server providing language features for the Erlang programming language. The server works with
-  Emacs, VSCode, Sublime Text 3, Vim and probably many more text editors and IDE which adhere to the LSP protocol.
+  Erlang LS is a language server providing language features for the Erlang
+  programming language. The server works with Emacs, VSCode, Sublime Text 3, Vim
+  and probably many more text editors and IDE which adhere to the LSP protocol.
 homepage: https://erlang-ls.github.io/
 licenses:
   - Apache-2.0
@@ -23,4 +24,4 @@ source:
         </dev/null rebar3 escriptize
       erlang_ls: _build/default/bin/erlang_ls
 bin:
-  erlang_ls: '{{source.build.erlang_ls}}'
+  erlang_ls: "{{source.build.erlang_ls}}"

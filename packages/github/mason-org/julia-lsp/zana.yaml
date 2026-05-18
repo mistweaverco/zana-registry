@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: julia-lsp
-description: An implementation of the Microsoft Language Server Protocol for the Julia language.
+description: |
+  An implementation of the Microsoft Language Server Protocol for
+  the Julia language.
 homepage: https://github.com/julia-vscode/LanguageServer.jl
 languages:
   - Julia
@@ -21,4 +23,4 @@ source:
 schemas:
   lsp: vscode:https://raw.githubusercontent.com/julia-vscode/julia-vscode/master/package.json
 bin:
-  julia-lsp: '{{source.asset.bin}}'
+  julia-lsp: "{{source.asset.bin}}"

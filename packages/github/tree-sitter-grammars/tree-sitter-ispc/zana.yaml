@@ -5,7 +5,8 @@ description: Tree-sitter grammar for ispc.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-ispc
 licenses:
   - MIT
-languages: []
+languages:
+  - ispc
 categories:
   - Tree-sitter-parser
 source:
@@ -21,3 +22,7 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-c
           semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

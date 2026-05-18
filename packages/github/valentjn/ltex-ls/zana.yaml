@@ -2,7 +2,8 @@
 ---
 name: ltex-ls
 description: |
-  LTeX Language Server: LSP language server for LanguageTool 🔍✔️ with support for LaTeX 🎓, Markdown 📝, and others.
+  LTeX Language Server: LSP language server for LanguageTool 🔍✔️ with support
+  for LaTeX 🎓, Markdown 📝, and others.
 homepage: https://valentjn.github.io/ltex/
 licenses:
   - MPL-2.0
@@ -34,5 +35,5 @@ source:
 schemas:
   lsp: vscode:https://raw.githubusercontent.com/valentjn/vscode-ltex/develop/package.json
 bin:
-  ltex-ls: '{{source.asset.bin.lsp}}'
-  ltex-cli: '{{source.asset.bin.cli}}'
+  ltex-ls: "{{source.asset.bin.lsp}}"
+  ltex-cli: "{{source.asset.bin.cli}}"

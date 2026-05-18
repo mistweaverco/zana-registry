@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: ols
-description: Language server for Odin. This project is still in early development.
+description: |
+  Language server for Odin. This project is still in early
+  development.
 homepage: https://github.com/DanielGavin/ols
 licenses:
   - MIT
@@ -27,4 +29,4 @@ source:
       file: ols-x86_64-pc-windows-msvc.exe
       bin: ols-x86_64-pc-windows-msvc.exe
 bin:
-  ols: '{{source.asset.bin}}'
+  ols: "{{source.asset.bin}}"

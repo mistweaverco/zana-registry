@@ -23,5 +23,5 @@ source:
         ninja -C build install
       bin: bin/vala-language-server.exe
 bin:
-  vala-language-server: '{{source.build.bin}}'
+  vala-language-server: "{{source.build.bin}}"
 ci_skip: true

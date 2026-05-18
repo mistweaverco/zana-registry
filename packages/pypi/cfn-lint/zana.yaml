@@ -2,8 +2,9 @@
 ---
 name: cfn-lint
 description: |
-  CloudFormation Linter. Validate AWS CloudFormation YAML/JSON templates against the AWS CloudFormation Resource
-  Specification and additional checks. Includes checking valid values for resource properties and best practices.
+  CloudFormation Linter. Validate AWS CloudFormation YAML/JSON templates against
+  the AWS CloudFormation Resource Specification and additional checks. Includes
+  checking valid values for resource properties and best practices.
 homepage: https://github.com/aws-cloudformation/cfn-lint
 licenses:
   - MIT-0

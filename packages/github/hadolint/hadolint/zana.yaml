@@ -23,4 +23,4 @@ source:
     - target: win_x64
       file: hadolint-Windows-x86_64.exe
 bin:
-  hadolint: '{{source.asset.file}}'
+  hadolint: "{{source.asset.file}}"

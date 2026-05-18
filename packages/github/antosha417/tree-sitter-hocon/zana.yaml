@@ -5,7 +5,8 @@ description: Tree-sitter grammar for hocon.
 homepage: https://github.com/antosha417/tree-sitter-hocon
 licenses:
   - MIT
-languages: []
+languages:
+  - hocon
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-hocon
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

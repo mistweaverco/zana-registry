@@ -5,7 +5,8 @@ description: Tree-sitter grammar for devicetree.
 homepage: https://github.com/joelspadin/tree-sitter-devicetree
 licenses:
   - MIT
-languages: []
+languages:
+  - devicetree
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-devicetree
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

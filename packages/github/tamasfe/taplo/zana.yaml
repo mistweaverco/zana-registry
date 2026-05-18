@@ -34,4 +34,4 @@ source:
       file: taplo-full-windows-x86.zip
       bin: taplo.exe
 bin:
-  taplo: '{{source.asset.bin}}'
+  taplo: "{{source.asset.bin}}"

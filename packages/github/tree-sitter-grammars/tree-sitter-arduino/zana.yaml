@@ -5,7 +5,8 @@ description: Tree-sitter grammar for arduino.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-arduino
 licenses:
   - MIT
-languages: []
+languages:
+  - arduino
 categories:
   - Tree-sitter-parser
 source:
@@ -21,3 +22,7 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-cpp
           semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

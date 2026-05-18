@@ -5,7 +5,9 @@ description: Tree-sitter grammars for jinja, jinja_inline.
 homepage: https://github.com/cathaysia/tree-sitter-jinja
 licenses:
   - MIT
-languages: []
+languages:
+  - jinja
+  - jinja_inline
 categories:
   - Tree-sitter-parser
 source:
@@ -28,3 +30,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-jinja_inline
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

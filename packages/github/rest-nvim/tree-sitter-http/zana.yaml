@@ -5,7 +5,8 @@ description: Tree-sitter grammar for http.
 homepage: https://github.com/rest-nvim/tree-sitter-http
 licenses:
   - MIT
-languages: []
+languages:
+  - http
 categories:
   - Tree-sitter-parser
 source:
@@ -22,3 +23,7 @@ treesitter:
       injections:
         - javascript
         - lua
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

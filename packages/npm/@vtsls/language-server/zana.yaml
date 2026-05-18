@@ -13,6 +13,7 @@ categories:
 source:
   id: npm:@vtsls/language-server
 schemas:
+  # yamllint disable-line rule:line-length
   lsp: https://raw.githubusercontent.com/yioneko/vtsls/server-v{{version}}/packages/service/configuration.schema.json
 bin:
   vtsls: npm:vtsls

@@ -5,7 +5,8 @@ description: Tree-sitter grammar for robot.
 homepage: https://github.com/Hubro/tree-sitter-robot
 licenses:
   - MIT
-languages: []
+languages:
+  - robot
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-robot
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

@@ -28,4 +28,4 @@ source:
       file: opencl-language-server-win32-x86_64.zip
       bin: opencl-language-server.exe
 bin:
-  opencl-language-server: '{{source.asset.bin}}'
+  opencl-language-server: "{{source.asset.bin}}"

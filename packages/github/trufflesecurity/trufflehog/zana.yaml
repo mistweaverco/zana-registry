@@ -30,4 +30,4 @@ source:
       file: trufflehog_{{ version | strip_prefix "v" }}_windows_arm64.tar.gz
       bin: trufflehog.exe
 bin:
-  trufflehog: '{{source.asset.bin}}'
+  trufflehog: "{{source.asset.bin}}"

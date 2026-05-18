@@ -2,8 +2,8 @@
 ---
 name: clangd
 description: |
-  clangd understands your C++ code and adds smart features to your editor: code completion, compile errors,
-  go-to-definition and more.
+  clangd understands your C++ code and adds smart features to your editor: code
+  completion, compile errors, go-to-definition and more.
 homepage: https://clangd.llvm.org
 licenses:
   - Apache-2.0
@@ -29,4 +29,4 @@ source:
 schemas:
   lsp: vscode:https://raw.githubusercontent.com/clangd/vscode-clangd/master/package.json
 bin:
-  clangd: '{{source.asset.bin}}'
+  clangd: "{{source.asset.bin}}"

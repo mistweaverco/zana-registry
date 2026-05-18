@@ -2,8 +2,8 @@
 ---
 name: tree-sitter-cli
 description: |
-  The Tree-sitter CLI allows you to develop, test, and use Tree-sitter grammars from the command line. It works on
-  MacOS, Linux, and Windows.
+  The Tree-sitter CLI allows you to develop, test, and use Tree-sitter grammars
+  from the command line. It works on MacOS, Linux, and Windows.
 homepage: https://github.com/tree-sitter/tree-sitter/blob/master/cli/README.md
 licenses:
   - MIT
@@ -34,4 +34,4 @@ source:
       file: tree-sitter-windows-x86.gz:tree-sitter-windows-x86.exe.gz
       bin: tree-sitter-windows-x86.exe
 bin:
-  tree-sitter: '{{source.asset.bin}}'
+  tree-sitter: "{{source.asset.bin}}"

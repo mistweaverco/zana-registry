@@ -5,7 +5,8 @@ description: Tree-sitter grammar for r.
 homepage: https://github.com/r-lib/tree-sitter-r
 licenses:
   - MIT
-languages: []
+languages:
+  - r
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-r
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

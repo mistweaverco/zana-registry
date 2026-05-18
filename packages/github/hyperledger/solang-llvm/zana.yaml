@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: solang-llvm
-description: Solang requires Solana's LLVM fork. We provide pre-built binaries compatible with Solang.
+description: |
+  Solang requires Solana's LLVM fork. We provide pre-built
+  binaries compatible with Solang.
 homepage: https://github.com/hyperledger/solang-llvm
 licenses:
   - Apache-2.0

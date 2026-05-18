@@ -2,8 +2,9 @@
 ---
 name: elixir-ls
 description: |
-  A frontend-independent IDE "smartness" server for Elixir. Implements the "Language Server Protocol" standard and
-  provides debugger support via the "Debug Adapter Protocol".
+  A frontend-independent IDE "smartness" server for Elixir. Implements the
+  "Language Server Protocol" standard and provides debugger support via the
+  "Debug Adapter Protocol".
 homepage: https://github.com/elixir-lsp/elixir-ls
 licenses:
   - Apache-2.0
@@ -55,5 +56,5 @@ source:
 schemas:
   lsp: vscode:https://raw.githubusercontent.com/elixir-lsp/vscode-elixir-ls/master/package.json
 bin:
-  elixir-ls: '{{source.asset.bin.lsp}}'
-  elixir-ls-debugger: '{{source.asset.bin.dap}}'
+  elixir-ls: "{{source.asset.bin.lsp}}"
+  elixir-ls-debugger: "{{source.asset.bin.dap}}"

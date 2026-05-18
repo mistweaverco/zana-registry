@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: swift-mesonlsp
-description: An unofficial, unendorsed language server for meson written in Swift.
+description: |
+  An unofficial, unendorsed language server for meson written in
+  Swift.
 homepage: https://github.com/JCWasmx86/Swift-MesonLSP
 licenses:
   - GPL-3.0
@@ -25,4 +27,4 @@ source:
       file: Swift-MesonLSP-win64.zip
       bin: Swift-MesonLSP.exe
 bin:
-  Swift-MesonLSP: '{{source.asset.bin}}'
+  Swift-MesonLSP: "{{source.asset.bin}}"

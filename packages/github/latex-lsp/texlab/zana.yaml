@@ -28,4 +28,4 @@ source:
       file: texlab-x86_64-windows.zip
       bin: texlab.exe
 bin:
-  texlab: '{{source.asset.bin}}'
+  texlab: "{{source.asset.bin}}"

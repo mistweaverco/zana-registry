@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: clojure-lsp
-description: A Language Server for Clojure(script). Taking a Cursive-like approach of statically analyzing code.
+description: |
+  A Language Server for Clojure(script). Taking a Cursive-like
+  approach of statically analyzing code.
 homepage: https://clojure-lsp.io
 licenses:
   - MIT
@@ -32,4 +34,4 @@ source:
       file: clojure-lsp-native-windows-amd64.zip
       bin: clojure-lsp.exe
 bin:
-  clojure-lsp: '{{source.asset.bin}}'
+  clojure-lsp: "{{source.asset.bin}}"

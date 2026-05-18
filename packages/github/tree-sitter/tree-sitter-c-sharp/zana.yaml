@@ -5,7 +5,8 @@ description: Tree-sitter grammar for c_sharp.
 homepage: https://github.com/tree-sitter/tree-sitter-c-sharp
 licenses:
   - MIT
-languages: []
+languages:
+  - c_sharp
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-c_sharp
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

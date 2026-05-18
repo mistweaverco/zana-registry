@@ -36,4 +36,4 @@ source:
           file: rubyfmt-{{version}}-Linux.tar.gz
           bin: tmp/releases/{{version}}-Linux/rubyfmt
 bin:
-  rubyfmt: '{{source.asset.bin}}'
+  rubyfmt: "{{source.asset.bin}}"

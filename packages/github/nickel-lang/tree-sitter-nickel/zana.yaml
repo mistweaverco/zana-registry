@@ -5,7 +5,8 @@ description: Tree-sitter grammar for nickel.
 homepage: https://github.com/nickel-lang/tree-sitter-nickel
 licenses:
   - MIT
-languages: []
+languages:
+  - nickel
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-nickel
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

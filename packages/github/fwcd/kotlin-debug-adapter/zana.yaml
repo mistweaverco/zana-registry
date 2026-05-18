@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: kotlin-debug-adapter
-description: Kotlin/JVM debugging for any editor/IDE using the Debug Adapter Protocol.
+description: |
+  Kotlin/JVM debugging for any editor/IDE using the Debug Adapter
+  Protocol.
 homepage: https://github.com/fwcd/kotlin-debug-adapter
 licenses:
   - MIT
@@ -25,4 +27,4 @@ source:
       file: adapter.zip
       bin: adapter/bin/kotlin-debug-adapter.bat
 bin:
-  kotlin-debug-adapter: '{{source.asset.bin}}'
+  kotlin-debug-adapter: "{{source.asset.bin}}"

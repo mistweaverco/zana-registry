@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: fourmolu
-description: A fork of Ormolu that uses four space indentation and allows arbitrary configuration.
+description: |
+  A fork of Ormolu that uses four space indentation and allows
+  arbitrary configuration.
 homepage: https://hackage.haskell.org/package/fourmolu
 licenses:
   - BSD-3-Clause
@@ -19,4 +21,4 @@ source:
     - target: linux_x64_gnu
       file: fourmolu-{{ version | strip_prefix "v" }}-linux-x86_64
 bin:
-  fourmolu: '{{source.asset.file}}'
+  fourmolu: "{{source.asset.file}}"

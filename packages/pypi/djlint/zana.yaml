@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: djlint
-description: HTML Template Linter and Formatter. Django - Jinja - Nunjucks - Handlebars - GoLang.
+description: |
+  HTML Template Linter and Formatter. Django - Jinja - Nunjucks -
+  Handlebars - GoLang.
 homepage: https://github.com/Riverside-Healthcare/djLint
 licenses:
   - GPL-3.0-or-later

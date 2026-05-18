@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { type Package, PackageTreesitterIntegration } from '$lib/types';
 	import TagFilter from '$lib/TagFilter.svelte';
+	import PackageInfoExtra from '$lib/PackageInfoExtra.svelte';
 	import { pushState, replaceState } from '$app/navigation';
 	import { browser } from '$app/environment';
 
@@ -164,18 +165,21 @@
 		activePackageDataInstallCommand = getZanaInstallCommand(activePackageData, integration);
 	};
 
+	const navigateToPackageDetails = (pkgId: string) => {
+		detailsId = pkgId;
+		openDetails(pkgId);
+		const next = getCurrentSearchParams();
+		next.set('details', pkgId);
+		applySearchParams(next, 'push');
+	};
+
 	const onRemotePackageItemClick = (e: Event) => {
 		const target = e.currentTarget as HTMLElement;
 		const tr = target.closest('tr') as HTMLTableRowElement;
 		const pkgId = tr.dataset.packageId as string;
 
 		// Open immediately for responsive UX.
-		detailsId = pkgId;
-		openDetails(pkgId);
-
-		const next = getCurrentSearchParams();
-		next.set('details', pkgId);
-		applySearchParams(next, 'push');
+		navigateToPackageDetails(pkgId);
 	};
 
 	const filterPackages = () => {
@@ -191,9 +195,7 @@
 				}
 				// Search by aliases
 				if (pkg.aliases && Array.isArray(pkg.aliases)) {
-					const aliasMatch = pkg.aliases.find((alias: string) =>
-						alias.toLowerCase().includes(q)
-					);
+					const aliasMatch = pkg.aliases.find((alias: string) => alias.toLowerCase().includes(q));
 					if (aliasMatch !== undefined) {
 						pkg.searchMatchInfo = `Alias ${aliasMatch} matched`;
 						return true;
@@ -215,16 +217,12 @@
 
 		if (selectedLanguages.length > 0) {
 			const want = new Set(selectedLanguages.map((v) => v.toLowerCase()));
-			pkgs = pkgs.filter((pkg) =>
-				(pkg.languages ?? []).some((l) => want.has(l.toLowerCase()))
-			);
+			pkgs = pkgs.filter((pkg) => (pkg.languages ?? []).some((l) => want.has(l.toLowerCase())));
 		}
 
 		if (selectedCategories.length > 0) {
 			const want = new Set(selectedCategories.map((v) => v.toLowerCase()));
-			pkgs = pkgs.filter((pkg) =>
-				(pkg.categories ?? []).some((c) => want.has(c.toLowerCase()))
-			);
+			pkgs = pkgs.filter((pkg) => (pkg.categories ?? []).some((c) => want.has(c.toLowerCase())));
 		}
 		filteredPackages = pkgs.length !== packages.length ? pkgs : [];
 	};
@@ -275,8 +273,7 @@
 	const addLanguage = (value: string) => {
 		const v = value.trim();
 		if (!v) return;
-		const canon =
-			availableLanguages.find((p) => p.toLowerCase() === v.toLowerCase()) ?? v;
+		const canon = availableLanguages.find((p) => p.toLowerCase() === v.toLowerCase()) ?? v;
 		if (selectedLanguages.some((x) => x.toLowerCase() === canon.toLowerCase())) return;
 		selectedLanguages = dedupeInsensitiveSorted([...selectedLanguages, canon]);
 		languageInput = '';
@@ -294,8 +291,7 @@
 	const addCategory = (value: string) => {
 		const v = value.trim();
 		if (!v) return;
-		const canon =
-			availableCategories.find((p) => p.toLowerCase() === v.toLowerCase()) ?? v;
+		const canon = availableCategories.find((p) => p.toLowerCase() === v.toLowerCase()) ?? v;
 		if (selectedCategories.some((x) => x.toLowerCase() === canon.toLowerCase())) return;
 		selectedCategories = dedupeInsensitiveSorted([...selectedCategories, canon]);
 		categoryInput = '';
@@ -351,7 +347,7 @@
 />
 
 <dialog bind:this={modalInfo} class="modal" on:cancel={onModalCancel}>
-	<div class="modal-box">
+	<div class="modal-box max-h-[90vh] max-w-3xl overflow-y-auto">
 		<h3 class="text-lg font-bold">Info</h3>
 		{#if showCopySuccess}
 			<div role="alert" class="alert alert-success mt-3">
@@ -499,6 +495,13 @@
 					<td>Categories:</td>
 					<td>{activePackageData.categories.join(', ')}</td>
 				</tr>
+				{#if activePackageData.aliases?.length}
+					<tr>
+						<td>Aliases:</td>
+						<td>{activePackageData.aliases.join(', ')}</td>
+					</tr>
+				{/if}
+				<PackageInfoExtra pkg={activePackageData} onNavigatePackage={navigateToPackageDetails} />
 			</tbody>
 		</table>
 		<div class="modal-action">

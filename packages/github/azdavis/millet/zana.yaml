@@ -32,4 +32,4 @@ source:
       file: millet-ls-x86_64-unknown-linux-gnu.gz
       bin: millet-ls-x86_64-unknown-linux-gnu
 bin:
-  millet: '{{source.asset.bin}}'
+  millet: "{{source.asset.bin}}"

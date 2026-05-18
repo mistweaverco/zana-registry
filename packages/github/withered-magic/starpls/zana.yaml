@@ -2,7 +2,8 @@
 ---
 name: starpls
 description: |
-  Starpls is an LSP implementation for Starlark, the configuration language used by Bazel and Buck2.
+  Starpls is an LSP implementation for Starlark, the configuration language used
+  by Bazel and Buck2.
 homepage: https://github.com/withered-magic/starpls
 licenses:
   - MIT
@@ -21,4 +22,4 @@ source:
     - target: win_x64
       file: starpls-windows-amd64.exe
 bin:
-  starpls: '{{source.asset.file}}'
+  starpls: "{{source.asset.file}}"

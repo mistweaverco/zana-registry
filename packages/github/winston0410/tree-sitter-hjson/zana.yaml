@@ -5,7 +5,8 @@ description: Tree-sitter grammar for hjson.
 homepage: https://github.com/winston0410/tree-sitter-hjson
 licenses:
   - MIT
-languages: []
+languages:
+  - hjson
 categories:
   - Tree-sitter-parser
 source:
@@ -21,3 +22,7 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-json
           semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

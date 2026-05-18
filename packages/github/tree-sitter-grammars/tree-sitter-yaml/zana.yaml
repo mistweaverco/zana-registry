@@ -5,7 +5,8 @@ description: Tree-sitter grammar for yaml.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-yaml
 licenses:
   - MIT
-languages: []
+languages:
+  - yaml
 categories:
   - Tree-sitter-parser
 source:
@@ -22,3 +23,7 @@ treesitter:
       injections:
         - bash
         - promql
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

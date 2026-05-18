@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: editorconfig-checker
-description: A tool to verify that your files are in harmony with your `.editorconfig`.
+description: |
+  A tool to verify that your files are in harmony with your
+  `.editorconfig`.
 homepage: https://github.com/editorconfig-checker/editorconfig-checker
 licenses:
   - MIT

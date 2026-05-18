@@ -2,9 +2,9 @@
 ---
 name: hylo-language-server
 description: |
-  hylo-language-server is an implementation of the Language Server Protocol for the
-  Hylo programming language that provides features like semantic highlighting, 
-  go-to-definition, and more.
+  hylo-language-server is an implementation of the Language Server Protocol for
+  the Hylo programming language that provides features like semantic
+  highlighting, go-to-definition, and more.
 homepage: https://github.com/hylo-lang/hylo-language-server
 licenses:
   - MIT
@@ -34,4 +34,4 @@ source:
       file: hylo-language-server-windows-arm64.zip
       bin: hylo-language-server.exe
 bin:
-  hylo-language-server: '{{source.asset.bin}}'
+  hylo-language-server: "{{source.asset.bin}}"

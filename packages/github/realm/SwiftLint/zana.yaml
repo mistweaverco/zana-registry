@@ -17,6 +17,7 @@ source:
       bin: swiftlint
     - target: darwin
       file: SwiftLintBinary-macos.artifactbundle.zip
+      # yamllint disable-line rule:line-length
       bin: SwiftLintBinary.artifactbundle/swiftlint-{{ version }}-macos/bin/swiftlint
 bin:
-  swiftlint: '{{source.asset.bin}}'
+  swiftlint: "{{source.asset.bin}}"

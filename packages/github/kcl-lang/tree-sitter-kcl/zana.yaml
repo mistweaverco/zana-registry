@@ -5,7 +5,8 @@ description: Tree-sitter grammar for kcl.
 homepage: https://github.com/kcl-lang/tree-sitter-kcl
 licenses:
   - MIT
-languages: []
+languages:
+  - kcl
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-kcl
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

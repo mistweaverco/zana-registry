@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: gospel
-description: misspelled word linter for Go comments, string literals and embedded files.
+description: |
+  misspelled word linter for Go comments, string literals and
+  embedded files.
 homepage: https://github.com/kortschak/gospel
 licenses:
   - BSD-3-Clause

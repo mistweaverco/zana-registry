@@ -5,7 +5,8 @@ description: Tree-sitter grammar for glsl.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-glsl
 licenses:
   - MIT
-languages: []
+languages:
+  - glsl
 categories:
   - Tree-sitter-parser
 source:
@@ -21,3 +22,7 @@ treesitter:
           semver: true
         - repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-c
           semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

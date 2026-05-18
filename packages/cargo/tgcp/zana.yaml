@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: tgcp
-description: Terminal UI for GCP (tgcp) - A terminal-based GCP resource viewer and manager
+description: |
+  Terminal UI for GCP (tgcp) - A terminal-based GCP resource
+  viewer and manager
 homepage: https://github.com/huseyinbabal/tgcp
 licenses:
   - MIT

@@ -5,7 +5,8 @@ description: Tree-sitter grammar for vrl.
 homepage: https://github.com/belltoy/tree-sitter-vrl
 licenses:
   - MIT
-languages: []
+languages:
+  - vrl
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-vrl
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

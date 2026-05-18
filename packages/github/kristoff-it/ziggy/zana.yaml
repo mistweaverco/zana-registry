@@ -5,7 +5,9 @@ description: Tree-sitter grammars for ziggy, ziggy_schema.
 homepage: https://github.com/kristoff-it/ziggy
 licenses:
   - MIT
-languages: []
+languages:
+  - ziggy
+  - ziggy_schema
 categories:
   - Tree-sitter-parser
 source:
@@ -26,3 +28,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-ziggy_schema
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

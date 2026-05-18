@@ -13,6 +13,7 @@ source:
   id: generic:cqframework/cql-language-server
   download:
     files:
+      # yamllint disable-line rule:line-length
       cql-ls-service.jar: https://repo1.maven.org/maven2/org/opencds/cqf/cql/ls/cql-ls-service/{{ version | strip_prefix "v" }}/cql-ls-service-{{ version | strip_prefix "v" }}.jar
 bin:
   cql-language-server: java-jar:cql-ls-service.jar

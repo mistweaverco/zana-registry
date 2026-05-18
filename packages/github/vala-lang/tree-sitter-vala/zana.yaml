@@ -5,7 +5,8 @@ description: Tree-sitter grammar for vala.
 homepage: https://github.com/vala-lang/tree-sitter-vala
 licenses:
   - MIT
-languages: []
+languages:
+  - vala
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-vala
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

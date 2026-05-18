@@ -5,7 +5,8 @@ description: Tree-sitter grammar for dockerfile.
 homepage: https://github.com/camdencheek/tree-sitter-dockerfile
 licenses:
   - MIT
-languages: []
+languages:
+  - dockerfile
 categories:
   - Tree-sitter-parser
 source:
@@ -21,3 +22,7 @@ treesitter:
         semver: true
       injections:
         - bash
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

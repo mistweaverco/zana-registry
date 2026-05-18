@@ -32,4 +32,4 @@ source:
     - target: win_x64
       file: snyk-win.exe
 bin:
-  snyk: '{{source.asset.file}}'
+  snyk: "{{source.asset.file}}"

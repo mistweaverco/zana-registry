@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: cpplint
-description: Cpplint is a command-line tool to check C/C++ files for style issues following Google's C++ style guide.
+description: |
+  Cpplint is a command-line tool to check C/C++ files for style
+  issues following Google's C++ style guide.
 homepage: https://pypi.org/project/cpplint/
 licenses:
   - BSD-3-Clause

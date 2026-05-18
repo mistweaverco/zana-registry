@@ -27,4 +27,4 @@ source:
       file: dcm-windows-release.zip
       bin: dcm.exe
 bin:
-  dcm: '{{source.asset.bin}}'
+  dcm: "{{source.asset.bin}}"

@@ -5,7 +5,8 @@ description: Tree-sitter grammar for passwd.
 homepage: https://github.com/ath3/tree-sitter-passwd
 licenses:
   - MIT
-languages: []
+languages:
+  - passwd
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-passwd
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

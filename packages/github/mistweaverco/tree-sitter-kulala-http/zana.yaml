@@ -18,3 +18,7 @@ treesitter:
       grammar_dir: .
       integrations:
         - neovim
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

@@ -26,4 +26,4 @@ source:
       file: els-x86_64-pc-windows-msvc.zip
       bin: els.exe
 bin:
-  els: '{{source.asset.bin}}'
+  els: "{{source.asset.bin}}"

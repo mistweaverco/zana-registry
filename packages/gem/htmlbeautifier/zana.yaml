@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: htmlbeautifier
-description: A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates.
+description: |
+  A normaliser/beautifier for HTML that also understands embedded
+  Ruby. Ideal for tidying up Rails templates.
 homepage: https://github.com/threedaymonk/htmlbeautifier
 licenses:
   - MIT

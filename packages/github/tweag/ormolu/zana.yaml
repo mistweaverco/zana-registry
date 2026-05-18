@@ -24,4 +24,4 @@ source:
       file: ormolu-Windows.zip
       bin: ormolu.exe
 bin:
-  ormolu: '{{source.asset.bin}}'
+  ormolu: "{{source.asset.bin}}"

@@ -5,7 +5,8 @@ description: Tree-sitter grammar for doxygen.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-doxygen
 licenses:
   - MIT
-languages: []
+languages:
+  - doxygen
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-doxygen
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

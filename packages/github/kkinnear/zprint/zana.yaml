@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: zprint
-description: Beautifully format Clojure and Clojurescript source code and s-expressions.
+description: |
+  Beautifully format Clojure and Clojurescript source code and
+  s-expressions.
 homepage: https://github.com/kkinnear/zprint
 licenses:
   - MIT
@@ -20,4 +22,4 @@ source:
     - target: linux_x64_gnu
       file: zprintl-{{version}}
 bin:
-  zprint: '{{source.asset.file}}'
+  zprint: "{{source.asset.file}}"

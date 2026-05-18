@@ -2,8 +2,9 @@
 ---
 name: phpmd
 description: |
-  PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD. PHPMD can
-  be seen as an user friendly frontend application for the raw metrics stream measured by PHP Depend.
+  PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of
+  the well known Java tool PMD. PHPMD can be seen as an user friendly frontend
+  application for the raw metrics stream measured by PHP Depend.
 homepage: https://github.com/phpmd/phpmd
 licenses:
   - BSD-3-Clause

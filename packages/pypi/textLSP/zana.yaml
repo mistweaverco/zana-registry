@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: textlsp
-description: Language server for text spell and grammar check with various tools.
+description: |
+  Language server for text spell and grammar check with various
+  tools.
 homepage: https://github.com/hangyav/textLSP
 licenses:
   - GPL-3.0-only

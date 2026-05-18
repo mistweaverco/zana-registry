@@ -5,7 +5,8 @@ description: Tree-sitter grammar for twig.
 homepage: https://github.com/gbprod/tree-sitter-twig
 licenses:
   - MIT
-languages: []
+languages:
+  - twig
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-twig
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

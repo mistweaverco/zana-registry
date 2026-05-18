@@ -82,4 +82,4 @@ source:
 schemas:
   lsp: https://raw.githubusercontent.com/zigtools/zls/{{version}}/schema.json
 bin:
-  zls: '{{source.asset.bin}}'
+  zls: "{{source.asset.bin}}"

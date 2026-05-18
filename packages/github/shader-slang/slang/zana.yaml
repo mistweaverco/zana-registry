@@ -2,9 +2,11 @@
 ---
 name: slang
 description: |
-  Slang is a shading language that makes it easier to build and maintain large shader codebases in a modular and
-  extensible fashion, while also maintaining the highest possible performance on modern GPUs and graphics APIs. Slang is
-  based on years of collaboration between researchers at NVIDIA, Carnegie Mellon University, and Stanford.
+  Slang is a shading language that makes it easier to build and maintain large
+  shader codebases in a modular and extensible fashion, while also maintaining
+  the highest possible performance on modern GPUs and graphics APIs. Slang is
+  based on years of collaboration between researchers at NVIDIA, Carnegie Mellon
+  University, and Stanford.
 homepage: https://shader-slang.com/
 licenses:
   - MIT
@@ -42,5 +44,5 @@ source:
         slangd: bin/windows-aarch64/release/slangd.exe
         slangc: bin/windows-aarch64/release/slangc.exe
 bin:
-  slangd: '{{source.asset.bin.slangd}}'
-  slangc: '{{source.asset.bin.slangc}}'
+  slangd: "{{source.asset.bin.slangd}}"
+  slangc: "{{source.asset.bin.slangc}}"

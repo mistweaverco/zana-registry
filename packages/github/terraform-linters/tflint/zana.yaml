@@ -32,4 +32,4 @@ source:
       file: tflint_windows_amd64.zip
       bin: tflint.exe
 bin:
-  tflint: '{{source.asset.bin}}'
+  tflint: "{{source.asset.bin}}"

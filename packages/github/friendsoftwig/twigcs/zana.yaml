@@ -2,8 +2,8 @@
 ---
 name: twigcs
 description: |
-  The missing checkstyle for twig! Twigcs aims to be what phpcs is to php. It checks your codebase for violations on
-  coding standards.
+  The missing checkstyle for twig! Twigcs aims to be what phpcs is to php. It
+  checks your codebase for violations on coding standards.
 homepage: https://github.com/friendsoftwig/twigcs
 licenses:
   - MIT

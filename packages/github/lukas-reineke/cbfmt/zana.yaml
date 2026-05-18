@@ -2,8 +2,9 @@
 ---
 name: cbfmt
 description: |
-  A tool to format codeblocks inside markdown and org documents. It iterates over all codeblocks, and formats them with
-  the tool(s) specified for the language of the block.
+  A tool to format codeblocks inside markdown and org documents. It iterates
+  over all codeblocks, and formats them with the tool(s) specified for the
+  language of the block.
 homepage: https://github.com/lukas-reineke/cbfmt
 licenses:
   - MIT
@@ -29,4 +30,4 @@ source:
       file: cbfmt_windows-x86_64-msvc_{{version}}.zip
       bin: cbfmt_windows-x86_64-msvc_{{version}}/cbfmt.exe
 bin:
-  cbfmt: '{{source.asset.bin}}'
+  cbfmt: "{{source.asset.bin}}"

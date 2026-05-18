@@ -5,7 +5,8 @@ description: Tree-sitter grammar for tera.
 homepage: https://github.com/uncenter/tree-sitter-tera
 licenses:
   - MIT
-languages: []
+languages:
+  - tera
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-tera
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

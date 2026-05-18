@@ -2,8 +2,8 @@
 ---
 name: mdx-analyzer
 description: |
-  This package provides a language server for MDX. The language server provides IntelliSense based on TypeScript, as
-  well as some markdown specific features.
+  This package provides a language server for MDX. The language server provides
+  IntelliSense based on TypeScript, as well as some markdown specific features.
 homepage: https://github.com/mdx-js/mdx-analyzer/tree/main/packages/language-server
 licenses:
   - MIT

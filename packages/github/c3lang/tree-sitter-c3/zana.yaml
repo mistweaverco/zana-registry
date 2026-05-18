@@ -5,7 +5,8 @@ description: Tree-sitter grammar for c3.
 homepage: https://github.com/c3lang/tree-sitter-c3
 licenses:
   - MIT
-languages: []
+languages:
+  - c3
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-c3
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

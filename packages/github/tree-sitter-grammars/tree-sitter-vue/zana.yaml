@@ -5,7 +5,9 @@ description: Tree-sitter grammars for html_tags, vue.
 homepage: https://github.com/tree-sitter-grammars/tree-sitter-vue
 licenses:
   - MIT
-languages: []
+languages:
+  - html_tags
+  - vue
 categories:
   - Tree-sitter-parser
 source:
@@ -33,3 +35,7 @@ treesitter:
         - scss
         - tsx
         - typescript
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

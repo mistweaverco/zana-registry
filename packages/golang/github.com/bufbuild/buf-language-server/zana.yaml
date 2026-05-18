@@ -2,7 +2,8 @@
 ---
 name: buf-language-server
 description: |
-  buf-language-server is a prototype for the beginnings of a Protobuf language server compatible with Buf modules and workspaces.
+  buf-language-server is a prototype for the beginnings of a Protobuf language
+  server compatible with Buf modules and workspaces.
 homepage: https://github.com/bufbuild/buf-language-server
 licenses:
   - Apache-2.0

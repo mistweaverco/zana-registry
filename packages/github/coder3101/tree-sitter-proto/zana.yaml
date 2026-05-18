@@ -5,7 +5,8 @@ description: Tree-sitter grammar for proto.
 homepage: https://github.com/coder3101/tree-sitter-proto
 licenses:
   - MIT
-languages: []
+languages:
+  - proto
 categories:
   - Tree-sitter-parser
 source:
@@ -19,3 +20,7 @@ treesitter:
       external_queries:
         repo_url: https://github.com/neovim-treesitter/nvim-treesitter-queries-proto
         semver: true
+requires:
+  one:
+    - npm:tree-sitter-cli
+    - github:tree-sitter/tree-sitter

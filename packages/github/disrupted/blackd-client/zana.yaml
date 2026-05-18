@@ -19,4 +19,4 @@ source:
     - target: linux_x64_gnu
       file: blackd-client_linux
 bin:
-  blackd-client: '{{source.asset.file}}'
+  blackd-client: "{{source.asset.file}}"

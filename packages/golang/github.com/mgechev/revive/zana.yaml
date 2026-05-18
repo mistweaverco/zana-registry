@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://registry.getzana.net/package.schema.json
 ---
 name: revive
-description: ~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint.
+description: |
+  ~6x faster, stricter, configurable, extensible, and beautiful
+  drop-in replacement for golint.
 homepage: https://github.com/mgechev/revive
 licenses:
   - MIT

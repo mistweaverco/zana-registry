@@ -2,7 +2,8 @@
 ---
 name: trivy
 description: |
-  Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more.
+  Find vulnerabilities, misconfigurations, secrets, SBOM in containers,
+  Kubernetes, code repositories, clouds and more.
 homepage: https://github.com/aquasecurity/trivy
 licenses:
   - Apache-2.0
@@ -44,6 +45,6 @@ source:
       file: trivy_{{ version | strip_prefix "v" }}_Windows-64bit.zip
       bin: trivy.exe
 bin:
-  trivy: '{{source.asset.bin}}'
+  trivy: "{{source.asset.bin}}"
 share:
   trivy/templates/: contrib/

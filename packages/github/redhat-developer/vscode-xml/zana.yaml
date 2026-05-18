@@ -27,4 +27,4 @@ source:
       file: lemminx-win32.zip
       bin: lemminx-win32.exe
 bin:
-  lemminx: '{{source.asset.bin}}'
+  lemminx: "{{source.asset.bin}}"

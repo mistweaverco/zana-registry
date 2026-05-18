@@ -25,4 +25,4 @@ source:
       file: mesonlsp-x86_64-pc-windows-gnu.zip
       bin: mesonlsp.exe
 bin:
-  mesonlsp: '{{source.asset.bin}}'
+  mesonlsp: "{{source.asset.bin}}"

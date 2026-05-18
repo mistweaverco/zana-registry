@@ -13,6 +13,7 @@ source:
   id: github:mathworks/MATLAB-language-server
   build:
     run: |
+
       npm install
       npm run package
 bin:
